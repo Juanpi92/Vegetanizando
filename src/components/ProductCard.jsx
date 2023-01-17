@@ -1,13 +1,12 @@
 import React from "react";
 import "./ProductCard.css";
-import Src from "../imagenes/products/bebibdarefrescantetangerina.jpg";
 
-const ProductCard = () => {
+const ProductCard = ({ src_imagen }) => {
   return (
     <>
       <div className="card">
         <figure className="imagen_product">
-          <img src={Src} alt={Src} />
+          <img src={src_imagen} alt={src_imagen} />
         </figure>
         <article className="texto_card">
           <p className="title_card">Bebida refrescante</p>

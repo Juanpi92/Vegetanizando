@@ -8,22 +8,9 @@ const Home = () => {
       <div className="container_principal">
         <h1> Nosso Cardapio</h1>
         <div className="container">
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+          <ProductCard
+            src_imagen={"./imagenes/products/bebibdarefrescantetangerina.jpg"}
+          />
         </div>
       </div>
     </>
