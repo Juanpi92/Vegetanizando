@@ -36,12 +36,11 @@ const Footer = () => {
               <i className="fa-solid fa-phone"></i> +5521970657890
             </div>
             <div>
-              <i className="fa-solid fa-envelope"></i>{" "}
-              medisol.atendimento@gmail.com
+              <i className="fa-solid fa-envelope"></i> vegetanizando@gmail.com
             </div>
           </div>
         </div>
-        <div className="ultima2">© 2022 Copyright: FrontEnders</div>
+        <div className="ultima2">© 2023 Copyright: FrontEnders</div>
       </footer>
     </>
   );

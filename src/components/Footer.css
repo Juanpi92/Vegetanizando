@@ -62,6 +62,9 @@ footer .btn:hover {
 .contacto {
   padding-top: 20px;
 }
+.contacto div {
+  margin: 5px 0 10px 0;
+}
 
 @media (min-width: 992px) {
   .contenedor {

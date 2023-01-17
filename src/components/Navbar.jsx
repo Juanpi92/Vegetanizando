@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -14,7 +15,7 @@ const Navbar = () => {
             src="https://github.com/Juanpi92/Vegetanizando/blob/main/src/imagenes/logo.png?raw=true"
             className="logo"
           ></img>
-          <span> Vegeteranizando</span>
+          <span> Vegetanizando</span>
         </div>
         <a className="toggle_button" onClick={HandleClick}>
           <span className="bar"></span>
@@ -24,13 +25,32 @@ const Navbar = () => {
         <div className="link" ref={$links}>
           <ul>
             <li>
-              <a href="/">Home</a>
+              <NavLink to="/" activeclassname="active">
+                Home
+              </NavLink>
             </li>
             <li>
-              <a href="/acerca">Acerca</a>
+              <NavLink to="/acerca" activeclassname="active">
+                Acerca
+              </NavLink>
             </li>
             <li>
-              <a href="/servicos">Serviços</a>
+              <NavLink to="/servicos" activeclassname="active">
+                Serviços
+              </NavLink>
+            </li>
+            <li>
+              <span className="login">Login</span>
+            </li>
+            <li>
+              <NavLink to="/cart" activeclassname="active">
+                <i
+                  className="fa-solid fa-cart-shopping"
+                  style={{ position: "relative" }}
+                >
+                  <span className="cart_quantity">8</span>
+                </i>
+              </NavLink>
             </li>
           </ul>
         </div>

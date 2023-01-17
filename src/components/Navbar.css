@@ -24,12 +24,14 @@
 .link li {
   list-style: none;
 }
-.link li a {
+.link li a,
+.login {
   text-decoration: none;
   color: white;
   padding: 1rem;
   display: block;
   font-size: 1.2rem;
+  cursor: pointer;
 }
 .link li:hover {
   background-color: var(--second-color);
@@ -50,6 +52,21 @@
   width: 100%;
   background-color: white;
   border-radius: 10px;
+}
+.active {
+  border-bottom: 2px solid white;
+}
+.cart_quantity {
+  font-size: 0.7rem;
+  font-weight: bold;
+  border: 1px solid white;
+  padding: 4px 6px;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 10;
+  top: -15px;
+  right: -8px;
+  background-color: blue;
 }
 @media (max-width: 400px) {
   .toggle_button {
