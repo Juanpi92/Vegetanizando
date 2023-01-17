@@ -2,11 +2,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #333;
+  background-color: var(--main-color);
   color: white;
 }
+.logo {
+  width: 40px;
+  height: 40px;
+  margin-bottom: -7px;
+  padding: 0px;
+  border-radius: 50%;
+}
 .title {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   margin: 0.5rem;
 }
 .link ul {
@@ -22,13 +29,14 @@
   color: white;
   padding: 1rem;
   display: block;
+  font-size: 1.2rem;
 }
 .link li:hover {
-  background-color: #555;
+  background-color: var(--second-color);
 }
 .toggle_button {
   position: absolute;
-  top: 0.7rem;
+  top: 1.2rem;
   right: 1rem;
   display: none;
   flex-direction: column;
@@ -53,7 +61,7 @@
     position: absolute;
     z-index: 100;
     background-color: #333;
-    margin-top: 40px;
+    margin-top: 56.5px;
   }
   .navbar {
     flex-direction: column;

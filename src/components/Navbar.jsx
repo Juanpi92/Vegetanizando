@@ -10,7 +10,10 @@ const Navbar = () => {
     <>
       <nav className="navbar">
         <div className="title">
-          <img src="./imagenes/background.jpg" className="logo"></img>
+          <img
+            src="https://github.com/Juanpi92/Vegetanizando/blob/main/src/imagenes/logo.png?raw=true"
+            className="logo"
+          ></img>
           <span> Vegeteranizando</span>
         </div>
         <a className="toggle_button" onClick={HandleClick}>

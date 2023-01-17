@@ -1,0 +1,75 @@
+footer {
+  width: 100vw;
+  margin-top: 20px;
+}
+footer .btn {
+  border: 2px solid var(--primary_color);
+}
+
+footer .btn:hover {
+  background-color: var(--primary_color);
+}
+.contenedor {
+  display: flex;
+  flex-direction: column;
+}
+.contenedor div {
+  width: 50vh;
+  margin: 0px auto;
+}
+
+.ultima {
+  background-color: var(--third_color_modal);
+  padding: 10px;
+}
+.ultima {
+  background-color: var(--third_color_modal);
+  padding: 10px;
+}
+.social {
+  padding-top: 15px;
+}
+.ultima p {
+  margin-bottom: 2px;
+}
+.button_footer {
+  border: 1px solid white;
+  color: white;
+  margin: 0.5rem;
+  padding: 5px;
+  border-radius: 5px;
+}
+.button_footer:hover {
+  border: 1px solid white;
+  color: #fff;
+  background-color: var(--second-color);
+}
+
+.ultima2 {
+  background-color: var(--third_color);
+  text-align: center;
+  padding: 15px 0px;
+  border-top: 3px solid black;
+}
+.descripcion {
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: bold;
+  padding: 10px;
+  padding-left: 10%;
+  margin: 10px;
+}
+.contacto {
+  padding-top: 20px;
+}
+
+@media (min-width: 992px) {
+  .contenedor {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .contacto {
+    padding-top: 0px;
+  }
+}
