@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,700");
+.card {
+  background-color: rgba(0, 0, 0, 0.495);
+  display: inline-block;
+  padding: 0px;
+  margin: 10px;
+  box-shadow: 0 0 1rem white inset;
+  border-radius: 10px;
+}
+.imagen_product {
+  width: 240px;
+  margin: 0px;
+  padding: 0px;
+}
+.imagen_product img {
+  width: 100%;
+}
+.texto_card p {
+  margin: 10px;
+}
+p.title_card {
+  margin: 10px 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.description {
+  font-style: italic;
+  text-align: center;
+}
+.price {
+  font-family: Raleway;
+  font-size: 1.1rem;
+}
+.div_button {
+  text-align: center;
+}
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--second-color);
+  cursor: pointer;
+  transition: border-color 0.25s;
+  margin: 10px;
+}
+button:hover {
+  border-color: #646cff;
+  opacity: 0.8;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}

@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
+import Logo from "../imagenes/logo.png";
 
 const Navbar = () => {
   const $links = useRef();
@@ -11,10 +12,7 @@ const Navbar = () => {
     <>
       <nav className="navbar">
         <div className="title">
-          <img
-            src="https://github.com/Juanpi92/Vegetanizando/blob/main/src/imagenes/logo.png?raw=true"
-            className="logo"
-          ></img>
+          <img src={Logo} className="logo"></img>
           <span> Vegetanizando</span>
         </div>
         <a className="toggle_button" onClick={HandleClick}>
