@@ -20,6 +20,7 @@ body {
     url("./imagenes/background.jpg");
   height: 100vh;
   min-height: 100vh;
+  min-width: 400px;
   background-repeat: no-repeat;
   background-position: top center;
   background-attachment: fixed;
@@ -48,6 +49,44 @@ body {
   display: inline;
   border-bottom: 2px solid var(--second-color);
 }
+.button_principal {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--second-color);
+  cursor: pointer;
+  transition: border-color 0.25s;
+  margin: 10px;
+  font-weight: bold;
+  width: fit-content;
+}
+.button_principal:hover {
+  border-color: #646cff;
+  opacity: 0.8;
+  color: white;
+}
+.del_button {
+  cursor: pointer;
+  border: 1px solid var(--second-color);
+  width: 30px;
+  height: 30px;
+  background-color: red;
+  padding: 0;
+  margin: 0;
+  border-radius: 5px;
+}
+.del_button > * {
+  padding: 0;
+  margin: 0;
+}
+.del_button:hover {
+  border-color: #646cff;
+  opacity: 0.8;
+  color: white;
+}
 
 #root {
   width: 100vw;
@@ -55,17 +94,4 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }

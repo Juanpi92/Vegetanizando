@@ -2,4 +2,8 @@
   width: 60px;
   padding: 5px;
   border: 1px solid var(--second-color);
+  margin: 5px 0;
+}
+.cart_item td {
+  border-bottom: 1px solid var(--second-color);
 }

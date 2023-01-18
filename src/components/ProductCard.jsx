@@ -19,6 +19,7 @@ const ProductCard = ({ data }) => {
         </article>
         <div className="div_button">
           <button
+            className="button_principal"
             onClick={() => {
               dispatch(addToCart(id));
               dispatch(calculateTotalCart());

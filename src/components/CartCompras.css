@@ -1,12 +1,34 @@
-.table_card {
+.table {
   width: 100%;
   margin: 0 auto;
 }
 .table_card tr {
   text-align: center;
 }
+.table_card {
+  width: 100%;
+}
+.info_cart {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.info_cart span {
+  margin: 10px 60px;
+  font-family: Raleway;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
 @media only screen and (min-width: 600px) {
-  .table_card {
+  .table {
     width: 60%;
+  }
+  .info_cart {
+    text-align: right;
+    flex-direction: row;
+    justify-content: flex-end;
   }
 }
