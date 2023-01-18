@@ -28,6 +28,11 @@ body {
 * {
   box-sizing: border-box;
 }
+.container_principal {
+  width: 95%;
+  margin: 20px auto;
+  margin-top: 81px;
+}
 
 #root {
   width: 100vw;

@@ -3,7 +3,9 @@ import React from "react";
 const Servicos = () => {
   return (
     <>
-      <div>Servicos</div>
+      <div className="container_principal">
+        <div>Serviços</div>
+      </div>
     </>
   );
 };

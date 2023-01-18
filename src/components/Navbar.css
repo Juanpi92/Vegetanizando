@@ -4,6 +4,11 @@
   align-items: center;
   background-color: var(--main-color);
   color: white;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
 }
 .logo {
   width: 40px;

@@ -1,7 +1,3 @@
-.container_principal {
-  width: 95%;
-  margin: 20px auto;
-}
 .container {
   display: flex;
   flex-direction: row;
