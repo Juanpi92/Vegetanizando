@@ -1,0 +1,12 @@
+.table_card {
+  width: 100%;
+  margin: 0 auto;
+}
+.table_card tr {
+  text-align: center;
+}
+@media only screen and (min-width: 600px) {
+  .table_card {
+    width: 60%;
+  }
+}

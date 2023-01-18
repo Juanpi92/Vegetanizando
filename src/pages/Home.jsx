@@ -8,7 +8,9 @@ const Home = () => {
   return (
     <>
       <div className="container_principal">
-        <h1> Nosso Cardapio</h1>
+        <div className="title_principal">
+          <p>Nosso Cardapio</p>
+        </div>
         <div className="container">
           {products.map((producto) => (
             <ProductCard data={producto} key={producto.id} />

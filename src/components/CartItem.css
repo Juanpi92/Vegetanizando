@@ -1,0 +1,5 @@
+.compra_cantidad {
+  width: 60px;
+  padding: 5px;
+  border: 1px solid var(--second-color);
+}

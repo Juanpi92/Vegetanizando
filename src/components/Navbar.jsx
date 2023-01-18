@@ -8,7 +8,7 @@ import Loader from "../components/Loader";
 import { actualizarProductos } from "../reducer/shoopingReducer";
 
 const Navbar = () => {
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState(false);
   useEffect(() => {
     axios
       .get("https://vegetanizando-api.onrender.com/products")
@@ -26,7 +26,7 @@ const Navbar = () => {
   const { cart } = state.shopping;
   const $links = useRef();
   const HandleClick = () => {
-    $links.current.classList.toggle("active");
+    $links.current.classList.toggle("link_active");
   };
   return (
     <>

@@ -1,10 +1,11 @@
 import React from "react";
+import CartCompras from "../components/CartCompras";
 
 const Cart = () => {
   return (
     <>
       <div className="container_principal">
-        <div>Cart</div>
+        <CartCompras />
       </div>
     </>
   );

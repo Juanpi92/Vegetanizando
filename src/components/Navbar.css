@@ -99,7 +99,7 @@
   .navbar li a {
     padding: 0.5rem 1rem;
   }
-  .link.active {
+  .link.link_active {
     display: flex;
   }
 }
