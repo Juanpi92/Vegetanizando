@@ -1,6 +1,5 @@
 footer {
   width: 100vw;
-  margin-top: 20px;
 }
 footer .btn {
   border: 2px solid var(--primary_color);
