@@ -9,9 +9,13 @@ const CartCompras = () => {
   const state = useSelector((state) => state);
   const { cart, totalCart } = state.shopping;
   const HandleComprar = () => {
+    if (cart.length === 0) {
+      return alert("O seu cart esta vazio ainda");
+    }
     dispatch(delCart());
     dispatch(calculateTotalCart());
     alert("Obrigado pela compra, disfrute sua comida");
+
     //Realizar insercion de las opciones de compra en el server
   };
   return (

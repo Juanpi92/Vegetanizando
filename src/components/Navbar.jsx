@@ -1,37 +1,10 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef } from "react";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import Logo from "../imagenes/logo.png";
-import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-import Loader from "../components/Loader";
-import {
-  actualizarCart,
-  actualizarProductos,
-} from "../reducer/shoopingReducer";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
-  const [modal, setModal] = useState(false);
-  useEffect(() => {
-    try {
-      const cart_local = JSON.parse(localStorage.cartlocal);
-      console.log(cart_local);
-      dispatch(actualizarCart(cart_local));
-    } catch (error) {
-      console.log("no pude actualizar");
-    }
-    axios
-      .get("https://vegetanizando-api.onrender.com/products")
-      .then((respuesta) => {
-        dispatch(actualizarProductos(respuesta.data));
-        setTimeout(() => {
-          setModal(false);
-        }, 1000);
-      })
-      .catch();
-  }, []);
-
-  const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const { cart } = state.shopping;
   const $links = useRef();
@@ -40,7 +13,6 @@ const Navbar = () => {
   };
   return (
     <>
-      {modal && <Loader />}
       <nav className="navbar">
         <div className="title">
           <img src={Logo} className="logo"></img>

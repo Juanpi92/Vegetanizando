@@ -36,12 +36,16 @@ export const shoppingSlice = createSlice({
     //Eliminar del Cart
     delFromCart: (state, action) => {
       state.cart = state.cart.filter((item) => item.id !== action.payload);
-      localStorage.setItem("cartlocal", JSON.stringify(state.cart));
+      if (state.cart.length === 0) {
+        localStorage.removeItem("cartlocal");
+      } else {
+        localStorage.setItem("cartlocal", JSON.stringify(state.cart));
+      }
     },
     //Vaciar Cart
     delCart: (state) => {
       state.cart = [];
-      localStorage.setItem("cartlocal", JSON.stringify(state.cart));
+      localStorage.removeItem("cartlocal");
     },
     calculateTotalCart: (state) => {
       state.totalCart = 0;
