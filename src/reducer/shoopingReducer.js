@@ -22,6 +22,7 @@ export const shoppingSlice = createSlice({
       } else {
         state.cart = [...state.cart, { ...newItem, quantity: 1 }];
       }
+      localStorage.setItem("cartlocal", JSON.stringify(state.cart));
     },
     //actualizar Cantidad del Item en el Cart
     actualizarItemCart: (state, action) => {
@@ -30,15 +31,17 @@ export const shoppingSlice = createSlice({
           ? { ...item, quantity: action.payload.quantity }
           : item
       );
+      localStorage.setItem("cartlocal", JSON.stringify(state.cart));
     },
     //Eliminar del Cart
     delFromCart: (state, action) => {
-      console.log(action.payload);
       state.cart = state.cart.filter((item) => item.id !== action.payload);
+      localStorage.setItem("cartlocal", JSON.stringify(state.cart));
     },
     //Vaciar Cart
     delCart: (state) => {
       state.cart = [];
+      localStorage.setItem("cartlocal", JSON.stringify(state.cart));
     },
     calculateTotalCart: (state) => {
       state.totalCart = 0;
@@ -46,6 +49,11 @@ export const shoppingSlice = createSlice({
         state.totalCart += element.price * element.quantity;
       });
     },
+    //Actualizar Cart
+    actualizarCart: (state, action) => {
+      state.cart = action.payload;
+    },
+    //Actualizar Productos
     actualizarProductos: (state, action) => {
       state.products = action.payload;
     },
@@ -60,6 +68,7 @@ export const {
   delFromCart,
   delCart,
   calculateTotalCart,
+  actualizarCart,
 } = shoppingSlice.actions;
 
 export default shoppingSlice.reducer;

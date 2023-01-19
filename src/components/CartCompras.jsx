@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { delCart } from "../reducer/shoopingReducer";
+import { calculateTotalCart, delCart } from "../reducer/shoopingReducer";
 import "./CartCompras.css";
 import CartItem from "./CartItem";
 

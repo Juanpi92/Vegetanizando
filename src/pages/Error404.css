@@ -1,0 +1,18 @@
+.figure404 {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+.imagen404 {
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.figure404 figcaption {
+  font-weight: bold;
+}
+@media only screen and (min-width: 600px) {
+  .figure404 figcaption {
+    font-size: 2rem;
+  }
+}

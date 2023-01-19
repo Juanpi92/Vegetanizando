@@ -5,6 +5,8 @@ import "./ProductCard.css";
 
 const ProductCard = ({ data }) => {
   const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+  const { cart } = state.shopping;
   let { id, src, name, portion, price } = data;
   return (
     <>

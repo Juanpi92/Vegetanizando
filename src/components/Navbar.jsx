@@ -5,11 +5,21 @@ import Logo from "../imagenes/logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import Loader from "../components/Loader";
-import { actualizarProductos } from "../reducer/shoopingReducer";
+import {
+  actualizarCart,
+  actualizarProductos,
+} from "../reducer/shoopingReducer";
 
 const Navbar = () => {
   const [modal, setModal] = useState(false);
   useEffect(() => {
+    try {
+      const cart_local = JSON.parse(localStorage.cartlocal);
+      console.log(cart_local);
+      dispatch(actualizarCart(cart_local));
+    } catch (error) {
+      console.log("no pude actualizar");
+    }
     axios
       .get("https://vegetanizando-api.onrender.com/products")
       .then((respuesta) => {
@@ -57,9 +67,6 @@ const Navbar = () => {
               <NavLink to="/servicos" activeclassname="active">
                 Serviços
               </NavLink>
-            </li>
-            <li>
-              <span className="login">Login</span>
             </li>
             <li>
               <NavLink to="/cart" activeclassname="active">

@@ -29,8 +29,7 @@
 .link li {
   list-style: none;
 }
-.link li a,
-.login {
+.link li a {
   text-decoration: none;
   color: white;
   padding: 1rem;
