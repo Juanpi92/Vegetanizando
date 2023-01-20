@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 
 import { actualizarCart, actualizarProductos } from "./reducer/shoopingReducer";
+import LoginAdmin from "./pages/LoginAdmin";
 
 function App() {
   const [modal, setModal] = useState(true);
@@ -21,9 +22,7 @@ function App() {
     try {
       const cart_local = JSON.parse(localStorage.cartlocal);
       dispatch(actualizarCart(cart_local));
-    } catch (error) {
-      console.log("no pude actualizar");
-    }
+    } catch (error) {}
     axios
       .get("https://vegetanizando-api.onrender.com/products")
       .then((respuesta) => {
@@ -45,6 +44,7 @@ function App() {
           <Route exact path="/acerca" element={<About />}></Route>
           <Route exact path="/servicos" element={<Servicos />}></Route>
           <Route exact path="/cart" element={<Cart />}></Route>
+          <Route exact path="/admin" element={<LoginAdmin />}></Route>
           <Route path="*" element={<Error404 />}></Route>
         </Routes>
       </BrowserRouter>

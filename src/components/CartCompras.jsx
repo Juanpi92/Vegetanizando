@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { calculateTotalCart, delCart } from "../reducer/shoopingReducer";
 import "./CartCompras.css";
@@ -14,12 +14,6 @@ const CartCompras = ({ container_cart, container_confirm }) => {
     }
     container_cart.current.classList.add("container_cart_left");
     container_confirm.current.classList.remove("container_confirm_right");
-
-    dispatch(delCart());
-    dispatch(calculateTotalCart());
-    alert("Obrigado pela compra, disfrute sua comida");
-
-    //Realizar insercion de las opciones de compra en el server
   };
   return (
     <>
