@@ -1,3 +1,19 @@
+.container_cart_left {
+  position: absolute;
+  transition: left 1s ease;
+  left: -100vw;
+}
+.container_cart {
+  width: 100%;
+  transition: left 1s ease;
+}
+.container_confirm_right {
+  position: absolute;
+  right: -100vw;
+  width: 100%;
+}
+.container_confirm {
+}
 .table {
   width: 100%;
   margin: 0 auto;
@@ -5,7 +21,7 @@
 .table_card tr {
   text-align: center;
 }
-.table_card {
+.table_cart {
   width: 100%;
 }
 .info_cart {

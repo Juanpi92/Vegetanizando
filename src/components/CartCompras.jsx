@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { calculateTotalCart, delCart } from "../reducer/shoopingReducer";
 import "./CartCompras.css";
 import CartItem from "./CartItem";
 
-const CartCompras = () => {
+const CartCompras = ({ container_cart, container_confirm }) => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const { cart, totalCart } = state.shopping;
@@ -12,6 +12,9 @@ const CartCompras = () => {
     if (cart.length === 0) {
       return alert("O seu cart esta vazio ainda");
     }
+    container_cart.current.classList.add("container_cart_left");
+    container_confirm.current.classList.remove("container_confirm_right");
+
     dispatch(delCart());
     dispatch(calculateTotalCart());
     alert("Obrigado pela compra, disfrute sua comida");
@@ -20,12 +23,12 @@ const CartCompras = () => {
   };
   return (
     <>
-      <div className="container_cart">
+      <div className="container_cart" ref={container_cart}>
         <div className="title_principal">
           <p>Compras Realizadas</p>
         </div>
         <div className="table">
-          <table className="table_card">
+          <table className="table_cart">
             <thead>
               <tr>
                 <th>Produto</th>
