@@ -19,7 +19,7 @@ import LoginAdmin from "./pages/LoginAdmin";
 import { setUser } from "./reducer/userReducer";
 
 function App() {
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState(false);
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const { user } = state.user;
