@@ -43,9 +43,9 @@ const Cart = () => {
 
               //Realizar insercion de las opciones de compra en el server
               let data = {
-                usuario: "Ernesto Gamez",
-                cpf: "066.481.017-92",
-                address: "Coliseo 18. Baracoa,Cuba",
+                usuario: "Pedro Moura",
+                cpf: "069.487.018-97",
+                address: "Rua General Cannabaro 210. Maracña. Rio de Janeiro",
                 cart: cart,
                 totalCart: totalCart,
               };

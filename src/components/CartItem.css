@@ -5,5 +5,8 @@
   margin: 5px 0;
 }
 .cart_item td {
+  font-size: 1.1rem;
+  padding: 10px;
+  text-align: center;
   border-bottom: 1px solid var(--second-color);
 }

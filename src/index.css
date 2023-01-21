@@ -75,7 +75,7 @@ body {
   height: 30px;
   background-color: red;
   padding: 0;
-  margin: 0;
+  margin: 10px;
   border-radius: 5px;
 }
 .del_button > * {

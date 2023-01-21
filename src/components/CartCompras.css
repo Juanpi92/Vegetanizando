@@ -6,6 +6,10 @@
 .container_cart {
   width: 100%;
   transition: left 1s ease;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 5px;
+  padding: 15px;
+  min-width: 530px;
 }
 .container_confirm_right {
   position: absolute;
@@ -18,8 +22,11 @@
   width: 100%;
   margin: 0 auto;
 }
-.table_card tr {
+.table_cart tr {
   text-align: center;
+}
+.table_cart th {
+  font-size: 1.2rem;
 }
 .table_cart {
   width: 100%;

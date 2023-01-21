@@ -31,11 +31,7 @@ function App() {
       dispatch(setUser(admin));
     } catch (error) {}
 
-    //revisando cart
-    try {
-      const cart_local = JSON.parse(localStorage.cartlocal);
-      dispatch(actualizarCart(cart_local));
-    } catch (error) {}
+    //Actualizando card de compras principal
     axios
       .get("https://vegetanizando-api.onrender.com/products")
       .then((respuesta) => {
@@ -45,6 +41,11 @@ function App() {
         }, 1000);
       })
       .catch();
+    //revisando cart
+    try {
+      const cart_local = JSON.parse(localStorage.cartlocal);
+      dispatch(actualizarCart(cart_local));
+    } catch (error) {}
   }, []);
 
   return (

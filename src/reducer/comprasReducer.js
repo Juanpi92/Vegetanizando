@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
 const initialState = {
   compras: [],
@@ -10,6 +11,14 @@ export const comprasSlice = createSlice({
   reducers: {
     //Eliminar de compras
     delFromCompras: (state, action) => {
+      axios
+        .delete(
+          `https://vegetanizando-api.onrender.com/compras/${action.payload}`
+        )
+        .then((respuesta) => {})
+        .catch(() => {
+          return;
+        });
       state.compras = state.compras.filter(
         (compra) => compra.id !== action.payload
       );
@@ -17,7 +26,7 @@ export const comprasSlice = createSlice({
 
     //Actualizar Compras
     actualizarCompras: (state, action) => {
-      state.products = action.payload;
+      state.compras = action.payload;
     },
   },
 });
