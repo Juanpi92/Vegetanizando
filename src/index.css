@@ -78,15 +78,41 @@ body {
   padding: 0;
   margin: 10px;
   border-radius: 5px;
+  font-size: 1.2rem;
 }
-.del_button > * {
+.del_button > *,
+.edit_button > *,
+.see_button > * {
   padding: 0;
   margin: 0;
 }
-.del_button:hover {
+.del_button:hover,
+.edit_button:hover,
+.see_button:hover {
   border-color: #646cff;
   opacity: 0.8;
   color: white;
+}
+.edit_button {
+  cursor: pointer;
+  border: 1px solid var(--second-color);
+  width: 30px;
+  height: 30px;
+  background-color: blue;
+  padding: 0;
+  margin: 10px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+}
+.see_button {
+  cursor: pointer;
+  border: 1px solid var(--second-color);
+  width: 30px;
+  height: 30px;
+  background-color: green;
+  padding: 0;
+  margin: 10px;
+  border-radius: 5px;
 }
 
 #root {

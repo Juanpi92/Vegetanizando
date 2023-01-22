@@ -1,0 +1,8 @@
+.cart_admin_product {
+  margin: 71px 20px;
+  margin-bottom: 20px;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 5px;
+  padding: 10px;
+  width: 50%;
+}

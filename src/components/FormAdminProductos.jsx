@@ -42,6 +42,7 @@ const FormAdminProductos = () => {
           id="price_product"
           placeholder="preço do produto"
           required
+          min="0"
         />
         <br />
         <input type="submit" className="button_principal" value="Adicionar" />
