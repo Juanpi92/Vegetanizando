@@ -1,0 +1,13 @@
+.container_admin_product {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+@media (min-width: 560px) {
+  .container_admin_product {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+  }
+}
