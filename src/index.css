@@ -44,6 +44,7 @@ body {
   font-weight: bold;
   font-style: italic;
   margin: 10px;
+  margin-bottom: 20px;
 }
 .title_principal p {
   display: inline;

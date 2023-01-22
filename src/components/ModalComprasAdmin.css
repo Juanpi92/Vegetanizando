@@ -1,0 +1,26 @@
+.modal_product {
+  background-color: rgba(0, 0, 0, 0.81);
+  position: fixed;
+  z-index: 600;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+}
+.arriba {
+  top: -100vh;
+}
+.contenedor_product {
+  width: 100%;
+  position: relative;
+}
+.button_close {
+  font-size: 1.3rem;
+  font-weight: bold;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+}

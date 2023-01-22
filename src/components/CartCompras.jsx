@@ -38,7 +38,7 @@ const CartCompras = ({ container_cart, container_confirm }) => {
             </tbody>
           </table>
           <div className="info_cart">
-            <span>Total: {totalCart}.00 Reais</span>
+            <span>Total: {totalCart.toFixed(2)} Reais</span>
             <button className="button_principal" onClick={HandleComprar}>
               Comprar
             </button>

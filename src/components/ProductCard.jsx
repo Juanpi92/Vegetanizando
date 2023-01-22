@@ -17,7 +17,7 @@ const ProductCard = ({ data }) => {
         <article className="texto_card">
           <p className="title_card">{name}</p>
           <p>Porção: {portion}</p>
-          <p className="price">Preço: {price} Reais</p>
+          <p className="price">Preço: {price.toFixed(2)} Reais</p>
         </article>
         <div className="div_button">
           <button

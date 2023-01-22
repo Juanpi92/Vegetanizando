@@ -10,7 +10,7 @@ const Error404 = () => {
   const { user } = state.user;
   useEffect(() => {
     if (user) {
-      navigate("/admin/compras");
+      navigate("/admin/products");
     }
   }, []);
 

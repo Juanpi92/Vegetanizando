@@ -9,6 +9,7 @@
   background-color: rgba(0, 0, 0, 0.75);
   border-radius: 5px;
   padding: 15px;
+  padding-bottom: 30px;
   min-width: 530px;
 }
 .container_confirm_right {
@@ -47,7 +48,7 @@
 
 @media only screen and (min-width: 600px) {
   .table {
-    width: 60%;
+    width: 90%;
   }
   .info_cart {
     text-align: right;

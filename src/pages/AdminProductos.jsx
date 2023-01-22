@@ -11,7 +11,11 @@ const AdminProductos = () => {
       navigate("/");
     }
   }, []);
-  return <div>AdminProductos</div>;
+  return (
+    <>
+      <></>
+    </>
+  );
 };
 
 export default AdminProductos;

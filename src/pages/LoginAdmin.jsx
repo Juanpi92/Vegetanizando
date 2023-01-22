@@ -12,7 +12,7 @@ const LoginAdmin = () => {
         onSubmit={(event) => {
           event.preventDefault();
           dispatch(setUser({ name: "Juanpi" }));
-          navigate("/admin/compras");
+          navigate("/admin/products");
         }}
       >
         <input type="text" />

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { actualizarCompras } from "../reducer/comprasReducer";
 import "../components/CartCompras.css";
-import CartItemComprasAdmin from "../components/CartItemComprasAdmin";
+import CartComprasAdmin from "../components/CartComprasAdmin";
 
 const AdminCompras = () => {
   const navigate = useNavigate();
@@ -44,7 +44,7 @@ const AdminCompras = () => {
               </thead>
               <tbody>
                 {compras.map((compra) => (
-                  <CartItemComprasAdmin data={compra} key={compra.id} />
+                  <CartComprasAdmin data={compra} key={compra.id} />
                 ))}
               </tbody>
             </table>
