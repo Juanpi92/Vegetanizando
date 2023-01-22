@@ -15,9 +15,13 @@ export const comprasSlice = createSlice({
         .delete(
           `https://vegetanizando-api.onrender.com/compras/${action.payload}`
         )
-        .then((respuesta) => {})
+        .then((respuesta) => {
+          alert("A compra foi elminado exitosamente");
+        })
         .catch(() => {
-          return;
+          return alert(
+            `${error}: Ocurriu um error, a compra ñao foi eliminada corretamente`
+          );
         });
       state.compras = state.compras.filter(
         (compra) => compra.id !== action.payload

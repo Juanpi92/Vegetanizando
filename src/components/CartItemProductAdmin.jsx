@@ -1,9 +1,15 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { delProduct } from "../reducer/shoopingReducer";
 import "./CartItem.css";
 
-const CartItemProductAdmin = ({ product }) => {
-  let { name, portion, price, src } = product;
-  console.log(product);
+const CartItemProductAdmin = ({
+  product,
+  $ModalProductAdmin,
+  SetSrcImagen,
+}) => {
+  let { id, name, portion, price, src } = product;
+  const dispatch = useDispatch();
   return (
     <>
       <tr className="cart_item">
@@ -15,7 +21,8 @@ const CartItemProductAdmin = ({ product }) => {
             <button
               className="see_button"
               onClick={() => {
-                //  $modalCompra.current.classList.remove("arriba");
+                SetSrcImagen(src);
+                $ModalProductAdmin.current.classList.remove("arriba");
               }}
             >
               <i className="fa-solid fa-eye"></i>
@@ -23,14 +30,14 @@ const CartItemProductAdmin = ({ product }) => {
             <button
               className="del_button"
               onClick={() => {
-                //dispatch(delFromCompras(id));
+                dispatch(delProduct(id));
               }}
             >
               <i className="fa-solid fa-trash"></i>
             </button>
 
             <button className="edit_button">
-              <i class="fa-solid fa-pen-to-square"></i>
+              <i className="fa-solid fa-pen-to-square"></i>
             </button>
           </div>
         </td>

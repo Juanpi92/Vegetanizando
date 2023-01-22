@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import "./CartProductAdmin.css";
 import "./CartCompras.css";
 import { useSelector } from "react-redux";
 import CartItemProductAdmin from "./CartItemProductAdmin";
+import ModalProductAdmin from "./ModalProductAdmin";
 
 const CartProductAdmin = () => {
   const state = useSelector((state) => state);
   const { products } = state.shopping;
+  const $ModalProductAdmin = useRef();
+  const [srcImagen, SetSrcImagen] = useState();
+
   return (
     <>
       <div className="cart_admin_product">
@@ -22,12 +26,21 @@ const CartProductAdmin = () => {
             </thead>
             <tbody>
               {products.map((product) => (
-                <CartItemProductAdmin product={product} key={product.id} />
+                <CartItemProductAdmin
+                  product={product}
+                  key={product.id}
+                  $ModalProductAdmin={$ModalProductAdmin}
+                  SetSrcImagen={SetSrcImagen}
+                />
               ))}
             </tbody>
           </table>
         </div>
       </div>
+      <ModalProductAdmin
+        $ModalProductAdmin={$ModalProductAdmin}
+        srcImagen={srcImagen}
+      />
     </>
   );
 };
