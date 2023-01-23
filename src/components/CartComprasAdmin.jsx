@@ -3,12 +3,10 @@ import { useDispatch } from "react-redux";
 import { delFromCompras } from "../reducer/comprasReducer";
 import "./CartItem.css";
 import "./CartComprasAdmin.css";
-import ModalComprasAdmin from "./ModalComprasAdmin";
 
-const CartComprasAdmin = ({ data }) => {
+const CartComprasAdmin = ({ data, setComprasModal, $modalCompra }) => {
   const dispatch = useDispatch();
   let { id, usuario, cpf, address, totalCart, cart } = data;
-  const $modalCompra = useRef();
   return (
     <>
       <tr className="cart_item">
@@ -29,6 +27,7 @@ const CartComprasAdmin = ({ data }) => {
             <button
               className="see_button"
               onClick={() => {
+                setComprasModal({ usuario, totalCart, cart });
                 $modalCompra.current.classList.remove("arriba");
               }}
             >
@@ -37,12 +36,6 @@ const CartComprasAdmin = ({ data }) => {
           </div>
         </td>
       </tr>
-      <ModalComprasAdmin
-        cart={cart}
-        totalCart={totalCart}
-        usuario={usuario}
-        $modalCompra={$modalCompra}
-      />
     </>
   );
 };

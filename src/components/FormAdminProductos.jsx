@@ -1,10 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import { actualizarItemProduct } from "../reducer/shoopingReducer";
 import "./FormAdminProductos.css";
 
 const FormAdminProductos = ({ dataToEdit, setDataToEdit }) => {
   const $src_img = useRef();
   const $form = useRef();
   const [imagenFile, setImagenFile] = useState();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (dataToEdit) {
@@ -16,12 +19,39 @@ const FormAdminProductos = ({ dataToEdit, setDataToEdit }) => {
     }
   }, [dataToEdit]);
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // es editar
+    if (dataToEdit) {
+      let id = dataToEdit.id;
+      let src = dataToEdit.src;
+      let name = $form.current.name_product.value;
+      let portion = $form.current.portion_product.value;
+      let price = $form.current.price_product.value;
+      //Actualizo
+      dispatch(
+        actualizarItemProduct({
+          id: id,
+          src: src,
+          name: name,
+          portion: portion,
+          price: price,
+        })
+      );
+
+      //Reseteo
+      $form.current.reset();
+      $src_img.current.src = "";
+    }
+    //es Insertar
+  };
+
   return (
     <div className="div_admin_product">
       <figure className="figure_product">
         <img src="" alt="" ref={$src_img} />
       </figure>
-      <form className="form_product" ref={$form}>
+      <form className="form_product" ref={$form} onSubmit={handleSubmit}>
         <label htmlFor="imagen">Escolha a Imagen</label>
         <br />
         <input

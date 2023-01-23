@@ -2,7 +2,8 @@ import React, { useRef } from "react";
 import CartModalComprasAdmin from "./CartModalComprasAdmin";
 import "./ModalComprasAdmin.css";
 
-const ModalComprasAdmin = ({ cart, totalCart, $modalCompra, usuario }) => {
+const ModalComprasAdmin = ({ comprasModal, $modalCompra }) => {
+  let { usuario, totalCart, cart } = comprasModal;
   return (
     <>
       <div className="modal_product arriba" ref={$modalCompra}>
