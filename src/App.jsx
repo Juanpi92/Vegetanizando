@@ -88,16 +88,8 @@ function App() {
             <Route exact path="/" element={<Home />}></Route>
             <Route exact path="/acerca" element={<About />}></Route>
             <Route exact path="/servicos" element={<Servicos />}></Route>
-            <Route
-              exact
-              path="https://cozy-salamander-3bf225.netlify.app/cart"
-              element={<Cart />}
-            ></Route>
-            <Route
-              exact
-              path="https://cozy-salamander-3bf225.netlify.app/admin"
-              element={<LoginAdmin />}
-            ></Route>
+            <Route exact path="/cart" element={<Cart />}></Route>
+            <Route exact path="/admin" element={<LoginAdmin />}></Route>
             <Route path="*" element={<Error404 />}></Route>
           </Routes>
         </BrowserRouter>
