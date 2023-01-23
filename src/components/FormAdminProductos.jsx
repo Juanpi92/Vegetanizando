@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./FormAdminProductos.css";
 
-const FormAdminProductos = ({ dataToEdit }) => {
+const FormAdminProductos = ({ dataToEdit, setDataToEdit }) => {
   const $src_img = useRef();
   const $form = useRef();
   const [imagenFile, setImagenFile] = useState();
@@ -64,8 +64,17 @@ const FormAdminProductos = ({ dataToEdit }) => {
           className="button_principal"
           value="Cancelar"
           style={{ marginRight: "10px", backgroundColor: "red" }}
+          onClick={() => {
+            $form.current.reset();
+            $src_img.current.src = "";
+            setDataToEdit(null);
+          }}
         />
-        <input type="submit" className="button_principal" value="Adicionar" />
+        <input
+          type="submit"
+          className="button_principal"
+          value={dataToEdit ? "Editar" : "Adicionar"}
+        />
       </form>
     </div>
   );

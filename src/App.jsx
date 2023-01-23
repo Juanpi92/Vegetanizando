@@ -17,9 +17,10 @@ import axios from "axios";
 import { actualizarCart, actualizarProductos } from "./reducer/shoopingReducer";
 import LoginAdmin from "./pages/LoginAdmin";
 import { setUser } from "./reducer/userReducer";
+import { actualizarCompras } from "./reducer/comprasReducer";
 
 function App() {
-  const [modal, setModal] = useState(false);
+  const [modal, setModal] = useState(true);
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const { user } = state.user;
@@ -31,7 +32,7 @@ function App() {
       dispatch(setUser(admin));
     } catch (error) {}
 
-    //Actualizando card de compras principal
+    //Actualizando productos
     axios
       .get("https://vegetanizando-api.onrender.com/products")
       .then((respuesta) => {
@@ -41,12 +42,24 @@ function App() {
         }, 1000);
       })
       .catch();
-    //revisando cart
-    try {
-      const cart_local = JSON.parse(localStorage.cartlocal);
-      dispatch(actualizarCart(cart_local));
-    } catch (error) {}
   }, []);
+  useEffect(() => {
+    if (user !== null) {
+      //actualizo las compras
+      axios
+        .get("https://vegetanizando-api.onrender.com/compras")
+        .then((respuesta) => {
+          dispatch(actualizarCompras(respuesta.data));
+        })
+        .catch();
+    } else {
+      //revisando cart
+      try {
+        const cart_local = JSON.parse(localStorage.cartlocal);
+        dispatch(actualizarCart(cart_local));
+      } catch (error) {}
+    }
+  }, [user]);
 
   return (
     <>

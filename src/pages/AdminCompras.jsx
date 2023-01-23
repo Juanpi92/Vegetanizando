@@ -13,12 +13,12 @@ const AdminCompras = () => {
     if (user === null) {
       navigate("/");
     }
-    axios
+    /* axios
       .get("https://vegetanizando-api.onrender.com/compras")
       .then((respuesta) => {
         dispatch(actualizarCompras(respuesta.data));
       })
-      .catch();
+      .catch();*/
   }, []);
   const state = useSelector((state) => state);
   const { user } = state.user;

@@ -18,7 +18,10 @@ const AdminProductos = () => {
   return (
     <>
       <div className="container_admin_product">
-        <FormAdminProductos dataToEdit={dataToEdit} />
+        <FormAdminProductos
+          dataToEdit={dataToEdit}
+          setDataToEdit={setDataToEdit}
+        />
         <CartProductAdmin setDataToEdit={setDataToEdit} />
       </div>
     </>
