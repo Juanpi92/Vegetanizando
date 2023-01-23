@@ -1,28 +1,42 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./FormAdminProductos.css";
 
-const FormAdminProductos = () => {
+const FormAdminProductos = ({ dataToEdit }) => {
+  const $src_img = useRef();
+  const $form = useRef();
+  const [imagenFile, setImagenFile] = useState();
+
+  useEffect(() => {
+    if (dataToEdit) {
+      setImagenFile(dataToEdit.src);
+      $src_img.current.src = `.${dataToEdit.src}`;
+      $form.current.name_product.value = dataToEdit.name;
+      $form.current.portion_product.value = dataToEdit.portion;
+      $form.current.price_product.value = dataToEdit.price;
+    }
+  }, [dataToEdit]);
+
   return (
     <div className="div_admin_product">
       <figure className="figure_product">
-        <img src="" alt="" />
+        <img src="" alt="" ref={$src_img} />
       </figure>
-      <form className="form_product">
+      <form className="form_product" ref={$form}>
         <label htmlFor="imagen">Escolha a Imagen</label>
         <br />
         <input
           type="file"
           accept="image/png, image/jpeg, image/webp"
           id="imagen"
-          required
+          name="form_file"
         ></input>
         <br />
-        <label htmlFor="">Nome do Produto</label>
+        <label htmlFor="name_product">Nome do Produto</label>
         <br />
         <input
           type="text"
-          id="name_product"
           placeholder="nome do produto"
+          id="name_product"
           required
         />
         <br />
@@ -45,6 +59,12 @@ const FormAdminProductos = () => {
           min="0"
         />
         <br />
+        <input
+          type="button"
+          className="button_principal"
+          value="Cancelar"
+          style={{ marginRight: "10px", backgroundColor: "red" }}
+        />
         <input type="submit" className="button_principal" value="Adicionar" />
       </form>
     </div>

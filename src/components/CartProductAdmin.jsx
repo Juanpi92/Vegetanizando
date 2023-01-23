@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import CartItemProductAdmin from "./CartItemProductAdmin";
 import ModalProductAdmin from "./ModalProductAdmin";
 
-const CartProductAdmin = () => {
+const CartProductAdmin = ({ setDataToEdit }) => {
   const state = useSelector((state) => state);
   const { products } = state.shopping;
   const $ModalProductAdmin = useRef();
@@ -31,6 +31,7 @@ const CartProductAdmin = () => {
                   key={product.id}
                   $ModalProductAdmin={$ModalProductAdmin}
                   SetSrcImagen={SetSrcImagen}
+                  setDataToEdit={setDataToEdit}
                 />
               ))}
             </tbody>

@@ -7,6 +7,7 @@ const CartItemProductAdmin = ({
   product,
   $ModalProductAdmin,
   SetSrcImagen,
+  setDataToEdit,
 }) => {
   let { id, name, portion, price, src } = product;
   const dispatch = useDispatch();
@@ -36,7 +37,12 @@ const CartItemProductAdmin = ({
               <i className="fa-solid fa-trash"></i>
             </button>
 
-            <button className="edit_button">
+            <button
+              className="edit_button"
+              onClick={() => {
+                setDataToEdit(product);
+              }}
+            >
               <i className="fa-solid fa-pen-to-square"></i>
             </button>
           </div>
