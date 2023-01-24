@@ -27,7 +27,7 @@ const FormAdminProductos = ({ dataToEdit, setDataToEdit }) => {
       let src = dataToEdit.src;
       let name = $form.current.name_product.value;
       let portion = $form.current.portion_product.value;
-      let price = $form.current.price_product.value;
+      let price = Number($form.current.price_product.value);
       //Actualizo
       dispatch(
         actualizarItemProduct({

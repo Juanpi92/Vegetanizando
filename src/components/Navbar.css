@@ -5,7 +5,7 @@
   background-color: var(--main-color);
   color: white;
   position: fixed;
-  width: 100%;
+  width: 100vw;
   top: 0;
   left: 0;
   z-index: 100;
@@ -80,7 +80,7 @@
   right: -8px;
   background-color: blue;
 }
-@media (max-width: 400px) {
+@media (max-width: 460px) {
   .toggle_button {
     display: flex;
   }

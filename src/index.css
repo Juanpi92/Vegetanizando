@@ -19,8 +19,9 @@ body {
   background: linear-gradient(top, rgb(0, 0, 0, 0.6), rgb(0, 0, 0, 0.7)),
     url("./imagenes/background.jpg");
   height: 100vh;
+  width: 100vw;
   min-height: 100vh;
-  min-width: 400px;
+  min-width: 100vw;
   background-repeat: no-repeat;
   background-position: top center;
   background-attachment: fixed;
@@ -28,9 +29,12 @@ body {
   color: #ffffff;
   margin: 0;
   padding: 0;
-}
-* {
   box-sizing: border-box;
+}
+*,
+::before,
+::after {
+  box-sizing: inherit;
 }
 .container_principal {
   width: 95%;
@@ -121,4 +125,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
 }

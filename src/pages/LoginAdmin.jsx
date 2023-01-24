@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -11,8 +12,17 @@ const LoginAdmin = () => {
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          dispatch(setUser({ name: "Juanpi" }));
-          navigate("/admin/products");
+          axios
+            .get(
+              "https://vegetanizando-api.onrender.com/admin?email=juan.urgelles92@gmail.com&password=Juanpi22"
+            )
+            .then((respuesta) => {
+              dispatch(setUser({ name: "Juanpi" }));
+              navigate("/admin/products");
+            })
+            .catch((error) => {
+              console.log("error");
+            });
         }}
       >
         <input type="text" />

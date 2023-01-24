@@ -1,5 +1,7 @@
 footer {
   width: 100vw;
+  margin: 0px;
+  padding: 0px;
 }
 footer .btn {
   border: 2px solid var(--primary_color);
@@ -13,7 +15,6 @@ footer .btn:hover {
   flex-direction: column;
 }
 .contenedor div {
-  width: 50vh;
   margin: 0px auto;
 }
 
@@ -27,6 +28,7 @@ footer .btn:hover {
 }
 .social {
   padding-top: 15px;
+  width: 250px;
 }
 .ultima p {
   margin-bottom: 2px;
