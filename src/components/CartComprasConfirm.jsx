@@ -4,25 +4,23 @@ import { useDispatch, useSelector } from "react-redux";
 import "./CartCompras.css";
 import { calculateTotalCart, delCart } from "../reducer/shoopingReducer";
 
-const CartComprasConfirm = ({ container_cart, container_confirm }) => {
+const CartComprasConfirm = ({ setCompraShow }) => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const { cart, totalCart } = state.shopping;
   return (
-    <div className="container_confirm_right" ref={container_confirm}>
+    <div className="container_cart">
       <button
+        className="button_principal"
         onClick={() => {
-          container_cart.current.classList.remove("container_cart_left");
-          container_confirm.current.classList.add("container_confirm_right");
+          setCompraShow(true);
         }}
       >
         Voltar
       </button>
       <button
+        className="button_principal"
         onClick={() => {
-          container_cart.current.classList.remove("container_cart_left");
-          container_confirm.current.classList.add("container_confirm_right");
-
           dispatch(delCart());
           dispatch(calculateTotalCart());
           alert("Obrigado pela compra, disfrute sua comida");
@@ -36,6 +34,7 @@ const CartComprasConfirm = ({ container_cart, container_confirm }) => {
             totalCart: totalCart,
           };
           axios.post("https://vegetanizando-api.onrender.com/compras", data);
+          setCompraShow(true);
         }}
       >
         Confirmar Compra

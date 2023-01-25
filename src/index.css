@@ -20,6 +20,7 @@ body {
     url("./imagenes/background.jpg");
   height: 100vh;
   width: 100vw;
+
   min-height: 100vh;
   min-width: 100vw;
   background-repeat: no-repeat;
@@ -38,13 +39,15 @@ body {
 }
 .container_principal {
   width: 95%;
+  padding: 0px;
   margin: 20px auto;
   margin-top: 81px;
+  box-sizing: border-box;
 }
 .title_principal {
   font-family: "EB Garamond", serif;
   text-align: center;
-  font-size: 2.3rem;
+  font-size: 1.8rem;
   font-weight: bold;
   font-style: italic;
   margin: 10px;
@@ -80,9 +83,9 @@ body {
   height: 30px;
   background-color: red;
   padding: 0;
-  margin: 10px;
+  margin: 0px;
   border-radius: 5px;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
 }
 .del_button > *,
 .edit_button > *,
@@ -128,4 +131,14 @@ body {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
+}
+
+@media only screen and (min-width: 600px) {
+  .del_button {
+    font-size: 1.2rem;
+    margin: 10px;
+  }
+  .title_principal {
+    font-size: 2.3rem;
+  }
 }
