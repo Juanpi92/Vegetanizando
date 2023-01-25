@@ -3,13 +3,13 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setUser } from "../reducer/userReducer";
+import "./LoginAdmin.css"
 
 const LoginAdmin = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   return (
-    <div style={{ margin: "100px 350px" }}>
-      <form
+      <form className="login"
         onSubmit={(event) => {
           event.preventDefault();
           axios
@@ -25,15 +25,22 @@ const LoginAdmin = () => {
             });
         }}
       >
+        {/*  Login antigo
         <input type="text" />
         <br />
         <br />
         <input type="text" />
         <br />
         <br />
-        <input type="submit" value="Login" />
+        */}
+        <div className="login__bloco">
+        <label htmlFor="email" className="login__labelEmail" id='labelEmail'>Email:</label>
+            <input type="email" id="email"  className="login__email" placeholder="Digite o seu Email" pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" required/> <br />
+          <label htmlFor="senha" className="login__labelSenha" id='labelSenha'>Senha:</label>
+            <input type="text" id="senha" className="login__senha" placeholder="Digite sua senha" required/>
+        </div>   
+        <input type="submit" value="Login" className="login__button"/>
       </form>
-    </div>
   );
 };
 
