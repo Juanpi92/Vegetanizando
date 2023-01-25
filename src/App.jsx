@@ -15,9 +15,10 @@ import Loader from "./components/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { actualizarCart, actualizarProductos } from "./reducer/shoopingReducer";
-import LoginAdmin from "./pages/LoginAdmin";
+
 import { setUser } from "./reducer/userReducer";
 import { actualizarCompras } from "./reducer/comprasReducer";
+import { LoginAdmin } from "./pages/LoginAdmin";
 
 function App() {
   const [modal, setModal] = useState(true);
