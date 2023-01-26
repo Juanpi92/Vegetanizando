@@ -62,13 +62,13 @@ export const LoginAdmin = () => {
           placeholder="Digite o seu Email"
           pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$"
           required
-        />{" "}
+        />
         <br />
         <label htmlFor="senha" className="login__labelSenha" id="labelSenha">
           Senha:
         </label>
         <input
-          type="text"
+          type="password"
           id="senha"
           className="login__senha"
           placeholder="Digite sua senha"
