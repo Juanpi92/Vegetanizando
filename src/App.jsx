@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  HashRouter,
+  Route,
+  Routes,
+  useNavigate,
+} from "react-router-dom";
 import Navbar from "./components/Navbar";
 import NavbarAdmin from "./components/NavbarAdmin";
 import Footer from "./components/Footer";
@@ -66,7 +72,7 @@ function App() {
     <>
       {modal && <Loader />}
       {user ? (
-        <BrowserRouter>
+        <HashRouter>
           <NavbarAdmin />
           <Routes>
             <Route
@@ -81,9 +87,9 @@ function App() {
             ></Route>
             <Route path="*" element={<Error404 />}></Route>
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       ) : (
-        <BrowserRouter>
+        <HashRouter>
           <Navbar />
           <Routes>
             <Route exact path="/" element={<Home />}></Route>
@@ -93,7 +99,7 @@ function App() {
             <Route exact path="/admin" element={<LoginAdmin />}></Route>
             <Route path="*" element={<Error404 />}></Route>
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       )}
       <Footer />
     </>
