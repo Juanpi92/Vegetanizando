@@ -1,0 +1,47 @@
+.servicos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 90px auto;
+    gap: 30px;
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 5px;
+    padding: 10px;
+    width: fit-content;
+}
+
+.title_principal {
+    position: relative;
+    top: 10px;
+}
+
+.servicos__bloco {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 15px;
+    gap: 20px;
+}
+
+.servicos__entrega {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.servicos__entrega p {
+    font-size: 1.1rem;
+}
+
+.servicos__preco {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.1rem;
+}
+
+.servicos__distancia {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
