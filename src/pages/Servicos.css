@@ -1,0 +1,46 @@
+.servicos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 100px auto;
+    gap: 5px;
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 5px;
+    padding: 10px;
+    width: fit-content;
+}
+
+.servicos__bloco {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 20px;
+}
+
+.servicos__entrega {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.servicos__entrega p {
+    font-size: 1.1rem;
+}
+
+.servicos__bloco h2 {
+    font-size: 1.6rem;
+}
+
+.servicos__preco {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.servicos__preco h2{
+    border-bottom: 1px solid var(--second-color);
+}
+
+.servicos__preco p {
+    font-size: 1.1rem;
+}
