@@ -30,7 +30,7 @@ const CartItem = ({ data }) => {
           />
         </td>
         <td>
-         "R$"+${price.toFixed(2)} x {quantity} = "R$"+ ${(price * quantity).toFixed(2)}
+         R$ {price.toFixed(2)} x {quantity} = R$ {(price * quantity).toFixed(2)}
         </td>
         <td>
           <button
