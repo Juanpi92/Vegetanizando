@@ -13,7 +13,7 @@ const CartComprasAdmin = ({ data, setComprasModal, $modalCompra }) => {
         <td>{usuario}</td>
         <td>{cpf}</td>
         <td>{address}</td>
-        <td>{totalCart.toFixed(2)} Reais</td>
+        <td>R$ {totalCart.toFixed(2)}</td>
         <td>
           <div className="botones">
             <button
