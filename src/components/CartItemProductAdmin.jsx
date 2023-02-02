@@ -16,7 +16,7 @@ const CartItemProductAdmin = ({
       <tr className="cart_item">
         <td>{name}</td>
         <td>{portion}</td>
-        <td>{price}</td>
+        <td>R$ {price}</td>
         <td>
           <div className="botones">
             <button

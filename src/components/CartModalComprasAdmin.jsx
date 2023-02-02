@@ -9,7 +9,7 @@ const CartModalComprasAdmin = ({ compra }) => {
         <td>{name}</td>
         <td>{quantity}</td>
         <td>
-          ${price.toFixed(2)} x {quantity} = ${(price * quantity).toFixed(2)}
+          R$ {price.toFixed(2)} x {quantity} = R$ {(price * quantity).toFixed(2)}
         </td>
       </tr>
     </>

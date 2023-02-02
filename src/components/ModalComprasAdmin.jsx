@@ -36,7 +36,7 @@ const ModalComprasAdmin = ({ comprasModal, $modalCompra }) => {
                 </tbody>
               </table>
               <div className="info_cart">
-                <span>Total: {totalCart.toFixed(2)} Reais</span>
+                <span>Total: R$ {totalCart.toFixed(2)}</span>
               </div>
             </div>
           </div>

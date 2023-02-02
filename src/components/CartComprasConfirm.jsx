@@ -107,7 +107,7 @@ const CartComprasConfirm = ({ setCompraShow }) => {
               <span className="details">CPF</span>
               <input
                 type="text"
-                placeholder="Digite seu CPF"
+                placeholder="Digite seu CPF: XXX.XXX.XXX-XX"
                 required
                 name="cpf"
                 pattern="^[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}$"
@@ -138,7 +138,7 @@ const CartComprasConfirm = ({ setCompraShow }) => {
               <div className="cep">
                 <input
                   type="text"
-                  placeholder="Digite seu cep"
+                  placeholder="Digite seu cep: XXXXX-XXX"
                   required
                   pattern="^[0-9]{5}-[0-9]{3}$"
                   name="cep"
@@ -209,7 +209,7 @@ const CartComprasConfirm = ({ setCompraShow }) => {
               <span className="details">Tarjeta de Credito</span>
               <input
                 type="text"
-                placeholder="Digite sua tarjeta"
+                placeholder="Digite sua tarjeta: XXXXXXXXXXXXXXXX"
                 required
                 name="senha"
                 pattern="^[0-9]{16}$"
@@ -219,7 +219,7 @@ const CartComprasConfirm = ({ setCompraShow }) => {
               <span className="details">Codigo de Segurança</span>
               <input
                 type="password"
-                placeholder="Confirme seu codigo de segurança"
+                placeholder="Confirme com codigo de segurança:XXX"
                 required
                 name="confirm_senha"
                 pattern="^[0-9]{3}$"
