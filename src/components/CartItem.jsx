@@ -20,7 +20,7 @@ const CartItem = ({ data }) => {
             min={1}
             max={20}
             defaultValue={1}
-value={quantity}
+            value={quantity}
             className="compra_cantidad"
             onChange={(event) => {
               dispatch(
