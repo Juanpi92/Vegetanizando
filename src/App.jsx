@@ -17,7 +17,6 @@ import Cart from "./pages/Cart";
 import Error404 from "./pages/Error404";
 import AdminCompras from "./pages/AdminCompras";
 import AdminProductos from "./pages/AdminProductos";
-import Loader from "./components/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { actualizarCart, actualizarProductos } from "./reducer/shoopingReducer";
@@ -44,9 +43,6 @@ function App() {
       .get("https://vegetanizando-api.onrender.com/products")
       .then((respuesta) => {
         dispatch(actualizarProductos(respuesta.data));
-        setTimeout(() => {
-          setModal(false);
-        }, 1000);
       })
       .catch();
   }, []);
@@ -70,7 +66,6 @@ function App() {
 
   return (
     <>
-      {modal && <Loader />}
       {user ? (
         <HashRouter>
           <NavbarAdmin />
