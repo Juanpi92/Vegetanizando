@@ -33,17 +33,18 @@ function App() {
 
   useEffect(() => {
     //revisando login del admin
-    try {
-      const admin = JSON.parse(localStorage.admin);
-      dispatch(setUser(admin));
+  (async () => {
+  try {
+    const admin = JSON.parse(localStorage.admin);
+    dispatch(setUser(admin));
 
-       //Getting the products
-  const respuesta = await axios.get("https://vegetanizando-api.vercel.app/products");
+    // Obtener los productos
+    const respuesta = await axios.get("https://vegetanizando-api.vercel.app/products");
     dispatch(actualizarProductos(respuesta.data));
-  
-    } catch (error) {
-      
-    }
+  } catch (error) {
+    // Manejar el error aquí si es necesario
+  }
+})();
   }, []);
   useEffect(() => {
     if (user !== null) {
