@@ -33,18 +33,27 @@ function App() {
 
   useEffect(() => {
     //revisando login del admin
-  (async () => {
-  try {
-    const admin = JSON.parse(localStorage.admin);
-    dispatch(setUser(admin));
+    try {
+      const admin = JSON.parse(localStorage.admin);
+      dispatch(setUser(admin));
+    } catch (error) {}
 
-    // Obtener los productos
-    const respuesta = await axios.get("https://vegetanizando-api.vercel.app/products");
-    dispatch(actualizarProductos(respuesta.data));
-  } catch (error) {
-    // Manejar el error aquí si es necesario
-  }
-})();
+    (async () => {
+      try {
+        // Obtener los productos
+        const options = {
+          method: "GET",
+          url: "https://vegetanizando-api.vercel.app/products",
+        };
+
+        const respuesta = await axios.request(options);
+        console.log(respuesta.data[0]);
+        dispatch(actualizarProductos(respuesta.data));
+      } catch (error) {
+        console.log(error);
+        // Manejar el error aquí si es necesario
+      }
+    })();
   }, []);
   useEffect(() => {
     if (user !== null) {
