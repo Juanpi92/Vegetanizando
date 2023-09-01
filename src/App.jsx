@@ -36,15 +36,14 @@ function App() {
     try {
       const admin = JSON.parse(localStorage.admin);
       dispatch(setUser(admin));
-    } catch (error) {}
 
-    //Actualizando productos
-    axios
-      .get("https://vegetanizando-api.onrender.com/products")
-      .then((respuesta) => {
-        dispatch(actualizarProductos(respuesta.data));
-      })
-      .catch();
+       //Getting the products
+  const respuesta = await axios.get("https://vegetanizando-api.vercel.app/products");
+    dispatch(actualizarProductos(respuesta.data));
+  
+    } catch (error) {
+      
+    }
   }, []);
   useEffect(() => {
     if (user !== null) {
