@@ -2,10 +2,9 @@ import "./Home.css";
 import { useSelector } from "react-redux";
 import MealCard from "../components/MealCard";
 import { Link } from "react-router-dom";
-import { meal_plans } from '../utils/meal_plans.json'
 import PlanCard from "../components/PlanCard";
 
-const Home = () => {
+const Home = ({ meal_plan }) => {
   const state = useSelector((state) => state);
   const { products } = state.shopping;
 
@@ -13,25 +12,24 @@ const Home = () => {
     <>
       <main className="home-container">
         <SectionNav title={"Planos Alimentares"} />
-        <div className="menu-container">
-          {meal_plans.map((item) => (
-            <PlanCard
-              key={item.id}
-              src={item.image}
-              title={item.name}
-              includes={item.includes}
-            />
-          ))}
-        </div>
+        {meal_plan &&
+          <div className="menu-container">
+            {meal_plan.map((item, key) => (
+              <PlanCard
+                key={key}
+                src={item.url}
+                title={item.name}
+                includes={item.includes}
+              />
+            ))}
+          </div>
+        }
         <SectionNav title={"Melhores Opções"} />
         <div className="menu-container">
           {products.map((producto) => (
             <MealCard
               key={producto.id}
-              image={producto.src}
-              name={producto.name}
-              size={producto.portion}
-              price={producto.price}
+              data={producto}
             />
           ))}
         </div>
