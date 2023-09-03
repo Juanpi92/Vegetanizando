@@ -12,38 +12,36 @@ export const LoginAdmin = () => {
   const $form_login = useRef();
   const $loader = useRef();
   const $errorLogin = useRef();
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    let usuario = $form_login.current.email.value;
+    let email = $form_login.current.email.value;
     let senha = $form_login.current.senha.value;
     $loader.current.classList.add("showloader");
-    axios
-      .get(
-        `https://vegetanizando-api.onrender.com/admin?email=${usuario}&password=${senha}`
-      )
-      .then((respuesta) => {
-        if (respuesta.status !== 200) {
-          throw {
-            statusText: respuesta.statusText,
-            status: respuesta.status,
-          };
-        }
-        setTimeout(() => {
-          if (respuesta.data.length === 0) {
-            $loader.current.classList.remove("showloader");
-            $errorLogin.current.innerText = "Usuario o Senha Incorrectos";
-          } else {
-            $loader.current.classList.remove("showloader");
-            dispatch(setUser({ name: "Juanpi" }));
-            navigate("/admin/products");
-          }
-        }, 500);
-      })
-      .catch((error) => {
+    try {
+      const options = {
+        method: "POST",
+        url: "https://vegetanizando-api.vercel.app/login",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        data: { email: email, password: senha },
+      };
+      let response = await axios.request(options);
+      setTimeout(() => {
+        dispatch(setUser(response.data));
         $loader.current.classList.remove("showloader");
-        let error_message = error.statusText || "Ocurrio un error";
-        $errorLogin.current.innerText = `${error_message}: ${error.status}`;
-      });
+        navigate("/admin/products");
+      }, 500);
+    } catch (error) {
+      $loader.current.classList.remove("showloader");
+      if (error.response.status === 401) {
+        return ($errorLogin.current.innerText = "Usuario ou senha errada");
+      } else {
+        return ($errorLogin.current.innerText =
+          "Ocurreu um error. Intente de novo");
+      }
+    }
   };
 
   return (
