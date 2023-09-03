@@ -1,0 +1,49 @@
+.plan-card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-width: 280px;
+    height: 240px;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.plan-card-overlay {
+    width: 100%;
+    min-height: 80px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.plan-card-title {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.plan-card-info {
+    padding: 1rem;
+    width: 100%;
+    gap: 2px;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-info-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.card-info-check {
+    color: var(--secondary-color);    
+}
+
+.card-info-check {
+    font-size: 12px;
+}

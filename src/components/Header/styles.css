@@ -1,0 +1,15 @@
+.header-container {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    background-color: var(--primary-color);
+    position: fixed;
+    z-index: 800;
+    width: 100vw;
+    height: 10vh;
+    padding: 0 2%;
+    display: flex;
+    align-items: center;
+}
+
+.app-logo {
+    width: 60px;
+}

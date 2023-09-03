@@ -1,0 +1,40 @@
+.meal-card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 200px;
+    height: 240px;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 1rem;
+}
+
+.meal-card-image {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.meal-card-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+
+.meal-info-name {
+    font-weight: 400;
+    color: var(--font-color);
+
+}
+
+.meal-info-size,
+.meal-info-price {
+    color: var(--font-sec-color);
+    font-size: 14px;
+}

@@ -1,10 +1,36 @@
-.container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  flex-wrap: wrap;
+.home-container {
+  margin-top: 15vh;
 }
+
+.menu-container {
+  display: flex;
+  align-items: flex-start;
+  overflow: auto;  
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  user-select: none;
+}
+
 h1 {
   text-align: center;
+}
+
+.section-nav-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  user-select: none;
+  padding: 0 2%;
+}
+
+.section-nav-title {
+  color: var(--font-color);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.section-nav-link {
+  color: var(--secondary-color);
+  text-decoration: none;
 }

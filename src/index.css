@@ -1,7 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400;1,500;1,600&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,700");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
+  --primary-color: #fff;
+  --secondary-color: #10aa10;
+  --font-color: #333333;
+  --font-sec-color: #7e7e7e;
+
   --second-color: #de239d;
   --main-color: #333;
   --primary_color: #000;
@@ -10,33 +14,18 @@
 }
 
 body {
-  background: -webkit-linear-gradient(top, rgb(0, 0, 0, 0.6), rgb(0, 0, 0, 0.7)),
-    url("./imagenes/background.jpg");
-  background: -o-linear-gradient(top, rgb(0, 0, 0, 0.6), rgb(0, 0, 0, 0.7)),
-    url("./imagenes/background.jpg");
-  background: -moz-linear-gradient(top, rgb(0, 0, 0, 0.6), rgb(0, 0, 0, 0.7)),
-    url("./imagenes/background.jpg");
-  background: linear-gradient(top, rgb(0, 0, 0, 0.6), rgb(0, 0, 0, 0.7)),
-    url("./imagenes/background.jpg");
   height: 100vh;
   width: 100vw;
+  font-family: 'Inter', sans-serif;
+  color: var(--font-color);
+}
 
-  min-height: 100vh;
-  min-width: 100vw;
-  background-repeat: no-repeat;
-  background-position: top center;
-  background-attachment: fixed;
-  background-size: cover;
-  color: #ffffff;
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-*,
-::before,
-::after {
-  box-sizing: inherit;
-}
+
 .container_principal {
   width: 95%;
   padding: 0px;
@@ -44,19 +33,7 @@ body {
   margin-top: 81px;
   box-sizing: border-box;
 }
-.title_principal {
-  font-family: "EB Garamond", serif;
-  text-align: center;
-  font-size: 1.8rem;
-  font-weight: bold;
-  font-style: italic;
-  margin: 10px;
-  margin-bottom: 20px;
-}
-.title_principal p {
-  display: inline;
-  border-bottom: 2px solid var(--second-color);
-}
+
 .button_principal {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -71,11 +48,13 @@ body {
   font-weight: bold;
   width: fit-content;
 }
+
 .button_principal:hover {
   border-color: #646cff;
   opacity: 0.8;
   color: white;
 }
+
 .del_button {
   cursor: pointer;
   border: 1px solid var(--second-color);
@@ -87,12 +66,14 @@ body {
   border-radius: 5px;
   font-size: 0.8rem;
 }
-.del_button > *,
-.edit_button > *,
-.see_button > * {
+
+.del_button>*,
+.edit_button>*,
+.see_button>* {
   padding: 0;
   margin: 0;
 }
+
 .del_button:hover,
 .edit_button:hover,
 .see_button:hover {
@@ -100,6 +81,7 @@ body {
   opacity: 0.8;
   color: white;
 }
+
 .edit_button {
   cursor: pointer;
   border: 1px solid var(--second-color);
@@ -111,6 +93,7 @@ body {
   border-radius: 5px;
   font-size: 1.2rem;
 }
+
 .see_button {
   cursor: pointer;
   border: 1px solid var(--second-color);
@@ -132,9 +115,11 @@ body {
   margin: 0px;
   box-sizing: border-box;
 }
+
 input[type="text"]:focus,
 input[type="number"]:focus,
-input[type="password"]:focus,input[type="email"]:focus {
+input[type="password"]:focus,
+input[type="email"]:focus {
   box-shadow: 0px 0px 2rem var(--second-color);
   transition: 0.5s;
 }
@@ -144,6 +129,7 @@ input[type="password"]:focus,input[type="email"]:focus {
     font-size: 1.2rem;
     margin: 10px;
   }
+
   .title_principal {
     font-size: 2.3rem;
   }

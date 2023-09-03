@@ -1,13 +1,9 @@
 import { useState, useEffect } from "react";
-import "./App.css";
 import {
-  BrowserRouter,
   HashRouter,
   Route,
   Routes,
-  useNavigate,
 } from "react-router-dom";
-import Navbar from "./components/Navbar";
 import NavbarAdmin from "./components/NavbarAdmin";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -24,6 +20,8 @@ import { actualizarCart, actualizarProductos } from "./reducer/shoopingReducer";
 import { setUser } from "./reducer/userReducer";
 import { actualizarCompras } from "./reducer/comprasReducer";
 import { LoginAdmin } from "./pages/LoginAdmin";
+import Navigation from "./components/Navigation";
+import Header from "./components/Header";
 
 function App() {
   const [modal, setModal] = useState(true);
@@ -85,7 +83,9 @@ function App() {
         </HashRouter>
       ) : (
         <HashRouter>
-          <Navbar />
+          <Header />
+          {/* <Navbar /> */}
+          <Navigation />
           <Routes>
             <Route exact path="/" element={<Home />}></Route>
             <Route exact path="/acerca" element={<About />}></Route>

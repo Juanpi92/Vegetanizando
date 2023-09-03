@@ -1,0 +1,34 @@
+{
+    "meal_plans": [
+        {
+            "id": 1,
+            "image": "https://draxe.com/wp-content/uploads/2017/05/vegan-header.jpg",
+            "name": "Rotina Vegetariana",
+            "includes": [
+                "Rica em proteínas",
+                "Livre de glutém",
+                "Protéina vegetal"
+            ]
+        },
+        {
+            "id": 2,
+            "image": "https://mediaproxy.salon.com/width/1200/https://media.salon.com/2022/02/rice-pudding-pine-nuts-figs-0224221.jpg",
+            "name": "Café da manhã Rápido & Fácil",
+            "includes": [
+                "Rica em proteínas",
+                "Livre de açúcar",
+                "Limitado uso de soja"
+            ]
+        },
+        {
+            "id": 3,
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9HqiBAwvgkx7ZZ7o0LXWdajPzBpOI7qmo8X6PfEVddpIW5MGD5x-E6FVNDhS1nS-e30s&usqp=CAU",
+            "name": "Alimentação Energética",
+            "includes": [
+                "Saúde Balanceada",
+                "Energia Nutritiva",
+                "Alimentação Equilibrada"
+            ]
+        }
+    ]
+}
