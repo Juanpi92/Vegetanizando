@@ -19,6 +19,7 @@ body {
   width: 100vw;
   font-family: 'Inter', sans-serif;
   color: var(--font-color);
+  overflow-x: hidden;
 }
 
 * {
