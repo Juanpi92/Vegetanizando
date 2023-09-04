@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./Navbar.css";
-import Logo from "../imagenes/logo.png";
+import Logo from "../imagenes/new-logo.png";
 import { useDispatch } from "react-redux";
 import { delUser, setUser } from "../reducer/userReducer";
 
