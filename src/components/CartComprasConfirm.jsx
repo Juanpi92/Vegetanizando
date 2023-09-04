@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import "./CartCompras.css";
@@ -14,12 +14,7 @@ const CartComprasConfirm = ({ setCompraShow }) => {
   const $form_confirm = useRef();
   const $error = useRef();
   const BuscarCep = () => {
-    $form_confirm.current.rua.value = "-";
-    $form_confirm.current.numero.value = "-";
-    $form_confirm.current.bairro.value = "-";
-    $form_confirm.current.complemento.value = "-";
-    $form_confirm.current.cidade.value = "-";
-    $form_confirm.current.estado.value = "-";
+    $form_confirm.current.address.value = "-";
     const expreg_cep = /^[0-9]{5}-[0-9]{3}$/;
     if (expreg_cep.test($form_confirm.current.cep.value)) {
       let cep = $form_confirm.current.cep.value.replace("-", "");
@@ -34,12 +29,11 @@ const CartComprasConfirm = ({ setCompraShow }) => {
           }
 
           if (respuesta.data.erro !== true) {
-            $form_confirm.current.rua.value = respuesta.data.logradouro;
-            $form_confirm.current.bairro.value = respuesta.data.bairro;
-            $form_confirm.current.complemento.value =
-              respuesta.data.complemento || "-";
-            $form_confirm.current.cidade.value = respuesta.data.localidade;
-            $form_confirm.current.estado.value = respuesta.data.uf;
+            $form_confirm.current.address.value = `${
+              respuesta.data.logradouro
+            }, ${respuesta.data.bairro} ${respuesta.data.complemento || "-"}, ${
+              respuesta.data.localidade
+            }, ${respuesta.data.uf} `;
             $error.current.innerText = "";
           } else {
             $error.current.innerText = "cep no existe";
@@ -56,17 +50,12 @@ const CartComprasConfirm = ({ setCompraShow }) => {
 
   const handleSubmit = (event) => {
     //Realizar insercion de las opciones de compra en el server
-    let rua = $form_confirm.current.rua.value;
-    let numero = $form_confirm.current.numero.value;
-    let bairro = $form_confirm.current.bairro.value;
-    let complemento = $form_confirm.current.complemento.value;
-    let cidade = $form_confirm.current.cidade.value;
-    let estado = $form_confirm.current.estado.value;
+    let address = $form_confirm.current.addresss.value;
 
     let data = {
       usuario: $form_confirm.current.nome.value,
       cpf: $form_confirm.current.cpf.value,
-      address: `${rua} ${numero}, ${complemento}, ${bairro}, ${cidade}. ${estado}`,
+      address: `${address}`,
       cart: cart,
       totalCart: totalCart,
     };
@@ -82,6 +71,7 @@ const CartComprasConfirm = ({ setCompraShow }) => {
       });
     setCompraShow(true);
   };
+
   return (
     <div className="container_cart container_confirm">
       <div className="title_principal">
@@ -154,79 +144,14 @@ const CartComprasConfirm = ({ setCompraShow }) => {
               <span className="details">Rua</span>
               <input
                 type="text"
-                placeholder="Digite sua rua"
+                placeholder="Digite seu endereço"
                 required
-                id="rua"
-                name="rua"
-              />
-            </div>
-            <div className="input-box">
-              <span className="details">Numero</span>
-              <input
-                type="text"
-                placeholder="Digite o numero"
-                required
-                name="numero"
-              />
-            </div>
-            <div className="input-box">
-              <span className="details">Bairro</span>
-              <input
-                type="text"
-                placeholder="Digite seu bairro"
-                required
-                name="bairro"
-              />
-            </div>
-            <div className="input-box">
-              <span classname="details">Complemento</span>
-              <input
-                type="text"
-                placeholder="Digite o complemento"
-                name="complemento"
-              />
-            </div>
-            <div className="input-box">
-              <span className="details">Cidade</span>
-              <input
-                type="text"
-                placeholder="Digite sua cidade"
-                required
-                name="cidade"
-              />
-            </div>
-            <div className="input-box">
-              <span className="details">Estado</span>
-              <input
-                type="text"
-                placeholder="Digite seu estado"
-                required
-                name="estado"
-              />
-            </div>
-
-            <div className="input-box">
-              <span className="details">Tarjeta de Credito</span>
-              <input
-                type="text"
-                placeholder="Digite sua tarjeta: XXXXXXXXXXXXXXXX"
-                required
-                name="senha"
-                pattern="^[0-9]{16}$"
-              />
-            </div>
-            <div className="input-box">
-              <span className="details">Codigo de Segurança</span>
-              <input
-                type="password"
-                placeholder="Confirme com codigo de segurança:XXX"
-                required
-                name="confirm_senha"
-                pattern="^[0-9]{3}$"
+                id="address"
+                name="address"
               />
             </div>
           </div>
-
+          <div></div>
           <div className="botones_confirmar">
             <button
               className="button_principal"
