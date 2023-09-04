@@ -1,5 +1,4 @@
 import React from 'react'
-import vegan_logo from '../../../public/imagenes/logo.png'
 import './styles.css'
 import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux';
@@ -12,10 +11,10 @@ export default function Header() {
   return (
     <>
       <header className='header-container'>
-        <img src={vegan_logo} alt="Vegetanizando logo" className="app-logo" />
+        <img src={'./imagenes/logo.png'} alt="Vegetanizando logo" className="app-logo" />
       </header>
       <header className='header-container-desktop'>
-        <img src={vegan_logo} alt="Vegetanizando logo" className="app-logo" />
+        <img src={'./imagenes/logo.png'} alt="Vegetanizando logo" className="app-logo" />
         <nav className="nav-desktop-container">
           <ul className='nav-desktop-content'>
             <li>

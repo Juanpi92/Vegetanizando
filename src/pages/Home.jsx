@@ -40,9 +40,9 @@ const Home = ({ meal_plan }) => {
         <div className="menu-container ">
           {
             products.length > 0 ?
-              products.map((producto) => (
+              products.map((producto, key) => (
                 <MealCard
-                  key={producto.id}
+                  key={key}
                   data={producto}
                 />
               ))

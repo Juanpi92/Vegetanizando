@@ -46,7 +46,6 @@ function App() {
         };
 
         const respuesta = await axios.request(options);
-        console.log(respuesta.data[0]);
         dispatch(actualizarProductos(respuesta.data));
       } catch (error) {
         console.log(error);
@@ -61,6 +60,7 @@ function App() {
         .get("https://vegetanizando-api.onrender.com/compras")
         .then((respuesta) => {
           dispatch(actualizarCompras(respuesta.data));
+          console.log(respuesta.data);
         })
         .catch();
     } else {

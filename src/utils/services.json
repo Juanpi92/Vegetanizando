@@ -1,0 +1,41 @@
+{
+    "services": [
+        {
+            "id": 0,
+            "title": "Noites Temáticas e Eventos Especiais",
+            "desc": "Adoramos surpreender os nossos clientes com Noites Temáticas e Eventos Especiais",
+            "name": "Eventos Especiais",
+            "text": "Adoramos surpreender os nossos clientes com noites temáticas emocionantes e eventos especiais. Imagine saborear pratos veganos inspirados em diferentes cozinhas do mundo, desfrutar de uma noite de degustação de vinhos veganos ou relaxar ao som de música ao vivo. São experiências que transformam uma simples refeição em uma aventura gastronômica inesquecível.",
+            "image": "./imagenes/services/events.jpeg",
+            "icon": "./imagenes/services/champagne.svg"
+        },
+        {
+            "id": 1,
+            "title": "Serviço de Catering Vegano",
+            "desc": "Você está planejando um evento especial? Veja nossos serviços de Catering Vegano",
+            "name": "Catering Vegano",
+            "text": "Você está planejando um evento especial? Deixe-nos cuidar da comida! Oferecemos serviços de catering vegano para casamentos, festas corporativas e reuniões familiares. Personalizamos o menu de acordo com suas preferências, garantindo que seu evento seja marcante e cheio de sabor, com opções veganas de alta qualidade.",
+            "image": "./imagenes/services/cattering.jpeg",
+            "icon": "./imagenes/services/food.svg"
+        },
+        {
+            "id": 2,
+            "title": "Criação de Planos de Alimentação",
+            "desc": "Preocupado com uma alimentação saudável veja nossos Planos de alimentação",
+            "name": "Plano alimentar",
+            "text": "Preocupado com uma alimentação saudável e baseada em plantas? Nossa equipe de nutricionistas e chefs está aqui para ajudar! Oferecemos serviços de criação de planos de alimentação personalizados para ajudá-lo a atingir seus objetivos de saúde e bem-estar. Desenvolvemos planos veganos equilibrados e deliciosos, adaptados às suas necessidades individuais",
+            "image": "./imagenes/services/plan.jpg",
+            "icon": "./imagenes/services/pear.svg"
+        },
+        {
+            "id": 3,
+            "title": "Nossas Aulas",
+            "desc": "Não apenas servimos pratos deliciosos, também te ensinamos",
+            "name": "Nossas aulas",
+            "text": "Em nosso restaurante vegano, não apenas servimos pratos deliciosos, mas também compartilhamos nosso amor pela culinária vegana por meio de aulas de cozinha emocionantes! Se você deseja aprender a criar pratos veganos incríveis e surpreender a si mesmo e aos outros com sabores excepcionais, nossas aulas de culinária vegana são perfeitas para você.",
+            "image": "./imagenes/services/lessons.png",
+            "icon": "./imagenes/services/cooking.svg"
+        }
+    ]
+    
+}
