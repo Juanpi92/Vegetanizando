@@ -36,13 +36,22 @@ function App() {
       dispatch(setUser(admin));
     } catch (error) {}
 
-    //Actualizando productos
-    axios
-      .get("https://vegetanizando-api.onrender.com/products")
-      .then((respuesta) => {
+    (async () => {
+      try {
+        // Obtener los productos
+        const options = {
+          method: "GET",
+          url: "https://vegetanizando-api.vercel.app/products",
+        };
+
+        const respuesta = await axios.request(options);
+        console.log(respuesta.data[0]);
         dispatch(actualizarProductos(respuesta.data));
-      })
-      .catch();
+      } catch (error) {
+        console.log(error);
+        // Manejar el error aquí si es necesario
+      }
+    })();
   }, []);
   useEffect(() => {
     if (user !== null) {
