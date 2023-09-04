@@ -1,4 +1,5 @@
-.header-container {
+.header-container,
+.header-container-desktop {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     background-color: var(--primary-color);
     position: fixed;
@@ -6,10 +7,85 @@
     width: 100vw;
     height: 10vh;
     padding: 0 2%;
-    display: flex;
+    display: none;
     align-items: center;
 }
 
 .app-logo {
     width: 60px;
+}
+
+.nav-desktop-content {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-desktop-item {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--font-color);
+    user-select: none;
+}
+
+.shopping-icon-container {
+    display: flex;
+    font-size: 34px;
+}
+
+.shopping-icon {
+    font-size: 24px;
+}
+
+.cart-quantity-feedback {
+    font-size: 14px;
+    font-weight: 700;
+    position: absolute;
+    margin-left: 10px;
+    margin-top: -15px;
+    width: 20px;
+    height: 20px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    animation: appears-cart-value 800ms ease-in-out normal;
+}
+
+@keyframes appears-cart-value {
+    from {
+        transform: rotateZ(-90deg);
+        opacity: 0;
+    }
+    to {
+        transform: rotateZ(0deg);
+        opacity: 1;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .header-container {
+        display: flex;
+    }
+}
+
+@media screen and (min-width: 480px) {
+    .header-container-desktop {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .header-container-desktop {
+        padding-inline: 5%;
+    }
+
+    .nav-desktop-content {
+        gap: 50px;
+    }
 }

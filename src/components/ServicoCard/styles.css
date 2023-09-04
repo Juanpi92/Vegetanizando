@@ -1,0 +1,84 @@
+.servico-card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 125px;
+    height: 120px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    padding: 5px;
+    text-align: center;
+    user-select: none;
+    cursor: pointer;
+}
+
+.servico-card-container:hover {
+    transform: scale(1.01);
+    transition: all 100ms ease-in-out;
+}
+
+.servico-icon {
+    width: 30px;
+    object-fit: contain;
+}
+
+.servico-card-title {
+    font-weight: 500;
+    font-size: 12px;
+    color: var(--secondary-hover-color);
+}
+
+.servico-card-description {
+    font-size: 10px;
+    color: var(--font-color);
+    opacity: 0.8;
+}
+
+@media screen and (min-width: 422px) {
+    .servico-card-container {
+        width: 90px;
+        height: 180px;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .servico-card-container {
+        width: 105px;
+        height: 150px;
+    }
+}
+
+@media screen and (min-width: 580px) {
+    .servico-card-container {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .servico-card-container {
+        width: 130px;
+        height: 110px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .servico-card-container {
+        width: 180px;
+        height: 160px;
+    }
+
+    .servico-icon {
+        width: 40px;
+        object-fit: contain;
+    }
+
+    .servico-card-title {
+        font-weight: 500;
+        font-size: 16px;
+    }
+
+    .servico-card-description {
+        font-size: 14px;
+    }
+}

@@ -13,7 +13,7 @@ export default function PlanCard({ src, title, includes }) {
             <p className="plan-card-title">{title}</p>
                 {
                     includes.map((item, key) => (
-                        <div id={key} className="item-info-container">
+                        <div key={key} className="item-info-container">
                             <CheckOutlined className='card-info-check'/>
                             <p className="card-info-item">{item}</p>
                         </div>

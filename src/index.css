@@ -3,6 +3,7 @@
 :root {
   --primary-color: #fff;
   --secondary-color: #10aa10;
+  --secondary-hover-color: #0c710c;
   --font-color: #333333;
   --font-sec-color: #7e7e7e;
 
@@ -32,27 +33,6 @@ body {
   margin: 20px auto;
   margin-top: 81px;
   box-sizing: border-box;
-}
-
-.button_principal {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: var(--second-color);
-  cursor: pointer;
-  transition: border-color 0.25s;
-  margin: 10px;
-  font-weight: bold;
-  width: fit-content;
-}
-
-.button_principal:hover {
-  border-color: #646cff;
-  opacity: 0.8;
-  color: white;
 }
 
 .del_button {

@@ -20,11 +20,12 @@ import { actualizarCart, actualizarProductos } from "./reducer/shoopingReducer";
 import { setUser } from "./reducer/userReducer";
 import { actualizarCompras } from "./reducer/comprasReducer";
 import { LoginAdmin } from "./pages/LoginAdmin";
-import Navigation from "./components/Navigation";
 import Header from "./components/Header";
+import NavigationMobile from "./components/NavigationMobile";
 
 function App() {
   const [modal, setModal] = useState(true);
+  const [plan, setPlan] = useState(null);
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const { user } = state.user;
@@ -34,7 +35,7 @@ function App() {
     try {
       const admin = JSON.parse(localStorage.admin);
       dispatch(setUser(admin));
-    } catch (error) {}
+    } catch (error) { }
 
     (async () => {
       try {
@@ -45,7 +46,6 @@ function App() {
         };
 
         const respuesta = await axios.request(options);
-        console.log(respuesta.data[0]);
         dispatch(actualizarProductos(respuesta.data));
       } catch (error) {
         console.log(error);
@@ -60,6 +60,7 @@ function App() {
         .get("https://vegetanizando-api.onrender.com/compras")
         .then((respuesta) => {
           dispatch(actualizarCompras(respuesta.data));
+          console.log(respuesta.data);
         })
         .catch();
     } else {
@@ -67,9 +68,25 @@ function App() {
       try {
         const cart_local = JSON.parse(localStorage.cartlocal);
         dispatch(actualizarCart(cart_local));
-      } catch (error) {}
+      } catch (error) { }
     }
   }, [user]);
+  useEffect(() => {
+    (async () => {
+      const options = {
+        method: 'GET',
+        url: 'https://vegetanizando-api.vercel.app/plans',
+        headers: { 'Content-Type': 'application/json' }
+      };
+
+      try {
+        const response = await axios.request(options);
+        setPlan(response.data);
+      } catch (error) {
+        console.error('Error al realizar la solicitud:', error);
+      }
+    })();
+  }, []);
 
   return (
     <>
@@ -93,10 +110,9 @@ function App() {
       ) : (
         <HashRouter>
           <Header />
-          {/* <Navbar /> */}
-          <Navigation />
+          <NavigationMobile />
           <Routes>
-            <Route exact path="/" element={<Home />}></Route>
+            <Route exact path="/" element={<Home meal_plan={plan}/>}></Route>
             <Route exact path="/acerca" element={<About />}></Route>
             <Route exact path="/servicos" element={<Servicos />}></Route>
             <Route exact path="/cart" element={<Cart />}></Route>

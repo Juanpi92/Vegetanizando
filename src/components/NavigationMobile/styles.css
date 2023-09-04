@@ -5,6 +5,7 @@
     bottom: 0;
     position: fixed;
     z-index: 999;
+    display: none;
 }
 
 .nav-content {
@@ -15,6 +16,10 @@
     list-style: none;
     padding: 0;
     margin: 0;
+}
+
+.nav-cart-item {
+    display: flex;
 }
 
 .nav-item {
@@ -28,7 +33,13 @@
 
 .nav-item svg {
     color: #7e7e7e;
-    font-size: 32px;
+    font-size: 26px;
     cursor: pointer;
     transition: all 200ms ease-in-out;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .nav-container {
+        display: block;
+    }
 }
