@@ -11,10 +11,10 @@ export default function Header() {
   return (
     <>
       <header className='header-container'>
-        <img src={'./imagenes/logo.png'} alt="Vegetanizando logo" className="app-logo" />
+        <img src={'./imagenes/new-logo.png'} alt="Vegetanizando logo" className="app-logo" />
       </header>
       <header className='header-container-desktop'>
-        <img src={'./imagenes/logo.png'} alt="Vegetanizando logo" className="app-logo" />
+        <img src={'./imagenes/new-logo.png'} alt="Vegetanizando logo" className="app-logo" />
         <nav className="nav-desktop-container">
           <ul className='nav-desktop-content'>
             <li>
