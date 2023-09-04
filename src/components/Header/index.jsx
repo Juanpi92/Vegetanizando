@@ -11,10 +11,16 @@ export default function Header() {
   return (
     <>
       <header className='header-container'>
-        <img src={'./imagenes/new-logo.png'} alt="Vegetanizando logo" className="app-logo" />
+        <h1 className='header-logo-title'>
+          VEGETANIZAND
+          <img src={'./imagenes/new-logo.png'} alt="Vegetanizando logo" className="app-logo" />
+        </h1>
       </header>
       <header className='header-container-desktop'>
-        <img src={'./imagenes/new-logo.png'} alt="Vegetanizando logo" className="app-logo" />
+        <h1 className='header-logo-title'>
+          VEGETANIZAND
+          <img src={'./imagenes/new-logo.png'} alt="Vegetanizando logo" className="app-logo" />
+        </h1>
         <nav className="nav-desktop-container">
           <ul className='nav-desktop-content'>
             <li>
