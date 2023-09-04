@@ -3,35 +3,52 @@ import { useSelector } from "react-redux";
 import MealCard from "../components/MealCard";
 import { Link } from "react-router-dom";
 import PlanCard from "../components/PlanCard";
+import SkeletonCard from "../components/SkeletonCard";
+import { useEffect, useState } from "react";
 
 const Home = ({ meal_plan }) => {
   const state = useSelector((state) => state);
   const { products } = state.shopping;
+  const [plan, setPlan] = useState([]);
+
+  useEffect(() => {
+    if (meal_plan) {
+      setPlan(meal_plan)
+    }
+  }, [meal_plan])
 
   return (
     <>
       <main className="home-container">
         <SectionNav title={"Planos Alimentares"} />
-        {meal_plan &&
-          <div className="menu-container">
-            {meal_plan.map((item, key) => (
-              <PlanCard
-                key={key}
-                src={item.url}
-                title={item.name}
-                includes={item.includes}
-              />
-            ))}
-          </div>
-        }
-        <SectionNav title={"Melhores Opções"} />
         <div className="menu-container">
-          {products.map((producto) => (
-            <MealCard
-              key={producto.id}
-              data={producto}
-            />
-          ))}
+          {
+            plan.length > 0 ?
+              plan.map((item, key) => (
+                <PlanCard
+                  key={key}
+                  src={item.url}
+                  title={item.name}
+                  includes={item.includes}
+                />
+              ))
+              :
+              <SkeletonFeedback variant={"plan"}/>
+          }
+        </div>
+        <SectionNav title={"Melhores Opções"} />
+        <div className="menu-container ">
+          {
+            products.length > 0 ?
+              products.map((producto) => (
+                <MealCard
+                  key={producto.id}
+                  data={producto}
+                />
+              ))
+              :
+              <SkeletonFeedback variant={"products"}/>
+          }
         </div>
       </main>
     </>
@@ -46,5 +63,21 @@ const SectionNav = ({ title, location }) => {
       <p className="section-nav-title">{title}</p>
       <Link to={location} className="section-nav-link">Ver mais</Link>
     </nav>
+  )
+}
+
+const SkeletonFeedback = ({ variant }) => {
+  return (
+    <>
+      <SkeletonCard variant={variant}/>
+      <SkeletonCard variant={variant}/>
+      <SkeletonCard variant={variant}/>
+      <SkeletonCard variant={variant}/>
+      <SkeletonCard variant={variant}/>
+      <SkeletonCard variant={variant}/>
+      <SkeletonCard variant={variant}/>
+      <SkeletonCard variant={variant}/>
+      <SkeletonCard variant={variant}/>
+    </>
   )
 }

@@ -79,3 +79,13 @@
         justify-content: space-between;
     }
 }
+
+@media screen and (min-width: 768px) {
+    .header-container-desktop {
+        padding-inline: 5%;
+    }
+
+    .nav-desktop-content {
+        gap: 50px;
+    }
+}
