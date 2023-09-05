@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useSelector } from "react-redux";
 
 import "./styles.css";
 import CartItem from './CartItem'
 import { useNavigate } from "react-router";
+import { AppContext } from "../../contexts/AppContext";
 
 const CartPurchase = ({ setCompraShow }) => {
   const state = useSelector((state) => state);
@@ -39,13 +40,19 @@ const CartPurchase = ({ setCompraShow }) => {
 export default CartPurchase;
 
 const PurchaseFooter = ({ total, onPress, onBack}) => {
-  
+  const { setShowModal } = useContext(AppContext);
+
+  const onCheckoutRequest = () => {
+    // onPress();
+    setShowModal(true);
+  }
+
   return (
     <div className="purchase-info-container">
       <span onClick={onBack}>Continuar comprando</span>
       <div className="align-right-content">
         <p>Subtotal: <span>R${total.toFixed(2)}</span></p>
-        <button className="button_principal" id="cart-purchase-btn" onClick={onPress}>
+        <button className="button_principal" id="cart-purchase-btn" onClick={onCheckoutRequest}>
           Finalizar Compra
         </button>
       </div>

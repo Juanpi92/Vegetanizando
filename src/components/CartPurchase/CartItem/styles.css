@@ -2,8 +2,8 @@
   user-select: none;
   margin: 10px;
   padding: 10px;
-  border-top: 20px solid var(--font-color);
-  border-bottom: 20px solid var(--font-color);
+  border-top: 20px solid var(--purchase-background);
+  border-bottom: 20px solid var(--purchase-background);
 }
 
 .cart-item-media {
@@ -33,7 +33,7 @@
 }
 
 .cart-quantity-label {
-  border: 1px solid var(--primary-color);
+  border: 1px solid var(--font-sec-color);
   padding: 2px 12px;
   opacity: 0.6;
   font-size: 12px;

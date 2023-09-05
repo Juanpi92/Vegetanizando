@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CartComprasConfirm from "../../components/CartComprasConfirm";
+import CartComprasConfirm from "../../components/CartPurchase/CartComprasConfirm";
 import CartPurchase from '../../components/CartPurchase';
 import './styles.css'
 import { useSelector } from "react-redux";
@@ -15,13 +15,11 @@ const Cart = () => {
   return (
     <main className="cart-container">
       {cart.length > 0 ?
-        compraShow ? (
+        compraShow && (
           <CartPurchase setCompraShow={setCompraShow} />
-        ) : (
-          <CartComprasConfirm setCompraShow={setCompraShow} />
         )
         :
-        <CartEmptyFeedback onBack={() => navigate('/')}/>
+        <CartEmptyFeedback onBack={() => navigate('/')} />
       }
     </main>
   );
@@ -34,7 +32,7 @@ const CartEmptyFeedback = ({ onBack }) => {
     <article className="cart-empty-container">
       <LocalMallOutlined />
       <h3>Sua sacola de compras está vazia, vamos as compras?</h3>
-      <button className="button_principal" id="cart-purchase-btn" onClick={ onBack }>
+      <button className="button_principal" id="cart-purchase-btn" onClick={onBack}>
         Ver produtos
       </button>
     </article>
