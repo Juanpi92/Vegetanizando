@@ -1,0 +1,127 @@
+
+.footer {
+  background-color: #046a38;
+  color: #fff;
+  padding: 30px 0px 0px 0px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+.footer-about,
+.social-links,
+.contact-links {
+  flex: 1;
+  text-align: center; 
+}
+
+.header-logo-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.app-logo {
+  width: 50px;
+  height: auto;
+  margin-left: 10px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+  justify-content: center; 
+}
+
+.social-icons a {
+  color: #fff;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.description {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 0; 
+  padding: 10px 0; 
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+.fa-solid {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+}
+
+.fa-house::before {
+  content: '\f015';
+}
+
+.fa-phone::before {
+  content: '\f095';
+}
+
+.fa-envelope::before {
+  content: '\f0e0';
+}
+
+.footer-bar {
+  background-color: #000;
+  color: #fff;
+  padding: 0px 0;
+}
+
+.footer-bar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+}
+
+.copyright {
+  font-size: 14px;
+}
+
+.developed-by {
+  font-size: 14px;
+  text-align: right;
+}
+
+
+@media (max-width: 768px) {
+  .footer {
+    padding-bottom: 4rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center; 
+  }
+
+  .header-logo-title {
+    font-size: 20px;
+    margin-bottom: 0;
+  }
+
+  .app-logo {
+    margin-left: 0;
+  }
+}
