@@ -53,6 +53,7 @@ function App() {
       }
     })();
   }, []);
+
   useEffect(() => {
     if (user !== null) {
       //actualizo las compras
