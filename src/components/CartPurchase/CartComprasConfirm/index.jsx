@@ -25,7 +25,7 @@ const CartComprasConfirm = () => {
   const $form_confirm = useRef();
   const $error = useRef();
   const [step, setStep] = useState(0);
-  const { setShowModal, windowSize, setActiveDesktopCart } =
+  const { setShowModal, windowSize, setActiveDesktopCart, setLoader } =
     useContext(AppContext);
 
   const handleBackButtonClick = () => {
@@ -193,17 +193,21 @@ const CartComprasConfirm = () => {
       return;
     }
     try {
-      //loading
+      setLoader(true);
+
       await purchase(userData, cardDetails, cart, totalCart);
       setActiveDesktopCart(false);
       setShowModal(false);
       dispatch(delCart());
-      //end of loading
+      setLoader(false);
+      alert("obrigado pela preferencia, sua compra vai chegar em breve");
     } catch (error) {
-      //end of loading
+      setLoader(false);
       setActiveDesktopCart(false);
       setShowModal(false);
-      //error alert
+      alert(
+        "Ocurreu um error no pagamente, não foi debitado nada na sua conta"
+      );
     }
   };
 
