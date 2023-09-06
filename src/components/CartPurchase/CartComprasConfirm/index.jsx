@@ -1,23 +1,31 @@
 import React, { useContext, useRef, useState } from "react";
 import axios from "axios";
-import shopping_bag from '../../../assets/shopping-bag.png'
+import shopping_bag from "../../../assets/shopping-bag.png";
 import Cards from "react-credit-cards-2";
 import "./styles.css";
-import 'react-credit-cards-2/dist/es/styles-compiled.css'
-import InputElement from 'react-input-mask/lib/react-input-mask.development'
+import "react-credit-cards-2/dist/es/styles-compiled.css";
+import InputElement from "react-input-mask/lib/react-input-mask.development";
 import { useDispatch, useSelector } from "react-redux";
 import { calculateTotalCart, delCart } from "../../../reducer/shoopingReducer";
 import { CheckCircle } from "@mui/icons-material";
 import { AppContext } from "../../../contexts/AppContext";
 
 const CartComprasConfirm = () => {
+  const [userData, setUserData] = useState({
+    nome: "",
+    cep: "",
+    email: "",
+    celular: "",
+    address: "",
+  });
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const { cart, totalCart } = state.shopping;
   const $form_confirm = useRef();
   const $error = useRef();
   const [step, setStep] = useState(0);
-  const { setShowModal, windowSize, setActiveDesktopCart } = useContext(AppContext);
+  const { setShowModal, windowSize, setActiveDesktopCart } =
+    useContext(AppContext);
 
   const handleBackButtonClick = () => {
     if (step === 0) {
@@ -27,12 +35,82 @@ const CartComprasConfirm = () => {
         setShowModal(false);
       }
     } else {
-      setStep(step - 1)
+      setStep(step - 1);
     }
-  }
+  };
+
+  const HandleUserInfoChange = (e) => {
+    const { name, value } = e.target;
+    setUserData({
+      ...userData,
+      [name]: value,
+    });
+  };
+
+  const handleAvancar = () => {
+    let regCpf = /^[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}$/;
+    let regEmail =
+      /^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$/;
+    let regCel = /^[0-9]+$/;
+    let regCep = /^[0-9]{5}-[0-9]{3}$/;
+
+    if (step === 0) {
+      $form_confirm.current.nome.style.borderBottomColor = "#C3C3C3";
+      $form_confirm.current.cpf.style.borderBottomColor = "#C3C3C3";
+      $form_confirm.current.email.style.borderBottomColor = "#C3C3C3";
+      $form_confirm.current.celular.style.borderBottomColor = "#C3C3C3";
+      if ($form_confirm.current.nome.value === "") {
+        $form_confirm.current.nome.style.borderBottomColor = "red";
+        return;
+      }
+      if (
+        $form_confirm.current.cpf.value === "" ||
+        !regCpf.test($form_confirm.current.cpf.value)
+      ) {
+        $form_confirm.current.cpf.style.borderBottomColor = "red";
+        return;
+      }
+      if (
+        $form_confirm.current.email.value === "" ||
+        !regEmail.test($form_confirm.current.email.value)
+      ) {
+        $form_confirm.current.email.style.borderBottomColor = "red";
+        return;
+      }
+      if (
+        $form_confirm.current.celular.value === "" ||
+        !regCel.test($form_confirm.current.celular.value)
+      ) {
+        $form_confirm.current.celular.style.borderBottomColor = "red";
+        return;
+      }
+    }
+    if (step === 1) {
+      $form_confirm.current.cep.style.borderBottomColor = "#C3C3C3";
+      $form_confirm.current.address.style.borderBottomColor = "#C3C3C3";
+      if (
+        $form_confirm.current.cep.value === "" ||
+        !regCep.test($form_confirm.current.cep.value)
+      ) {
+        $form_confirm.current.cep.style.borderBottomColor = "red";
+        return;
+      }
+      if (
+        $form_confirm.current.address.value === "" ||
+        $form_confirm.current.address.value === "-"
+      ) {
+        $form_confirm.current.address.style.borderBottomColor = "red";
+        return;
+      }
+    }
+    step !== 2 && setStep(step + 1);
+  };
 
   const BuscarCep = () => {
-    $form_confirm.current.address.value = "-";
+    setUserData({
+      ...userData,
+      address: "-",
+    });
     const expreg_cep = /^[0-9]{5}-[0-9]{3}$/;
     if (expreg_cep.test($form_confirm.current.cep.value)) {
       let cep = $form_confirm.current.cep.value.replace("-", "");
@@ -47,9 +125,15 @@ const CartComprasConfirm = () => {
           }
 
           if (respuesta.data.erro !== true) {
-            $form_confirm.current.address.value = `${respuesta.data.logradouro
-              }, ${respuesta.data.bairro} ${respuesta.data.complemento || "-"}, ${respuesta.data.localidade
-              }, ${respuesta.data.uf} `;
+            setUserData({
+              ...userData,
+              address: `${respuesta.data.logradouro}, ${
+                respuesta.data.bairro
+              } ${respuesta.data.complemento || "-"}, ${
+                respuesta.data.localidade
+              }, ${respuesta.data.uf} `,
+            });
+
             $error.current.innerText = "";
           } else {
             $error.current.innerText = "Cep inexistente";
@@ -65,27 +149,49 @@ const CartComprasConfirm = () => {
   };
 
   const handleSubmit = (event) => {
-    //Realizar insercion de las opciones de compra en el server
-    let address = $form_confirm.current.address.value;
-
-    let data = {
-      usuario: $form_confirm.current.nome.value,
-      cpf: $form_confirm.current.cpf.value,
-      address: `${address}`,
-      cart: cart,
-      totalCart: totalCart,
-    };
-    axios
-      .post("https://vegetanizando-api.onrender.com/compras", data)
-      .then((respuesta) => {
-        dispatch(delCart());
-        dispatch(calculateTotalCart());
-        alert("Obrigado pela compra, disfrute sua comida");
-      })
-      .catch((error) => {
-        alert("Ocurrio un Error al realizar la compra");
-      });
-    setCompraShow(true);
+    event.preventDefault();
+    let regNumber = /^[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}$/;
+    let regExp = /^(0[1-9]|1[0-2])\/[0-9]{2}$/;
+    let regCvc = /^[0-9]{3}$/;
+    let regCpf = /^[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}$/;
+    $form_confirm.current.name.style.borderBottomColor = "#C3C3C3";
+    $form_confirm.current.number.style.borderBottomColor = "#C3C3C3";
+    $form_confirm.current.expiry.style.borderBottomColor = "#C3C3C3";
+    $form_confirm.current.cvc.style.borderBottomColor = "#C3C3C3";
+    $form_confirm.current.CPF.style.borderBottomColor = "#C3C3C3";
+    if ($form_confirm.current.name.value === "") {
+      $form_confirm.current.name.style.borderBottomColor = "red";
+      return;
+    }
+    if (
+      $form_confirm.current.number.value === "" ||
+      !regNumber.test($form_confirm.current.number.value)
+    ) {
+      $form_confirm.current.number.style.borderBottomColor = "red";
+      return;
+    }
+    if (
+      $form_confirm.current.expiry.value === "" ||
+      !regExp.test($form_confirm.current.expiry.value)
+    ) {
+      $form_confirm.current.expiry.style.borderBottomColor = "red";
+      return;
+    }
+    if (
+      $form_confirm.current.cvc.value === "" ||
+      !regCvc.test($form_confirm.current.cvc.value)
+    ) {
+      $form_confirm.current.cvc.style.borderBottomColor = "red";
+      return;
+    }
+    if (
+      $form_confirm.current.CPF.value === "" ||
+      !regCpf.test($form_confirm.current.CPF.value)
+    ) {
+      $form_confirm.current.CPF.style.borderBottomColor = "red";
+      return;
+    }
+    console.log(userData, cardDetails, cart);
   };
 
   const data = {
@@ -108,7 +214,6 @@ const CartComprasConfirm = () => {
     setCardDetails({ ...cardDetails, [name]: value });
   };
 
-
   return (
     <div className="cart-purchase-confirm">
       <CartHeaderSteps step1={step >= 0} step2={step > 0} step3={step == 2} />
@@ -118,7 +223,7 @@ const CartComprasConfirm = () => {
         onSubmit={(event) => handleSubmit(event)}
       >
         <div className="align-form-content">
-          {step === 0 &&
+          {step === 0 && (
             <>
               <div className="form-input-content">
                 <label className="form-input-label">Nome Completo</label>
@@ -127,6 +232,8 @@ const CartComprasConfirm = () => {
                   placeholder="Nome Sobrenome"
                   required
                   name="nome"
+                  value={userData.nome}
+                  onChange={HandleUserInfoChange}
                 />
               </div>
               <div className="form-input-content">
@@ -136,7 +243,8 @@ const CartComprasConfirm = () => {
                   placeholder="000.000.000-00"
                   required
                   name="cpf"
-                  pattern="^[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}$"
+                  value={userData.cpf}
+                  onChange={HandleUserInfoChange}
                 />
               </div>
               <div className="form-input-content">
@@ -145,8 +253,9 @@ const CartComprasConfirm = () => {
                   type="email"
                   placeholder="email@email.com"
                   required
-                  pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$"
                   name="email"
+                  value={userData.email}
+                  onChange={HandleUserInfoChange}
                 />
               </div>
               <div className="form-input-content">
@@ -156,11 +265,13 @@ const CartComprasConfirm = () => {
                   placeholder="(21) 90000-0000"
                   required
                   name="celular"
+                  value={userData.celular}
+                  onChange={HandleUserInfoChange}
                 />
               </div>
             </>
-          }
-          {step === 1 &&
+          )}
+          {step === 1 && (
             <>
               <div className="form-input-content">
                 <label className="form-input-label">CEP</label>
@@ -172,6 +283,8 @@ const CartComprasConfirm = () => {
                     pattern="^[0-9]{5}-[0-9]{3}$"
                     name="cep"
                     id="cep-input"
+                    value={userData.cep}
+                    onChange={HandleUserInfoChange}
                   />
                   <div id="search-cep" onClick={BuscarCep}>
                     <i className="fa-solid fa-magnifying-glass"></i>
@@ -187,11 +300,13 @@ const CartComprasConfirm = () => {
                   required
                   id="address"
                   name="address"
+                  value={userData.address}
+                  onChange={HandleUserInfoChange}
                 />
               </div>
             </>
-          }
-          {step === 2 &&
+          )}
+          {step === 2 && (
             <>
               <h3 className="form-payment-title">Detalhes do Cartão</h3>
               <div className="form-card-content">
@@ -210,12 +325,19 @@ const CartComprasConfirm = () => {
                     />
                   </div>
                   <div className="purchase-status">
-                    <img src={shopping_bag} alt="" className="shopping-bag-image" />
+                    <img
+                      src={shopping_bag}
+                      alt=""
+                      className="shopping-bag-image"
+                    />
                     {/* se compra efetuada \/ hide Animation */}
                     <DotsAnimation />
                   </div>
                 </div>
-                <div className='form-input-content first-input-content' id="card-input">
+                <div
+                  className="form-input-content first-input-content"
+                  id="card-input"
+                >
                   <InputElement
                     type="text"
                     name="name"
@@ -223,81 +345,75 @@ const CartComprasConfirm = () => {
                     onChange={handleInputChange}
                     onFocus={handleInputFocus}
                     value={cardDetails.name}
-                    required
                   />
                   <InputElement
-                    mask='9999 9999 9999 9999'
+                    mask="9999 9999 9999 9999"
                     type="tel"
                     name="number"
                     placeholder="0000 0000 0000 0000"
                     onChange={handleInputChange}
                     onFocus={handleInputFocus}
                     value={cardDetails.number}
-                    pattern="^[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}$"
-                    required
                   />
                 </div>
-                <div className='form-input-content' id="card-input">
+                <div className="form-input-content" id="card-input">
                   <InputElement
                     type="text"
                     name="expiry"
-                    mask='99/99'
+                    mask="99/99"
                     placeholder="MM/AA"
                     onChange={handleInputChange}
                     onFocus={handleInputFocus}
                     value={cardDetails.expiry}
-                    required
                   />
                   <input
                     type="tel"
                     name="cvc"
-                    mask='999'
+                    mask="999"
                     placeholder="CVC"
                     onChange={handleInputChange}
                     onFocus={handleInputFocus}
                     value={cardDetails.cvc}
-                    pattern="^[0-9]{3}$"
                     maxLength={3}
-                    required
                   />
                   <InputElement
                     type="tel"
                     name="CPF"
-                    mask='999.999.999-99'
+                    mask="999.999.999-99"
                     placeholder="CPF DO TITULAR"
-                    pattern="^[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}$"
-                    required
                   />
                 </div>
               </div>
             </>
-          }
+          )}
         </div>
 
         <div className="form-actions-content">
           <CartButton value="Voltar" onPress={() => handleBackButtonClick()} />
-          {
-            step !== 2 ?
-              <CartButton type={"button"} value={"Avançar"} onPress={() => step !== 2 && setStep(step + 1)} />
-              :
-              <input
-                className="button_principal"
-                id="form-action-btn"
-                value={"Finalizar Compra"}
-                style={{ backgroundColor: "var(--secondary-color)" }}
-                type={"submit"}
-              />
-          }
+          {step !== 2 ? (
+            <CartButton
+              type={"button"}
+              value={"Avançar"}
+              onPress={() => handleAvancar()}
+            />
+          ) : (
+            <input
+              className="button_principal"
+              id="form-action-btn"
+              value={"Finalizar Compra"}
+              style={{ backgroundColor: "var(--secondary-color)" }}
+              type={"submit"}
+            />
+          )}
         </div>
-      </form >
-    </div >
+      </form>
+    </div>
   );
 };
 
 export default CartComprasConfirm;
 
 const CartHeaderSteps = ({ step1, step2, step3 }) => {
-
   return (
     <div className="cart-header-step-container">
       <div className="step-content">
@@ -313,21 +429,21 @@ const CartHeaderSteps = ({ step1, step2, step3 }) => {
         <p>Pagamento</p>
       </div>
     </div>
-  )
-}
+  );
+};
 
 const CartButton = ({ onPress, value, type }) => {
-
   return (
     <button
       className="button_principal"
       id="form-action-btn"
       type={type ? type : "button"}
-      onClick={onPress}>
+      onClick={onPress}
+    >
       {value ? value : "botão"}
     </button>
-  )
-}
+  );
+};
 
 const DotsAnimation = () => {
   return (
@@ -335,6 +451,6 @@ const DotsAnimation = () => {
       <span className="dot">a</span>
       <span className="dot">a</span>
       <span className="dot">a</span>
-    </div >
-  )
-}
+    </div>
+  );
+};
