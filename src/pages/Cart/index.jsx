@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import CartComprasConfirm from "../../components/CartPurchase/CartComprasConfirm";
 import CartPurchase from '../../components/CartPurchase';
 import './styles.css'
 import { useSelector } from "react-redux";
