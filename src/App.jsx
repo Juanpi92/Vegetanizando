@@ -11,7 +11,11 @@ import AdminCompras from "./pages/AdminCompras";
 import AdminProductos from "./pages/AdminProductos";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { actualizarCart, actualizarProductos } from "./reducer/shoopingReducer";
+import {
+  actualizarCart,
+  actualizarProductos,
+  calculateTotalCart,
+} from "./reducer/shoopingReducer";
 
 import { setUser } from "./reducer/userReducer";
 import { actualizarCompras } from "./reducer/comprasReducer";
@@ -35,7 +39,7 @@ function App() {
     try {
       const admin = JSON.parse(localStorage.admin);
       dispatch(setUser(admin));
-    } catch (error) { }
+    } catch (error) {}
 
     (async () => {
       try {
@@ -69,7 +73,8 @@ function App() {
       try {
         const cart_local = JSON.parse(localStorage.cartlocal);
         dispatch(actualizarCart(cart_local));
-      } catch (error) { }
+        dispatch(calculateTotalCart());
+      } catch (error) {}
     }
   }, [user]);
 
@@ -115,9 +120,7 @@ function App() {
             <Header />
             <NavigationMobile />
             <ScrollToTop />
-            <PurchaseModal children={
-              <CartComprasConfirm />
-            } />
+            <PurchaseModal children={<CartComprasConfirm />} />
             <Routes>
               <Route exact path="/" element={<Home meal_plan={plan} />}></Route>
               <Route exact path="/acerca" element={<About />}></Route>
