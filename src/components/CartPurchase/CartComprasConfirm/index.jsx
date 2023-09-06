@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { calculateTotalCart, delCart } from "../../../reducer/shoopingReducer";
 import { CheckCircle } from "@mui/icons-material";
 import { AppContext } from "../../../contexts/AppContext";
+import { purchase } from "./purchase";
 
 const CartComprasConfirm = () => {
   const [userData, setUserData] = useState({
@@ -148,7 +149,7 @@ const CartComprasConfirm = () => {
     }
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     let regNumber = /^[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}$/;
     let regExp = /^(0[1-9]|1[0-2])\/[0-9]{2}$/;
@@ -191,7 +192,19 @@ const CartComprasConfirm = () => {
       $form_confirm.current.CPF.style.borderBottomColor = "red";
       return;
     }
-    console.log(userData, cardDetails, cart);
+    try {
+      //loading
+      await purchase(userData, cardDetails, cart, totalCart);
+      setActiveDesktopCart(false);
+      setShowModal(false);
+      dispatch(delCart());
+      //end of loading
+    } catch (error) {
+      //end of loading
+      setActiveDesktopCart(false);
+      setShowModal(false);
+      //error alert
+    }
   };
 
   const data = {
@@ -200,7 +213,7 @@ const CartComprasConfirm = () => {
     focus: "",
     name: "",
     number: "",
-    cpf: "",
+    CPF: "",
   };
 
   const [cardDetails, setCardDetails] = useState(data);
@@ -381,6 +394,8 @@ const CartComprasConfirm = () => {
                     name="CPF"
                     mask="999.999.999-99"
                     placeholder="CPF DO TITULAR"
+                    onChange={handleInputChange}
+                    value={cardDetails.CPF}
                   />
                 </div>
               </div>
