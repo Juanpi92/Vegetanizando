@@ -18,6 +18,9 @@ import { actualizarCompras } from "./reducer/comprasReducer";
 import { LoginAdmin } from "./pages/LoginAdmin";
 import Header from "./components/Header";
 import NavigationMobile from "./components/NavigationMobile";
+import PurchaseModal from "./components/PurchaseModal";
+import { AppProvider } from "./contexts/AppContext";
+import CartComprasConfirm from "./components/CartPurchase/CartComprasConfirm";
 import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
@@ -32,7 +35,7 @@ function App() {
     try {
       const admin = JSON.parse(localStorage.admin);
       dispatch(setUser(admin));
-    } catch (error) {}
+    } catch (error) { }
 
     (async () => {
       try {
@@ -50,6 +53,7 @@ function App() {
       }
     })();
   }, []);
+
   useEffect(() => {
     if (user !== null) {
       //actualizo las compras
@@ -65,9 +69,10 @@ function App() {
       try {
         const cart_local = JSON.parse(localStorage.cartlocal);
         dispatch(actualizarCart(cart_local));
-      } catch (error) {}
+      } catch (error) { }
     }
   }, [user]);
+
   useEffect(() => {
     (async () => {
       const options = {
@@ -106,17 +111,22 @@ function App() {
         </HashRouter>
       ) : (
         <HashRouter>
-          <Header />
-          <NavigationMobile />
-          <ScrollToTop />
-          <Routes>
-            <Route exact path="/" element={<Home meal_plan={plan} />}></Route>
-            <Route exact path="/acerca" element={<About />}></Route>
-            <Route exact path="/servicos" element={<Servicos />}></Route>
-            <Route exact path="/cart" element={<Cart />}></Route>
-            <Route exact path="/admin" element={<LoginAdmin />}></Route>
-            <Route path="*" element={<Error404 />}></Route>
-          </Routes>
+          <AppProvider>
+            <Header />
+            <NavigationMobile />
+            <ScrollToTop />
+            <PurchaseModal children={
+              <CartComprasConfirm />
+            } />
+            <Routes>
+              <Route exact path="/" element={<Home meal_plan={plan} />}></Route>
+              <Route exact path="/acerca" element={<About />}></Route>
+              <Route exact path="/servicos" element={<Servicos />}></Route>
+              <Route exact path="/cart" element={<Cart />}></Route>
+              <Route exact path="/admin" element={<LoginAdmin />}></Route>
+              <Route path="*" element={<Error404 />}></Route>
+            </Routes>
+          </AppProvider>
         </HashRouter>
       )}
       <Footer />

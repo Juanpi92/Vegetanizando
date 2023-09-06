@@ -1,0 +1,33 @@
+.cart-container {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-align-content {
+    /* background-color: var(--purchase-secondary-background); */
+    padding: 10px 40px;
+    border-radius: 20px;
+}
+
+.cart-empty-container svg {
+    font-size: 80px;
+    color: var(--font-color);
+    opacity: 0.9;
+}
+
+.cart-empty-container h3 {
+    text-align: center;
+}
+
+.cart-empty-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-direction: column;
+    width: 300px;
+    margin: 0 auto;
+}

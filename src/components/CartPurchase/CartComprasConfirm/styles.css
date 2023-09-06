@@ -1,0 +1,256 @@
+.cart-purchase-confirm {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* form register  */
+.cart-form-register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 85%;
+}
+
+.align-form-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-input-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-input-content input {
+  width: 270px;
+  height: 30px;
+  background-color: var(--purchase-secondary-background);
+  color: var(--primary-color);
+  padding-left: 5px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #c3c3c3;
+}
+
+.form-input-label {
+  color: var(--primary-color);
+  opacity: 0.8;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+#input-cep-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#cep-input {
+  width: 90px;
+}
+
+#search-cep {
+  cursor: pointer;
+  color: var(--primary-color);
+}
+
+#adress-content {
+  margin-top: 2rem;
+}
+
+.search-cep-status {
+  position: absolute;
+  color: rgb(242, 8, 8);
+  margin-bottom: -4rem;
+  font-size: 12px;
+  user-select: none;
+}
+
+.form-actions-content {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+#form-action-btn {
+  background-color: var(--third-color);
+}
+
+/* Card area  */
+.form-payment-title {
+  color: var(--primary-color);
+  margin-left: 1rem;
+}
+
+.card-align-creative-content {
+  display: flex;
+}
+
+.purchase-status {
+  display: none;
+}
+
+.shopping-bag-image {
+  width: 80px;
+  height: 80px;
+}
+
+.loading-spinner {
+  width: 45px;
+  height: 45px;
+  position: absolute;
+  margin-left: 35px;
+  margin-top: 42px;
+  border-radius: 50px;
+  background-color: orange;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px;
+}
+
+.loading-spinner .dot {
+  width: 8px;
+  height: 8px;
+  background-color: #fff;
+  border-radius: 50px;
+  font-size: 5px;
+  color: transparent;
+}
+
+.loading-spinner .dot:nth-of-type(1){
+  animation: dot-pulse 0.9s ease-in-out infinite;
+}
+
+.loading-spinner .dot:nth-of-type(2){
+  animation: dot-pulse 1.1s ease-in-out infinite;
+}
+
+.loading-spinner .dot:nth-of-type(3){
+  animation: dot-pulse 1s ease-in-out infinite;
+}
+
+@keyframes dot-pulse {
+  0%,100% {
+    opacity: 1;
+    transform: translateY(4px);
+  }
+  50% {
+    opacity: 0.2;
+    transform: translateY(0px);
+  }
+}
+
+.form-card-content {
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#card-input input {
+  font-size: 16px;
+}
+
+#card-input:nth-child(3) {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-direction: row;
+}
+
+#card-input:nth-child(3) input {
+  width: 60px;
+  text-align: center;
+  padding: 0;
+}
+
+#card-input:nth-child(3) input:last-of-type {
+  width: 130px;
+}
+
+.card-animation-content {
+  position: relative;
+  transform: scale(0.8);
+  z-index: 2;
+}
+
+/* Header of purchase confirm component */
+.cart-header-step-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 5px;
+}
+
+.step-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.step-content svg,
+.step-content p {
+  color: var(--primary-color);
+}
+
+.step-content svg {
+  font-size: 18px;
+  color: var(--secondary-color);
+  background-color: #fff;
+  border-radius: 50px;
+}
+
+.step-content p {
+  font-size: 12px;
+  margin-left: 4px;
+}
+
+.step-number-icon {
+  background-color: #111;
+  width: 18px;
+  height: 18px;
+  border-radius: 100px;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (min-width: 768px) {
+  .first-input-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .purchase-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .first-input-content {
+    gap: 1rem;
+  }
+
+  .card-animation-content {
+    right: 60px;
+    bottom: 20px;
+  }
+}
