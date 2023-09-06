@@ -4,18 +4,32 @@ import MealCard from "../components/MealCard";
 import { Link } from "react-router-dom";
 import PlanCard from "../components/PlanCard";
 import SkeletonCard from "../components/SkeletonCard";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AppContext } from "../contexts/AppContext";
 
 const Home = ({ meal_plan }) => {
   const state = useSelector((state) => state);
   const { products } = state.shopping;
   const [plan, setPlan] = useState([]);
+  const { windowSize, handleWidthDimension, setActiveDesktopCart } = useContext(AppContext);
 
   useEffect(() => {
     if (meal_plan) {
       setPlan(meal_plan)
     }
-  }, [meal_plan])
+  }, [meal_plan]);
+
+  useEffect(() => {
+    handleWidthDimension()
+  }, []);
+
+  useEffect(() => {
+    if(windowSize >= 1280){
+      setActiveDesktopCart(true);
+    }else {
+      setActiveDesktopCart(false);
+    }
+  }, [windowSize])
 
   return (
     <>
@@ -33,7 +47,7 @@ const Home = ({ meal_plan }) => {
                 />
               ))
               :
-              <SkeletonFeedback variant={"plan"}/>
+              <SkeletonFeedback variant={"plan"} />
           }
         </div>
         <SectionNav title={"Melhores Opções"} />
@@ -47,7 +61,7 @@ const Home = ({ meal_plan }) => {
                 />
               ))
               :
-              <SkeletonFeedback variant={"products"}/>
+              <SkeletonFeedback variant={"products"} />
           }
         </div>
       </main>
@@ -69,15 +83,15 @@ const SectionNav = ({ title, location }) => {
 const SkeletonFeedback = ({ variant }) => {
   return (
     <>
-      <SkeletonCard variant={variant}/>
-      <SkeletonCard variant={variant}/>
-      <SkeletonCard variant={variant}/>
-      <SkeletonCard variant={variant}/>
-      <SkeletonCard variant={variant}/>
-      <SkeletonCard variant={variant}/>
-      <SkeletonCard variant={variant}/>
-      <SkeletonCard variant={variant}/>
-      <SkeletonCard variant={variant}/>
+      <SkeletonCard variant={variant} />
+      <SkeletonCard variant={variant} />
+      <SkeletonCard variant={variant} />
+      <SkeletonCard variant={variant} />
+      <SkeletonCard variant={variant} />
+      <SkeletonCard variant={variant} />
+      <SkeletonCard variant={variant} />
+      <SkeletonCard variant={variant} />
+      <SkeletonCard variant={variant} />
     </>
   )
 }

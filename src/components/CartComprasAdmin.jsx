@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { delFromCompras } from "../reducer/comprasReducer";
-import "./CartItem.css";
 import "./CartComprasAdmin.css";
 
 const CartComprasAdmin = ({ data, setComprasModal, $modalCompra }) => {
