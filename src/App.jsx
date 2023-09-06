@@ -1,9 +1,5 @@
 import { useState, useEffect } from "react";
-import {
-  HashRouter,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { HashRouter, Route, Routes, useLocation } from "react-router-dom";
 import NavbarAdmin from "./components/NavbarAdmin";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -25,6 +21,7 @@ import NavigationMobile from "./components/NavigationMobile";
 import PurchaseModal from "./components/PurchaseModal";
 import { AppProvider } from "./contexts/AppContext";
 import CartComprasConfirm from "./components/CartPurchase/CartComprasConfirm";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const [modal, setModal] = useState(true);
@@ -79,16 +76,16 @@ function App() {
   useEffect(() => {
     (async () => {
       const options = {
-        method: 'GET',
-        url: 'https://vegetanizando-api.vercel.app/plans',
-        headers: { 'Content-Type': 'application/json' }
+        method: "GET",
+        url: "https://vegetanizando-api.vercel.app/plans",
+        headers: { "Content-Type": "application/json" },
       };
 
       try {
         const response = await axios.request(options);
         setPlan(response.data);
       } catch (error) {
-        console.error('Error al realizar la solicitud:', error);
+        console.error("Error al realizar la solicitud:", error);
       }
     })();
   }, []);
@@ -117,9 +114,10 @@ function App() {
           <AppProvider>
             <Header />
             <NavigationMobile />
+            <ScrollToTop />
             <PurchaseModal children={
               <CartComprasConfirm />
-            }/>
+            } />
             <Routes>
               <Route exact path="/" element={<Home meal_plan={plan} />}></Route>
               <Route exact path="/acerca" element={<About />}></Route>
