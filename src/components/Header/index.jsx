@@ -1,6 +1,6 @@
 import React from 'react'
 import './styles.css'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import { LocalMallOutlined } from '@mui/icons-material';
 
@@ -24,22 +24,22 @@ export default function Header() {
         <nav className="nav-desktop-container">
           <ul className='nav-desktop-content'>
             <li>
-              <NavLink to="/" activeclassname="active" className='nav-desktop-item'>
+              <NavLink to="/" activeClassName="active-nav-item" className='nav-desktop-item'>
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink to="/acerca" activeclassname="active" className='nav-desktop-item'>
+              <NavLink to="/acerca" activeClassName="active-nav-item" className='nav-desktop-item'>
                 Acerca
               </NavLink>
             </li>
             <li>
-              <NavLink to="/servicos" activeclassname="active" className='nav-desktop-item'>
+              <NavLink to="/servicos" activeClassName="active-nav-item" className='nav-desktop-item'>
                 Serviços
               </NavLink>
             </li>
             <li>
-              <NavLink to="/cart" activeclassname="active" className='nav-desktop-item shopping-icon-container'>
+              <NavLink to="/cart" activeClassName="active-nav-item" className='nav-desktop-item shopping-icon-container'>
                 <LocalMallOutlined className='shopping-icon' />
                 {cart.length > 0 && <span className="cart-quantity-feedback">{cart.length}</span>}
               </NavLink>

@@ -1,6 +1,6 @@
 .header-container,
 .header-container-desktop {
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
     background-color: var(--primary-color);
     position: fixed;
     z-index: 800;
@@ -9,6 +9,7 @@
     padding: 0 2%;
     display: none;
     align-items: center;
+    user-select: none;
 }
 
 .app-logo {
@@ -37,6 +38,10 @@
     font-weight: 600;
     color: var(--font-color);
     user-select: none;
+}
+
+.active-nav-item {
+    color: red;
 }
 
 .shopping-icon-container {
@@ -101,6 +106,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        padding-top: 1rem;
     }
 
     .app-logo {
