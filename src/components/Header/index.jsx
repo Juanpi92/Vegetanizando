@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./styles.css";
 import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { LocalMallOutlined } from "@mui/icons-material";
+import Loader from "../Loader";
+import { AppContext } from "../../contexts/AppContext";
 
 export default function Header() {
   const state = useSelector((state) => state);
   const { cart } = state.shopping;
+  const { loader } = useContext(AppContext);
 
   return (
     <>
@@ -73,6 +76,7 @@ export default function Header() {
           </ul>
         </nav>
       </header>
+      {loader && <Loader />}
     </>
   );
 }

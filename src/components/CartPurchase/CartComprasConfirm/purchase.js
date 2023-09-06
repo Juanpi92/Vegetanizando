@@ -27,10 +27,27 @@ export const purchase = async (userData, cardDetails, cart, totalCart) => {
     exp_year: cardDetails.expiry.split("/")[1],
     cvc: cardDetails.cvc,
   };
-  const stripe = new Stripe(
-    "pk_test_51NmekIDpeBCo5ijrY6v5H3YxJOvOD1WKesK7eGO3nUWuahUANAFVFY7jVelfX0VfIJNVym1WIGEi51rXHd2jo5XC00YSXh2WHw"
-  );
   try {
+    /*NO TOCAR
+      const stripe = new Stripe(
+    "pk_live_51NmekIDpeBCo5ijrs1BRTBliuOiHFbIBvYsO9qKEvnIjzMr19hfyHNGL3bp0hIo3JlwXz6r5kDWYTk3C8htUQQK700V6nqz5ej"
+  );
+   
+    const token = await stripe.tokens.create({
+      card: card,
+    });
+    const optionsStripe = {
+      method: "POST",
+      url: "https://vegetanizando-api.vercel.app/payment",
+      headers: { "Content-Type": "application/json" },
+      data: {
+        token: token.id,
+        total: totalCart,
+        email: userData.email,
+      },
+    };
+    await axios.request(optionsStripe);*/
+
     const options = {
       method: "POST",
       url: "https://vegetanizando-api.vercel.app/purchase",
@@ -40,22 +57,6 @@ export const purchase = async (userData, cardDetails, cart, totalCart) => {
       },
     };
     await axios.request(options);
-    /*NO TOCAR
-   
-    const token = await stripe.tokens.create({
-      card: card,
-    });
-    const optionsStripe = {
-      method: "POST",
-      url: "http://localhost:3000/payment",
-      headers: { "Content-Type": "application/json" },
-      data: {
-        token: token.id,
-        total: totalCart,
-        email: userData.email,
-      },
-    };
-    await axios.request(optionsStripe);*/
   } catch (error) {
     throw error;
   }
