@@ -11,18 +11,6 @@ export const comprasSlice = createSlice({
   reducers: {
     //Eliminar de compras
     delFromCompras: (state, action) => {
-      axios
-        .delete(
-          `https://vegetanizando-api.onrender.com/compras/${action.payload}`
-        )
-        .then((respuesta) => {
-          alert("A compra foi elminado exitosamente");
-        })
-        .catch(() => {
-          return alert(
-            `${error}: Ocurriu um error, a compra ñao foi eliminada corretamente`
-          );
-        });
       state.compras = state.compras.filter(
         (compra) => compra.id !== action.payload
       );
@@ -32,10 +20,18 @@ export const comprasSlice = createSlice({
     actualizarCompras: (state, action) => {
       state.compras = action.payload;
     },
+    actStatus: (state, action) => {
+      state.compras = state.compras.map((item) =>
+        item.id === action.payload.id
+          ? { ...item, status: action.payload.status }
+          : item
+      );
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { actualizarCompras, delFromCompras } = comprasSlice.actions;
+export const { actualizarCompras, delFromCompras, actStatus } =
+  comprasSlice.actions;
 
 export default comprasSlice.reducer;

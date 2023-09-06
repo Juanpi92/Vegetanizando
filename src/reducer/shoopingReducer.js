@@ -64,18 +64,6 @@ export const shoppingSlice = createSlice({
     },
     //Eliminar Producto
     delProduct: (state, action) => {
-      axios
-        .delete(
-          `https://vegetanizando-api.onrender.com/products/${action.payload}`
-        )
-        .then((respuesta) => {
-          alert("O produto foi elminado exitosamente");
-        })
-        .catch((error) => {
-          return alert(
-            `${error}: Ocurriu um error, o produto ñao foi eliminada corretamente`
-          );
-        });
       state.products = state.products.filter(
         (product) => product.id !== action.payload
       );
@@ -83,33 +71,10 @@ export const shoppingSlice = createSlice({
 
     //AdicionarProcucto
     addItemProduct: (state, action) => {
-      axios
-        .post("https://vegetanizando-api.onrender.com/products", action.payload)
-        .then((respuesta) => {
-          alert("O produto foi adicionado satifatoriamente");
-        })
-        .catch((error) => {
-          return alert(
-            `${error}: Ocurriu um error, o produto ñao foi adicionado corretamente`
-          );
-        });
       state.products = [...state.products, action.payload];
     },
     //Actualizar Producto
     actualizarItemProduct: (state, action) => {
-      axios
-        .put(
-          `https://vegetanizando-api.onrender.com/products/${action.payload.id}`,
-          action.payload
-        )
-        .then((respuesta) => {
-          alert("O produto foi atualizado satifatoriamente");
-        })
-        .catch((error) => {
-          return alert(
-            `${error}: Ocurriu um error, o produto ñao foi adicionado corretamente`
-          );
-        });
       state.products = state.products.map((product) =>
         product.id === action.payload.id ? action.payload : product
       );
