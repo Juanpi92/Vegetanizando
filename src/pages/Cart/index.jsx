@@ -13,13 +13,15 @@ const Cart = () => {
 
   return (
     <main className="cart-container">
-      {cart.length > 0 ?
-        compraShow && (
-          <CartPurchase setCompraShow={setCompraShow} />
-        )
-        :
-        <CartEmptyFeedback onBack={() => navigate('/')} />
-      }
+      <section className="cart-align-content">
+        {cart.length > 0 ?
+          compraShow && (
+            <CartPurchase setCompraShow={setCompraShow} />
+          )
+          :
+          <CartEmptyFeedback onBack={() => navigate('/')} />
+        }
+      </section>
     </main>
   );
 };

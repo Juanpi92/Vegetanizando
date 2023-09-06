@@ -6,6 +6,12 @@
     justify-content: center;
 }
 
+.cart-align-content {
+    /* background-color: var(--purchase-secondary-background); */
+    padding: 10px 40px;
+    border-radius: 20px;
+}
+
 .cart-empty-container svg {
     font-size: 80px;
     color: var(--font-color);

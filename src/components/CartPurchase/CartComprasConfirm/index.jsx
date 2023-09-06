@@ -1,7 +1,11 @@
 import React, { useContext, useRef, useState } from "react";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+import shopping_bag from '../../../assets/shopping-bag.png'
+import Cards from "react-credit-cards-2";
 import "./styles.css";
+import 'react-credit-cards-2/dist/es/styles-compiled.css'
+import InputElement from 'react-input-mask/lib/react-input-mask.development'
+import { useDispatch, useSelector } from "react-redux";
 import { calculateTotalCart, delCart } from "../../../reducer/shoopingReducer";
 import { CheckCircle } from "@mui/icons-material";
 import { AppContext } from "../../../contexts/AppContext";
@@ -62,7 +66,7 @@ const CartComprasConfirm = () => {
 
   const handleSubmit = (event) => {
     //Realizar insercion de las opciones de compra en el server
-    let address = $form_confirm.current.addresss.value;
+    let address = $form_confirm.current.address.value;
 
     let data = {
       usuario: $form_confirm.current.nome.value,
@@ -83,6 +87,27 @@ const CartComprasConfirm = () => {
       });
     setCompraShow(true);
   };
+
+  const data = {
+    cvc: "",
+    expiry: "",
+    focus: "",
+    name: "",
+    number: "",
+    cpf: "",
+  };
+
+  const [cardDetails, setCardDetails] = useState(data);
+
+  const handleInputFocus = (e) => {
+    setCardDetails({ ...cardDetails, focus: e.target.name });
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setCardDetails({ ...cardDetails, [name]: value });
+  };
+
 
   return (
     <div className="cart-purchase-confirm">
@@ -166,15 +191,102 @@ const CartComprasConfirm = () => {
               </div>
             </>
           }
+          {step === 2 &&
+            <>
+              <h3 className="form-payment-title">Detalhes do Cartão</h3>
+              <div className="form-card-content">
+                <div className="card-align-creative-content">
+                  <div className="card-animation-content">
+                    <Cards
+                      cvc={cardDetails.cvc}
+                      expiry={cardDetails.expiry}
+                      focused={cardDetails.focus}
+                      name={cardDetails.name}
+                      number={cardDetails.number}
+                      cpf={cardDetails.cpf}
+                      placeholders={{
+                        name: "SEU NOME AQUI",
+                      }}
+                    />
+                  </div>
+                  <div className="purchase-status">
+                    <img src={shopping_bag} alt="" className="shopping-bag-image" />
+                    {/* se compra efetuada \/ hide Animation */}
+                    <DotsAnimation />
+                  </div>
+                </div>
+                <div className='form-input-content first-input-content' id="card-input">
+                  <InputElement
+                    type="text"
+                    name="name"
+                    placeholder="Titular do Cartão"
+                    onChange={handleInputChange}
+                    onFocus={handleInputFocus}
+                    value={cardDetails.name}
+                    required
+                  />
+                  <InputElement
+                    mask='9999 9999 9999 9999'
+                    type="tel"
+                    name="number"
+                    placeholder="0000 0000 0000 0000"
+                    onChange={handleInputChange}
+                    onFocus={handleInputFocus}
+                    value={cardDetails.number}
+                    pattern="^[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}$"
+                    required
+                  />
+                </div>
+                <div className='form-input-content' id="card-input">
+                  <InputElement
+                    type="text"
+                    name="expiry"
+                    mask='99/99'
+                    placeholder="MM/AA"
+                    onChange={handleInputChange}
+                    onFocus={handleInputFocus}
+                    value={cardDetails.expiry}
+                    required
+                  />
+                  <input
+                    type="tel"
+                    name="cvc"
+                    mask='999'
+                    placeholder="CVC"
+                    onChange={handleInputChange}
+                    onFocus={handleInputFocus}
+                    value={cardDetails.cvc}
+                    pattern="^[0-9]{3}$"
+                    maxLength={3}
+                    required
+                  />
+                  <InputElement
+                    type="tel"
+                    name="CPF"
+                    mask='999.999.999-99'
+                    placeholder="CPF DO TITULAR"
+                    pattern="^[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}$"
+                    required
+                  />
+                </div>
+              </div>
+            </>
+          }
         </div>
 
         <div className="form-actions-content">
           <CartButton value="Voltar" onPress={() => handleBackButtonClick()} />
           {
             step !== 2 ?
-              <CartButton value={"Avançar"} onPress={() => step !== 2 && setStep(step + 1)} />
+              <CartButton type={"button"} value={"Avançar"} onPress={() => step !== 2 && setStep(step + 1)} />
               :
-              <CartButton type="submit" value="Finalizar Compra" />
+              <input
+                className="button_principal"
+                id="form-action-btn"
+                value={"Finalizar Compra"}
+                style={{ backgroundColor: "var(--secondary-color)" }}
+                type={"submit"}
+              />
           }
         </div>
       </form >
@@ -210,10 +322,19 @@ const CartButton = ({ onPress, value, type }) => {
     <button
       className="button_principal"
       id="form-action-btn"
-      style={{ backgroundColor: value === "Finalizar Compra" && "var(--secondary-color)" }}
       type={type ? type : "button"}
       onClick={onPress}>
       {value ? value : "botão"}
     </button>
+  )
+}
+
+const DotsAnimation = () => {
+  return (
+    <div className="loading-spinner">
+      <span className="dot">a</span>
+      <span className="dot">a</span>
+      <span className="dot">a</span>
+    </div >
   )
 }
