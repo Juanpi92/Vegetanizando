@@ -1,9 +1,5 @@
 import { useState, useEffect } from "react";
-import {
-  HashRouter,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { HashRouter, Route, Routes, useLocation } from "react-router-dom";
 import NavbarAdmin from "./components/NavbarAdmin";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -22,6 +18,7 @@ import { actualizarCompras } from "./reducer/comprasReducer";
 import { LoginAdmin } from "./pages/LoginAdmin";
 import Header from "./components/Header";
 import NavigationMobile from "./components/NavigationMobile";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const [modal, setModal] = useState(true);
@@ -35,7 +32,7 @@ function App() {
     try {
       const admin = JSON.parse(localStorage.admin);
       dispatch(setUser(admin));
-    } catch (error) { }
+    } catch (error) {}
 
     (async () => {
       try {
@@ -68,22 +65,22 @@ function App() {
       try {
         const cart_local = JSON.parse(localStorage.cartlocal);
         dispatch(actualizarCart(cart_local));
-      } catch (error) { }
+      } catch (error) {}
     }
   }, [user]);
   useEffect(() => {
     (async () => {
       const options = {
-        method: 'GET',
-        url: 'https://vegetanizando-api.vercel.app/plans',
-        headers: { 'Content-Type': 'application/json' }
+        method: "GET",
+        url: "https://vegetanizando-api.vercel.app/plans",
+        headers: { "Content-Type": "application/json" },
       };
 
       try {
         const response = await axios.request(options);
         setPlan(response.data);
       } catch (error) {
-        console.error('Error al realizar la solicitud:', error);
+        console.error("Error al realizar la solicitud:", error);
       }
     })();
   }, []);
@@ -111,8 +108,9 @@ function App() {
         <HashRouter>
           <Header />
           <NavigationMobile />
+          <ScrollToTop />
           <Routes>
-            <Route exact path="/" element={<Home meal_plan={plan}/>}></Route>
+            <Route exact path="/" element={<Home meal_plan={plan} />}></Route>
             <Route exact path="/acerca" element={<About />}></Route>
             <Route exact path="/servicos" element={<Servicos />}></Route>
             <Route exact path="/cart" element={<Cart />}></Route>
