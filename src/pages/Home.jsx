@@ -24,9 +24,9 @@ const Home = ({ meal_plan }) => {
   }, []);
 
   useEffect(() => {
-    if(windowSize >= 1280){
+    if (windowSize >= 1280) {
       setActiveDesktopCart(true);
-    }else {
+    } else {
       setActiveDesktopCart(false);
     }
   }, [windowSize])
@@ -50,11 +50,26 @@ const Home = ({ meal_plan }) => {
               <SkeletonFeedback variant={"plan"} />
           }
         </div>
-        <SectionNav title={"Melhores Opções"} />
+
+        <SectionNav title={"Seleção de Bebidas Vegetanizando"} />
         <div className="menu-container ">
           {
             products.length > 0 ?
-              products.map((producto, key) => (
+              products.filter((item) => item.type === 'drink').map((producto, key) => (
+                <MealCard
+                  key={key}
+                  data={producto}
+                />
+              ))
+              :
+              <SkeletonFeedback variant={"products"} />
+          }
+        </div>
+        <SectionNav title={"Melhores Opções Veganos"} />
+        <div className="menu-container ">
+          {
+            products.length > 0 ?
+              products.filter((item) => item.type === 'food').map((producto, key) => (
                 <MealCard
                   key={key}
                   data={producto}
