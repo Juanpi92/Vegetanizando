@@ -50,7 +50,6 @@ const Home = ({ meal_plan }) => {
               <SkeletonFeedback variant={"plan"} />
           }
         </div>
-
         <SectionNav title={"Seleção de Bebidas Vegetanizando"} />
         <div className="menu-container ">
           {
