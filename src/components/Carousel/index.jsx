@@ -60,13 +60,13 @@ const carousel = {
       settings: {
         slidesToShow: 1.9,
         slidesToScroll: 2,
-        initialSlide: 2,
+        initialSlide: 1,
       },
     },
     {
-      breakpoint: 480,
+      breakpoint: 440,
       settings: {
-        slidesToShow: 1.3,
+        slidesToShow: 1.4,
         slidesToScroll: 1,
       },
     },
