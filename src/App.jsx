@@ -27,6 +27,9 @@ import { AppProvider } from "./contexts/AppContext";
 import CartComprasConfirm from "./components/CartPurchase/CartComprasConfirm";
 import ScrollToTop from "./components/ScrollToTop";
 
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+
 function App() {
   const [modal, setModal] = useState(true);
   const [plan, setPlan] = useState(null);
