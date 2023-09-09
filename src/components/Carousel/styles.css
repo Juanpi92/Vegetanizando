@@ -28,6 +28,6 @@
   right: 0;
 }
 
-.slick-slide div {
+.slick-slide div:nth-child(1) {
   margin: 0 1rem;
 }
