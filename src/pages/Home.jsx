@@ -48,9 +48,8 @@ const Home = ({ meal_plan }) => {
                   includes={item.includes}
                 />
               ))
-            ) : (
-              <SkeletonFeedback variant={"plan"} />
-            )}
+            ) : null
+            }
           </Carousel>
         </div>
         <SectionNav title={"Seleção de Bebidas Vegetanizando"} />

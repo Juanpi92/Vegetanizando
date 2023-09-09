@@ -1,5 +1,5 @@
-import { useState, useEffect, useContext } from "react";
-import { HashRouter, Route, Routes, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { HashRouter, Route, Routes} from "react-router-dom";
 import NavbarAdmin from "./components/NavbarAdmin";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -27,11 +27,7 @@ import { AppProvider } from "./contexts/AppContext";
 import CartComprasConfirm from "./components/CartPurchase/CartComprasConfirm";
 import ScrollToTop from "./components/ScrollToTop";
 
-import "slick-carousel/slick/slick.css"; 
-import "slick-carousel/slick/slick-theme.css";
-
 function App() {
-  const [modal, setModal] = useState(true);
   const [plan, setPlan] = useState(null);
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
