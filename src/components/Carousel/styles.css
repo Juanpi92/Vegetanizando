@@ -1,0 +1,33 @@
+.slider-container {
+  height: 20rem;
+  width: 100%;
+  padding-inline: 1rem;
+}
+
+.arrow-next-align,
+.arrow-prev-align {
+  position: absolute;
+  top: 50%;
+  color: #10AA10;
+  font-size: 30px;
+  z-index: 100;
+  cursor: pointer;
+}
+
+.arrow-next-align:hover,
+.arrow-prev-align:hover {
+  font-size: 31px;
+  transition: all 200ms ease;
+}
+
+.arrow-prev-align {
+  left: 0;
+}
+
+.arrow-next-align {
+  right: 0;
+}
+
+.slick-slide div {
+  margin: 0 1rem;
+}

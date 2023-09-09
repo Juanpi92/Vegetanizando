@@ -26,7 +26,7 @@ export const AppProvider = ({ children }) => {
             window.removeEventListener('resize', updateWindowDimensions);
         };
     }
-
+    
     return (
         <AppContext.Provider value={{
             showModal,
