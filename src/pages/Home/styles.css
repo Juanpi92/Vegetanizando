@@ -1,5 +1,5 @@
 .home-container {
-  margin-top: 15vh auto 1rem;
+  margin-top: 14vh;
 }
 
 .menu-container {
@@ -42,6 +42,12 @@
     margin: 0 2%;
   }
 
+}
+
+@media screen and (min-width: 1024px) {
+  .section-nav-title {
+    font-size: 20px;
+  }
 }
 
 @media screen and (min-width: 1366px) {

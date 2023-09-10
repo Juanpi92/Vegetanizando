@@ -8,11 +8,12 @@ const Error404 = () => {
   const navigate = useNavigate();
   const state = useSelector((state) => state);
   const { user } = state.user;
-  useEffect(() => {
-    if (user) {
-      navigate("/admin/products");
-    }
-  }, []);
+
+  // useEffect(() => {
+  //   if (user) {
+  //     navigate("/admin/products");
+  //   }
+  // }, []);
 
   return (
     <>
