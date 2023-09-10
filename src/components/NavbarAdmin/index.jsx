@@ -1,92 +1,110 @@
 import React, { useContext } from "react";
 import "./styles.css";
-import { Link, NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import Loader from "../Loader";
+import { delUser } from '../../reducer/userReducer'
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import { AppContext } from "../../contexts/AppContext";
+import { AddBusinessOutlined, AnalyticsOutlined, CurrencyExchangeOutlined, InventoryOutlined } from "@mui/icons-material";
 
 export default function NavbarAdmin() {
   const state = useSelector((state) => state);
 
   const { loader } = useContext(AppContext);
   const { user } = state.user;
-  console.log(user);
 
   return (
     <>
-      <header className="header-container">
-        <h1 className="header-logo-title">
-          VEGETANIZAND
+      <aside className="dashboard-navigation">
+        <div className="dashboard-logo-container">
+          <h1 className="dashboard-logo-title">
+            VEGETANIZAND
+          </h1>
           <img
             src={"./imagenes/new-logo.png"}
             alt="Vegetanizando logo"
             className="app-logo"
           />
-        </h1>
-      </header>
-      <header className="header-container-desktop">
-        <h1 className="header-logo-title">
-          VEGETANIZAND
-          <img
-            src={"./imagenes/new-logo.png"}
-            alt="Vegetanizando logo"
-            className="app-logo"
-          />
-        </h1>
-        <nav className="nav-desktop-container">
-          <ul className="nav-desktop-content">
+        </div>
+        <nav className="dashboard-nav-container">
+          <ul className="dashboard-nav-content">
             <li>
               <NavLink
                 to="/admin/products"
-                activeclasname="active"
-                className="nav-desktop-item"
+                activeclassname="active"
+                className="dashboard-nav-link"
               >
-                Poductos
+                <AddBusinessOutlined style={{ fontSize: 30 }} className="nav-link-icon" />
+                <span className="nav-link-name">Produtos</span>
               </NavLink>
             </li>
             <li>
               <NavLink
                 to="/admin/compras"
-                activeclasname="active"
-                className="nav-desktop-item"
+                activeclassname="active"
+                className="dashboard-nav-link"
               >
-                Compras
+                <CurrencyExchangeOutlined style={{ fontSize: 30 }} className="nav-link-icon" />
+                <span className="nav-link-name">Compras</span>
+
               </NavLink>
             </li>
             <li>
               <NavLink
                 to="/admin/planes"
-                activeclasname="active"
-                className="nav-desktop-item"
+                activeclassname="active"
+                className="dashboard-nav-link"
               >
-                Planes
+                <InventoryOutlined style={{ fontSize: 30 }} className="nav-link-icon" />
+                <span className="nav-link-name">Planos</span>
+
               </NavLink>
             </li>
             <li>
               <NavLink
                 to="/admin/relatorios"
-                activeclasname="active"
-                className="nav-desktop-item"
+                activeclassname="active"
+                className="dashboard-nav-link"
               >
-                Relatorios
+                <AnalyticsOutlined style={{ fontSize: 30 }} className="nav-link-icon" />
+                <span className="nav-link-name">Relatórios</span>
+
               </NavLink>
             </li>
           </ul>
         </nav>
-      </header>
-      <div className="admin-zone-container">
-        <h2>Bem-vindo {user.user}</h2>
-        <figure className="figure-admin-container">
-          <img src={user.photo} alt="admin" className="photo-admin-container" />
-        </figure>
-
-        <div className="logout-container">
-          <h2>Logout</h2>
-          <LogoutOutlinedIcon className="logout-icon" />
-        </div>
-      </div>
-      {loader && <Loader />}
+        {/* {loader && <Loader />} */}
+      </aside>
+      <UserAgent data={user} />
     </>
   );
+}
+
+function UserAgent({ data }) {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+      dispatch(delUser());
+      navigate("/");
+  }
+
+  return (
+    <div className="admin-agent-container">
+      <div className="admin-agent-greetings">
+        <h2>Bem-vindo, <span className="user-name">{data.user}</span>!</h2>
+        <img src={data.photo} alt="admin picture" className="admin-agent-photo" />
+      </div>
+
+      <div className="admin-logout-content">
+        <button className="admin-logout-btn" onClick={handleLogout}>
+          <span>
+            Encerrar Sessão
+          </span>
+          <LogoutOutlinedIcon className="admin-logout-icon" />
+        </button>
+      </div>
+    </div>
+  )
 }
