@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { HashRouter, Route, Routes} from "react-router-dom";
-import NavbarAdmin from "./components/NavbarAdmin";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -26,6 +25,7 @@ import PurchaseModal from "./components/PurchaseModal";
 import { AppProvider } from "./contexts/AppContext";
 import CartComprasConfirm from "./components/CartPurchase/CartComprasConfirm";
 import ScrollToTop from "./components/ScrollToTop";
+import AsideAdmin from "./components/AsideAdmin";
 
 function App() {
   const [plan, setPlan] = useState(null);
@@ -38,7 +38,7 @@ function App() {
     try {
       const admin = JSON.parse(localStorage.admin);
       dispatch(setUser(admin));
-    } catch (error) {}
+    } catch (error) { }
 
     (async () => {
       try {
@@ -73,7 +73,7 @@ function App() {
         const cart_local = JSON.parse(localStorage.cartlocal);
         dispatch(actualizarCart(cart_local));
         dispatch(calculateTotalCart());
-      } catch (error) {}
+      } catch (error) { }
     }
   }, [user]);
 
@@ -98,7 +98,7 @@ function App() {
     <>
       {user ? (
         <HashRouter>
-          <NavbarAdmin />
+          <AsideAdmin />
           <Routes>
             <Route
               exact
@@ -128,10 +128,10 @@ function App() {
               <Route exact path="/admin" element={<LoginAdmin />}></Route>
               <Route path="*" element={<Error404 />}></Route>
             </Routes>
+            <Footer />
           </AppProvider>
         </HashRouter>
       )}
-      <Footer />
     </>
   );
 }

@@ -8,7 +8,7 @@ import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import { AppContext } from "../../contexts/AppContext";
 import { AddBusinessOutlined, AnalyticsOutlined, CurrencyExchangeOutlined, InventoryOutlined } from "@mui/icons-material";
 
-export default function NavbarAdmin() {
+export default function AsideAdmin() {
   const state = useSelector((state) => state);
 
   const { loader } = useContext(AppContext);
