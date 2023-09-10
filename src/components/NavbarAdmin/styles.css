@@ -1,0 +1,175 @@
+.header-container,
+.header-container-desktop {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  background-color: var(--primary-color);
+  position: fixed;
+  z-index: 800;
+  width: 100vw;
+  height: 10vh;
+  padding: 0 2%;
+  display: none;
+  align-items: center;
+  user-select: none;
+}
+.admin-zone-container {
+  margin: 10vh 100px 0 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px;
+  padding-top: 10px;
+}
+.photo-admin-container {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #10aa10;
+  border-radius: 50%;
+}
+.figure-admin-container {
+}
+.logout-container {
+}
+
+.app-logo {
+  width: 30px;
+  margin-left: -5px;
+}
+
+.header-logo-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 5px;
+  font-size: 24px;
+  color: var(--secondary-color);
+}
+
+.nav-desktop-content {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-desktop-item {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--font-color);
+  user-select: none;
+  padding: 2px;
+}
+
+.nav-desktop-content .active {
+  border-bottom: 2px solid #86be3f;
+}
+
+.logout-container {
+  display: flex;
+  align-items: center;
+}
+
+.logout-icon {
+  margin-left: 5px;
+  font-size: 40px;
+  color: black;
+}
+
+.cart-quantity-feedback {
+  font-size: 14px;
+  font-weight: 700;
+  position: absolute;
+  margin-left: 10px;
+  margin-top: -15px;
+  width: 20px;
+  height: 20px;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  animation: appears-cart-value 800ms ease-in-out normal;
+}
+
+@keyframes appears-cart-value {
+  from {
+    transform: rotateZ(-90deg);
+    opacity: 0;
+  }
+
+  to {
+    transform: rotateZ(0deg);
+    opacity: 1;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .app-logo {
+    width: 26px;
+    margin-left: -4px;
+  }
+
+  .header-logo-title {
+    align-items: center;
+    letter-spacing: 5px;
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .header-container-desktop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+  }
+
+  .app-logo {
+    width: 20px;
+    margin-left: -2px;
+  }
+
+  .header-logo-title {
+    letter-spacing: 0px;
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .app-logo {
+    width: 25px;
+    margin-left: -2px;
+  }
+
+  .header-logo-title {
+    letter-spacing: 2px;
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header-container-desktop {
+    padding-inline: 5%;
+  }
+
+  .nav-desktop-content {
+    gap: 50px;
+  }
+
+  .app-logo {
+    width: 30px;
+    margin-left: -5px;
+  }
+
+  .header-logo-title {
+    letter-spacing: 5px;
+    font-size: 24px;
+  }
+}
