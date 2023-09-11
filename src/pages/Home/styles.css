@@ -5,7 +5,7 @@
 .menu-container {
   display: flex;
   align-items: flex-start;
-  overflow: hidden;  
+  overflow: scroll;  
   gap: 1rem;
   margin-bottom: 2rem;
   padding-bottom: 1rem;
