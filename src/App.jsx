@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes, useNavigate } from "react-router-dom";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -26,6 +26,7 @@ import { AppProvider } from "./contexts/AppContext";
 import CartComprasConfirm from "./components/CartPurchase/CartComprasConfirm";
 import ScrollToTop from "./components/ScrollToTop";
 import AsideAdmin from "./components/AsideAdmin";
+import Statistics from "./pages/Statistics";
 
 function App() {
   const [plan, setPlan] = useState(null);
@@ -38,7 +39,7 @@ function App() {
     try {
       const admin = JSON.parse(localStorage.admin);
       dispatch(setUser(admin));
-    } catch (error) { }
+    } catch (error) {}
 
     (async () => {
       try {
@@ -58,23 +59,31 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (user !== null) {
-      //actualizo las compras
-      axios
-        .get("https://vegetanizando-api.onrender.com/compras")
-        .then((respuesta) => {
-          dispatch(actualizarCompras(respuesta.data));
-          console.log(respuesta.data);
-        })
-        .catch();
-    } else {
-      //revisando cart
+    (async () => {
       try {
-        const cart_local = JSON.parse(localStorage.cartlocal);
-        dispatch(actualizarCart(cart_local));
-        dispatch(calculateTotalCart());
-      } catch (error) { }
-    }
+        if (user !== null) {
+          // Actualizando las compras
+          const options = {
+            method: "GET",
+            url: "https://vegetanizando-api.vercel.app/purchases",
+            headers: {
+              "Content-Type": "application/json",
+              "auth-token": user.token,
+            },
+          };
+          let response = await axios.request(options);
+          dispatch(actualizarCompras(response.data));
+        } else {
+          // Revisando el carrito
+          const cart_local = JSON.parse(localStorage.cartlocal);
+          dispatch(actualizarCart(cart_local));
+          dispatch(calculateTotalCart());
+        }
+      } catch (error) {
+        // Manejar errores aquí
+        console.error(error);
+      }
+    })();
   }, [user]);
 
   useEffect(() => {
@@ -109,6 +118,11 @@ function App() {
               exact
               path="/admin/products"
               element={<AdminProductos />}
+            ></Route>
+            <Route
+              exact
+              path="/admin/statistics"
+              element={<Statistics />}
             ></Route>
             <Route path="*" element={<Error404 />}></Route>
           </Routes>

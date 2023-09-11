@@ -9,20 +9,22 @@ const Error404 = () => {
   const state = useSelector((state) => state);
   const { user } = state.user;
 
-  // useEffect(() => {
-  //   if (user) {
-  //     navigate("/admin/products");
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (user) {
+      navigate("/admin/products");
+    }
+  }, []);
 
   return (
     <>
-      <div className="container_principal">
-        <figure className="figure404">
-          <img src={imagen404} alt="Error 404" className="imagen404" />
-          <figcaption>O recurso solicitado ñao foi encontrado</figcaption>
-        </figure>
-      </div>
+      {!user && (
+        <div className="container_principal">
+          <figure className="figure404">
+            <img src={imagen404} alt="Error 404" className="imagen404" />
+            <figcaption>O recurso solicitado ñao foi encontrado</figcaption>
+          </figure>
+        </div>
+      )}
     </>
   );
 };
