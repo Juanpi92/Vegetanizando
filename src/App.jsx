@@ -38,7 +38,7 @@ function App() {
     try {
       const admin = JSON.parse(localStorage.admin);
       dispatch(setUser(admin));
-    } catch (error) { }
+    } catch (error) {}
 
     (async () => {
       try {
@@ -58,23 +58,32 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (user !== null) {
-      //actualizo las compras
-      axios
-        .get("https://vegetanizando-api.onrender.com/compras")
-        .then((respuesta) => {
-          dispatch(actualizarCompras(respuesta.data));
-          console.log(respuesta.data);
-        })
-        .catch();
-    } else {
-      //revisando cart
+    (async () => {
       try {
-        const cart_local = JSON.parse(localStorage.cartlocal);
-        dispatch(actualizarCart(cart_local));
-        dispatch(calculateTotalCart());
-      } catch (error) { }
-    }
+        if (user !== null) {
+          console.log(typeof user.token);
+          // Actualizando las compras
+          const options = {
+            method: "GET",
+            url: "https://vegetanizando-api.vercel.app/purchases",
+            headers: {
+              "Content-Type": "application/json",
+              "auth-token": user.token,
+            },
+          };
+          let response = await axios.request(options);
+          dispatch(actualizarCompras(response.data));
+        } else {
+          // Revisando el carrito
+          const cart_local = JSON.parse(localStorage.cartlocal);
+          dispatch(actualizarCart(cart_local));
+          dispatch(calculateTotalCart());
+        }
+      } catch (error) {
+        // Manejar errores aquí
+        console.error(error);
+      }
+    })();
   }, [user]);
 
   useEffect(() => {
