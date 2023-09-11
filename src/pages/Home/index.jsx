@@ -37,19 +37,29 @@ const Home = ({ meal_plan }) => {
     <main className="home-container">
       <SectionNav title={"Planos Alimentares"} />
       <div className="menu-container">
-        <Carousel dimension={windowSize.width}>
-          {plan.length > 0 ? (
-            plan.map((item, key) => (
-              <PlanCard
-                key={key}
-                src={item.url}
-                title={item.name}
-                includes={item.includes}
-              />
-            ))
-          ) : null
-          }
-        </Carousel>
+        {windowSize.width >= 768 ? (
+          <Carousel dimension={windowSize.width}>
+            {plan.length > 0
+              ? plan.map((item, key) => (
+                  <PlanCard
+                    key={key}
+                    src={item.url}
+                    title={item.name}
+                    includes={item.includes}
+                  />
+                ))
+              : null}
+          </Carousel>
+        ) : (
+          plan.map((item, key) => (
+            <PlanCard
+              key={key}
+              src={item.url}
+              title={item.name}
+              includes={item.includes}
+            />
+          ))
+        )}
       </div>
       <SectionNav title={"Seleção de Bebidas Vegetanizando"} />
       <div className="menu-container ">

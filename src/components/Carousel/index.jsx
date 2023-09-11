@@ -8,7 +8,7 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 function NextArrow({ width, onClick }) {
   return (
     <ArrowForwardIosIcon
-      style={{ display: width > 768 ? "block" : "none" }}
+      style={{ display: width >= 768 ? "block" : "none" }}
       onClick={onClick}
       className="arrow-next-align"
     />
@@ -18,7 +18,7 @@ function NextArrow({ width, onClick }) {
 function PrevArrow({ width, onClick }) {
   return (
     <ArrowBackIosIcon
-      style={{ display: width > 768 ? "block" : "none" }}
+      style={{ display: width >= 768 ? "block" : "none" }}
       onClick={onClick}
       className="arrow-prev-align"
     />
@@ -27,11 +27,11 @@ function PrevArrow({ width, onClick }) {
 
 export default function Carousel({ children, dimension }) {
   const settings = {
-    dots: true,
-    infinite: false,
+    dots: false,
+    infinite: true,
     slidesToShow: 4.1,
     slidesToScroll: 1,
-    initialSlide: 0,
+    initialSlide: 2,
     responsive: carousel.breakpoint,
     nextArrow: <NextArrow width={dimension} />,
     prevArrow: <PrevArrow width={dimension} />,
@@ -51,22 +51,19 @@ const carousel = {
       settings: {
         slidesToShow: 3,
         slidesToScroll: 3,
-        infinite: false,
-        dots: true,
       },
     },
     {
       breakpoint: 600,
       settings: {
         slidesToShow: 1.9,
-        slidesToScroll: 2,
-        initialSlide: 1,
+        slidesToScroll: 1,
       },
     },
     {
       breakpoint: 440,
       settings: {
-        slidesToShow: 1.4,
+        slidesToShow: 1.3,
         slidesToScroll: 1,
       },
     },
