@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes, useNavigate } from "react-router-dom";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -26,6 +26,7 @@ import { AppProvider } from "./contexts/AppContext";
 import CartComprasConfirm from "./components/CartPurchase/CartComprasConfirm";
 import ScrollToTop from "./components/ScrollToTop";
 import AsideAdmin from "./components/AsideAdmin";
+import Statistics from "./pages/Statistics";
 
 function App() {
   const [plan, setPlan] = useState(null);
@@ -61,7 +62,6 @@ function App() {
     (async () => {
       try {
         if (user !== null) {
-          console.log(typeof user.token);
           // Actualizando las compras
           const options = {
             method: "GET",
@@ -118,6 +118,11 @@ function App() {
               exact
               path="/admin/products"
               element={<AdminProductos />}
+            ></Route>
+            <Route
+              exact
+              path="/admin/statistics"
+              element={<Statistics />}
             ></Route>
             <Route path="*" element={<Error404 />}></Route>
           </Routes>

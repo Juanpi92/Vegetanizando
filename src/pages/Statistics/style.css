@@ -1,0 +1,27 @@
+.container_admin_statistics {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100vw;
+  height: 100vh;
+}
+.charts_container {
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  padding: 1rem;
+  border-radius: 5px;
+  width: 90vw;
+  margin: 0 auto;
+  margin-left: 6vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.charts_row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 80vw;
+}
