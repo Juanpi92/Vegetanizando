@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./styles.css";
 import {
@@ -12,10 +12,17 @@ import { delProduct } from "../../reducer/shoopingReducer";
 const AdminProductsList = ({ setDataToEdit }) => {
   const state = useSelector((state) => state);
   const { products } = state.shopping;
+  const [productToShow, setProductToShow] = useState(null);
+  useEffect(() => {
+    setProductToShow(products);
+  }, [products]);
 
   return (
     <>
-      <ProductsActionBar />
+      <ProductsActionBar
+        setProductToShow={setProductToShow}
+        product={products}
+      />
       <div className="admin-product-list-container">
         <table className="table-product-content">
           <thead>
@@ -28,13 +35,14 @@ const AdminProductsList = ({ setDataToEdit }) => {
             </tr>
           </thead>
           <tbody className="admin-compras-content">
-            {products.map((product) => (
-              <ProductListItem
-                product={product}
-                key={product.id}
-                setDataToEdit={setDataToEdit}
-              />
-            ))}
+            {productToShow &&
+              productToShow.map((product) => (
+                <ProductListItem
+                  product={product}
+                  key={product.id}
+                  setDataToEdit={setDataToEdit}
+                />
+              ))}
           </tbody>
         </table>
       </div>
@@ -44,13 +52,25 @@ const AdminProductsList = ({ setDataToEdit }) => {
 
 export default AdminProductsList;
 
-const ProductsActionBar = () => {
+const ProductsActionBar = ({ product, setProductToShow }) => {
+  const search = useRef(null);
+  const handelSearch = () => {
+    let filtered = product.filter((item) =>
+      item.name.toLowerCase().includes(search.current.value.toLowerCase())
+    );
+    setProductToShow(filtered);
+  };
   return (
     <div className="products-action-bar-container">
       <div className="products-search-content">
         <span>Buscar Produtos:</span>
-        <input type="text" className="search-input" />
-        <SearchOutlined />
+        <input type="text" className="search-input" ref={search} />
+        <SearchOutlined
+          className="search-input-icon"
+          onClick={() => {
+            handelSearch();
+          }}
+        />
       </div>
       <button className="button_principal add-product-btn">
         Adicionar produto
