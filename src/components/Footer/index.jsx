@@ -30,8 +30,8 @@ function Footer() {
           <div className="contact-links">
             <p className="description">Contato</p>
             <ul>
-              <li><i className="fa-solid fa-house"></i> Coliseo 18. Maracanhã. Rio de Janeiro. RJ. CEP: 105682-21</li>
-              <li><i className="fa-solid fa-phone"></i> +5521970657890</li>
+              <li><i className="fa-solid fa-house"></i> Coliseo 18. Maracanã. Rio de Janeiro. RJ. CEP: 105682-21</li>
+              <li><i className="fa-solid fa-phone"></i> 21 970657890</li>
               <li><i className="fa-solid fa-envelope"></i> vegetanizando@gmail.com</li>
             </ul>
           </div>
