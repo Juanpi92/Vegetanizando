@@ -4,6 +4,8 @@
 
 Somos um restaurante e serviço de entrega de comida vegana que foi fundado em 2021 em Campinas-SP e agora estamos operando no Rio de Janeiro, oferecendo uma ampla variedade de pratos deliciosos para você desfrutar!"
 
+<div allign="center">
+
 Tecnologias usadas no Desenvolvimento:
 
 ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
@@ -19,6 +21,8 @@ Tecnologias usadas no Desenvolvimento:
 
 Funcionalidades de pagamento/compras utilizando:
 <img src="https://i.pinimg.com/originals/8f/c6/a2/8fc6a20dd42803d99e5f782d03916991.gif" width="100" height="50" style="object-fit: cover;"/>
+
+</div>
 
 This is a [VITE.js](https://vitejs.dev/) project bootstrapped with [`create-vite@latest`](https://github.com/vitejs/vite).
 
