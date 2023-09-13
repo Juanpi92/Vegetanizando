@@ -34,7 +34,7 @@ td {
 }
 .option {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 }
 .option_icon,
