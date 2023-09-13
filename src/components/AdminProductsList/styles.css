@@ -59,7 +59,7 @@
   font-size: 12px;
   overflow-x: scroll;
   overflow-y: scroll;
-  height: 65vh;
+  max-height: 65vh;
 }
 
 .table-product-content th,
@@ -72,4 +72,8 @@ td {
 .table-product-content th {
   font-size: 14px;
   text-transform: uppercase;
+}
+.search-input-icon:hover {
+  color: #4bbf4b;
+  cursor: pointer;
 }
