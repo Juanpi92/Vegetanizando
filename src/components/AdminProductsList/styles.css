@@ -13,6 +13,7 @@
 .admin-product-list-container {
   height: 75vh;
   margin-top: 2rem;
+  overflow-y: scroll;
 }
 
 .admin-list-header {
@@ -22,13 +23,6 @@
   justify-content: space-between;
   margin: 0 auto;
   background-color: var(--primary-color);
-}
-
-.admin-list-header li {
-  width: 200px;
-  font-size: 16px;
-  font-weight: 600;
-  text-transform: uppercase;
 }
 
 .admin-list-content {
@@ -58,19 +52,24 @@
 }
 
 /* product list item  */
-.product-list-item {
-  display: flex;
-  justify-content: space-between;
+.table-product-content {
+  width: 98%; /* La tabla ocupa el 90% del ancho del elemento padre */
+  border-collapse: collapse;
+  margin: 10px auto;
+  font-size: 12px;
+  overflow-x: scroll;
+  overflow-y: scroll;
+  height: 65vh;
 }
 
-.product-list-item span {
-  width: 200px;
-  white-space: nowrap;
+.table-product-content th,
+td {
+  height: 40px;
+  padding: 10px;
+  border: 1px solid #ccc;
   text-align: center;
 }
-
-.product-list-item span:nth-child(1) {
-  width: 200px;
-  text-align: left;
-  white-space: nowrap;
+.table-product-content th {
+  font-size: 14px;
+  text-transform: uppercase;
 }

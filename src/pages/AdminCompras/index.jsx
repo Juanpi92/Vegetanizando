@@ -3,14 +3,8 @@ import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "./styles.css";
-import {
-  RemoveRedEyeOutlined,
-  PictureAsPdfOutlined,
-  ClearOutlined,
-} from "@mui/icons-material";
+import { PictureAsPdfOutlined, ClearOutlined } from "@mui/icons-material";
 import { actStatus, delFromCompras } from "../../reducer/comprasReducer";
-import pdfMake from "pdfmake/build/pdfmake";
-import pdfFonts from "pdfmake/build/vfs_fonts";
 import jsPDF from "jspdf";
 import { htmlToText } from "html-to-text";
 
