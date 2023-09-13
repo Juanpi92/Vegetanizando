@@ -7,7 +7,7 @@ import Servicos from "./pages/Servicos";
 import Cart from "./pages/Cart";
 import Error404 from "./pages/Error404";
 import AdminCompras from "./pages/AdminCompras";
-import AdminProductos from "./pages/AdminProductos";
+import AdminProducts from "./pages/AdminProducts";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import {
@@ -117,7 +117,7 @@ function App() {
             <Route
               exact
               path="/admin/products"
-              element={<AdminProductos />}
+              element={<AdminProducts />}
             ></Route>
             <Route
               exact
