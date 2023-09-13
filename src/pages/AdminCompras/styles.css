@@ -1,0 +1,52 @@
+.page_admin_compras {
+  width: 100vw;
+  height: 100vh;
+}
+
+.admin-compras-container {
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  border-radius: 5px;
+  width: 90vw;
+  margin: 0 auto;
+  margin-left: 6vw;
+  height: 85vh;
+  padding-top: 2vh;
+  margin-top: 12vh;
+}
+.table-compras-content {
+  width: 98%; /* La tabla ocupa el 90% del ancho del elemento padre */
+  border-collapse: collapse;
+  margin: 10px auto;
+  font-size: 12px;
+  overflow-x: scroll;
+}
+.table-compras-content th,
+td {
+  height: 40px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+.table-compras-content th {
+  font-size: 14px;
+  text-transform: uppercase;
+}
+.option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.option_icon,
+.delete_icon {
+  height: "25px";
+  width: "25px";
+}
+.option .option_icon:hover {
+  color: #4bbf4b;
+  cursor: pointer;
+}
+.option .delete_icon:hover {
+  color: red;
+  cursor: pointer;
+}

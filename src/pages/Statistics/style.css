@@ -4,6 +4,7 @@
   justify-content: flex-end;
   width: 100vw;
   height: 100vh;
+  margin-top: 12vh;
 }
 .charts_container {
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,

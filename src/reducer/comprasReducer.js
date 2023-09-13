@@ -12,8 +12,9 @@ export const comprasSlice = createSlice({
     //Eliminar de compras
     delFromCompras: (state, action) => {
       state.compras = state.compras.filter(
-        (compra) => compra.id !== action.payload
+        (compra) => compra._id !== action.payload
       );
+      console.log(state.compras.length);
     },
 
     //Actualizar Compras
