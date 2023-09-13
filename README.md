@@ -4,27 +4,29 @@
 
 Somos um restaurante e serviço de entrega de comida vegana que foi fundado em 2021 em Campinas-SP e agora estamos operando no Rio de Janeiro, oferecendo uma ampla variedade de pratos deliciosos para você desfrutar!"
 
-<div allign="center">
+<div align="center">
+  
+# This is a ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white) project 
 
-Tecnologias usadas no Desenvolvimento:
+bootstrapped with [`create-vite@latest`](https://github.com/vitejs/vite).
 
-![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+Technologies used in Development:
+
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
 ![MUI](https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white)
-
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
 ![Swagger](https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white)
 
-Funcionalidades de pagamento/compras utilizando:
-<img src="https://i.pinimg.com/originals/8f/c6/a2/8fc6a20dd42803d99e5f782d03916991.gif" width="100" height="50" style="object-fit: cover;"/>
+### App payment system powered by:
+
+<img src="https://i.pinimg.com/originals/8f/c6/a2/8fc6a20dd42803d99e5f782d03916991.gif" width="120" height="60" style="object-fit: cover;"/>
 
 </div>
 
-This is a [VITE.js](https://vitejs.dev/) project bootstrapped with [`create-vite@latest`](https://github.com/vitejs/vite).
 
 ## Getting Started
 
