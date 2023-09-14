@@ -9,6 +9,7 @@ import {
 } from "@mui/icons-material";
 import { delProduct } from "../../reducer/shoopingReducer";
 import { AppContext } from "../../contexts/AppContext";
+import axios from "axios";
 
 const AdminProductsList = ({ setDataToEdit }) => {
   const state = useSelector((state) => state);
@@ -91,6 +92,7 @@ const ProductsActionBar = ({ product, setProductToShow }) => {
 };
 
 const ProductListItem = ({ product, setDataToEdit }) => {
+  const { setLoader } = useContext(AppContext);
   let { id, name, type, portion, price, src } = product;
   const state = useSelector((state) => state);
   const userAdmin = state.user;
@@ -105,10 +107,12 @@ const ProductListItem = ({ product, setDataToEdit }) => {
           "auth-token": userAdmin.user.token,
         },
       };
-
-      // await axios.request(options);
+      setLoader(true);
+      await axios.request(options);
       dispatch(delProduct(id));
+      setLoader(false);
     } catch (error) {
+      setLoader(false);
       console.log(error);
     }
   };
