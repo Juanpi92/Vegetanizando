@@ -3,7 +3,8 @@ import React, { createContext, useEffect, useState } from "react";
 export const AppContext = createContext({});
 
 export const AppProvider = ({ children }) => {
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(true);
+  const [ isAddProduct, setIsAddProduct ] = useState(false);
   const [loader, setLoader] = useState(false);
   const [activeDesktopCart, setActiveDesktopCart] = useState(false);
   const [windowSize, setWindowSize] = useState({ width: window.innerWidth });
@@ -40,6 +41,8 @@ export const AppProvider = ({ children }) => {
         setWindowSize,
         loader,
         setLoader,
+        isAddProduct,
+        setIsAddProduct,
       }}
     >
       {children}

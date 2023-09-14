@@ -1,0 +1,41 @@
+.form-add-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-align-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #e11111;
+}
+
+.form-align-content:first-of-type {
+  display: flex;
+  flex-direction: column;
+  background: #e11111;
+  position: relative;
+}
+
+.form-img-item {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  background: #c1c1c1;
+  position: relative;
+}
+
+.form-file-item {
+  background: #462222;
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  z-index: 999;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.form-name-item {
+  background: #d50f0f;
+  height: 30px;
+}

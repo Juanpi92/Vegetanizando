@@ -107,25 +107,27 @@ function App() {
     <>
       {user ? (
         <HashRouter>
-          <AsideAdmin />
-          <Routes>
-            <Route
-              exact
-              path="/admin/compras"
-              element={<AdminCompras />}
-            ></Route>
-            <Route
-              exact
-              path="/admin/products"
-              element={<AdminProducts />}
-            ></Route>
-            <Route
-              exact
-              path="/admin/statistics"
-              element={<Statistics />}
-            ></Route>
-            <Route path="*" element={<Error404 />}></Route>
-          </Routes>
+          <AppProvider>
+            <AsideAdmin />
+            <Routes>
+              <Route
+                exact
+                path="/admin/compras"
+                element={<AdminCompras />}
+              ></Route>
+              <Route
+                exact
+                path="/admin/products"
+                element={<AdminProducts />}
+              ></Route>
+              <Route
+                exact
+                path="/admin/statistics"
+                element={<Statistics />}
+              ></Route>
+              <Route path="*" element={<Error404 />}></Route>
+            </Routes>
+          </AppProvider>
         </HashRouter>
       ) : (
         <HashRouter>
