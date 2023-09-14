@@ -86,7 +86,7 @@ export default function AsideAdmin() {
             </li>
           </ul>
         </nav>
-        {/* {loader && <Loader />} */}
+        {loader && <Loader />}
       </aside>
       <UserAgent data={user} />
     </>
