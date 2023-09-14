@@ -55,7 +55,7 @@ const AdminProductsList = ({ setDataToEdit }) => {
 export default AdminProductsList;
 
 const ProductsActionBar = ({ product, setProductToShow }) => {
-  const { setShowModal, setIsAddProduct } = useContext(AppContext);
+  const { setShowProductModal, setIsAddProduct } = useContext(AppContext);
   const search = useRef(null);
   const handelSearch = () => {
     let filtered = product.filter((item) =>
@@ -78,7 +78,7 @@ const ProductsActionBar = ({ product, setProductToShow }) => {
       </div>
       <button
         onClick={() => {
-          setShowModal(true);
+          setShowProductModal(true);
           setIsAddProduct(true);
         }}
         className="button_principal add-product-btn"

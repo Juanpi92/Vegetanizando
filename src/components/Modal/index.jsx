@@ -4,14 +4,14 @@ import "./styles.css";
 import AddProduct from "../../pages/AdminProducts/AddProduct";
 
 export default function Modal() {
-  const { showModal, setShowModal, isAddProduct } = useContext(AppContext);
+  const { showProductModal, setShowProductModal, isAddProduct } = useContext(AppContext);
 
   return (
     <>
-      {showModal && (
+      {showProductModal && (
         <div className="modal-container">
           <div
-            onClick={() => setShowModal(false)}
+            onClick={() => setShowProductModal(false)}
             className="modal-overlay"
           ></div>
           <div className="modal-content">

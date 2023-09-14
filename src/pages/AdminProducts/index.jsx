@@ -1,9 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
 import AdminProductsList from "../../components/AdminProductsList";
-import { AppContext } from "../../contexts/AppContext";
 import Modal from "../../components/Modal";
 
 const AdminProducts = () => {
