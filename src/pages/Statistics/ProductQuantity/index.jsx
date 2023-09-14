@@ -20,17 +20,18 @@ const ProductQuantity = () => {
       };
 
       let response = await axios.request(options);
+      console.log()
       let dataPie = [
-        ["Produto", "Cantidade"],
-        [response.data[0]._id, response.data[0].count],
-        [response.data[1]._id, response.data[1].count],
+        ["Produto", "Quantidade"],
+        [response.data[0]._id.replace(response.data[0]._id, 'Comida'), response.data[0].count],
+        [response.data[0]._id.replace(response.data[0]._id, 'Bebida'), response.data[1].count],
       ];
       setData(dataPie);
     })();
   }, []);
   let options = {
-    title: "Cantidad de Produtos",
-    legend: { position: "bottom" },
+    title: "Resumo dos Produtos disponibilizados na plataforma:",
+    legend: { position: "left" },
   };
 
   return (

@@ -8,7 +8,8 @@ const ProductSales = () => {
   const state = useSelector((state) => state);
   const { user } = state.user;
   let options = {
-    title: "Top 5 Produtos mais vendidos",
+    title: "Top 5 Produtos mais vendidos na plataforma",
+    fontSize: 16,
     legend: { position: "bottom" },
   };
 
@@ -24,21 +25,24 @@ const ProductSales = () => {
       };
 
       let response = await axios.request(options);
-      let dataColumn = [
-        ["Produto", "Vendas", { role: "style" }],
-        [response.data[0].productName, response.data[0].totalSold, "#b87333"],
-        [response.data[1].productName, response.data[1].totalSold, "#dc3912"],
-        [response.data[2].productName, response.data[2].totalSold, "#00a884"],
-        [response.data[3].productName, response.data[3].totalSold, "#ffd700"],
-        [response.data[4].productName, response.data[4].totalSold, "#e5e4e2"],
-      ];
-      setData(dataColumn);
+      if (response.data.length > 0) {
+        let colors = ["#b87333", "#dc3912", "#00a884", "#ffd700", "#e5e4e2"];
+        let dataColumn = response.data.map((item, index) => [
+          item.productName,
+          item.totalSold,
+          colors[index],
+        ]);
+        dataColumn = [["Produto", "Vendas", { role: "style" }], ...dataColumn];
+        setData(dataColumn);
+      } else {
+        setData(null);
+      }
     })();
   }, []);
 
   return (
     <>
-      {data && (
+      {data ? (
         <Chart
           chartType="ColumnChart"
           width="80%"
@@ -46,7 +50,7 @@ const ProductSales = () => {
           data={data}
           options={options}
         />
-      )}
+      ) : <h1>Sem resultados...</h1>}
     </>
   );
 };
