@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./styles.css";
 import {
@@ -8,11 +8,13 @@ import {
   ClearOutlined,
 } from "@mui/icons-material";
 import { delProduct } from "../../reducer/shoopingReducer";
+import { AppContext } from "../../contexts/AppContext";
 
 const AdminProductsList = ({ setDataToEdit }) => {
   const state = useSelector((state) => state);
   const { products } = state.shopping;
   const [productToShow, setProductToShow] = useState(null);
+
   useEffect(() => {
     setProductToShow(products);
   }, [products]);
@@ -53,6 +55,7 @@ const AdminProductsList = ({ setDataToEdit }) => {
 export default AdminProductsList;
 
 const ProductsActionBar = ({ product, setProductToShow }) => {
+  const { setShowProductModal, setIsAddProduct } = useContext(AppContext);
   const search = useRef(null);
   const handelSearch = () => {
     let filtered = product.filter((item) =>
@@ -60,6 +63,7 @@ const ProductsActionBar = ({ product, setProductToShow }) => {
     );
     setProductToShow(filtered);
   };
+
   return (
     <div className="products-action-bar-container">
       <div className="products-search-content">
@@ -72,7 +76,13 @@ const ProductsActionBar = ({ product, setProductToShow }) => {
           }}
         />
       </div>
-      <button className="button_principal add-product-btn">
+      <button
+        onClick={() => {
+          setShowProductModal(true);
+          setIsAddProduct(true);
+        }}
+        className="button_principal add-product-btn"
+      >
         Adicionar produto
         <AddBusinessOutlined />
       </button>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { HashRouter, Route, Routes, useNavigate } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -107,25 +107,27 @@ function App() {
     <>
       {user ? (
         <HashRouter>
-          <AsideAdmin />
-          <Routes>
-            <Route
-              exact
-              path="/admin/compras"
-              element={<AdminCompras />}
-            ></Route>
-            <Route
-              exact
-              path="/admin/products"
-              element={<AdminProducts />}
-            ></Route>
-            <Route
-              exact
-              path="/admin/statistics"
-              element={<Statistics />}
-            ></Route>
-            <Route path="*" element={<Error404 />}></Route>
-          </Routes>
+          <AppProvider>
+            <AsideAdmin />
+            <Routes>
+              <Route
+                exact
+                path="/admin/compras"
+                element={<AdminCompras />}
+              ></Route>
+              <Route
+                exact
+                path="/admin/products"
+                element={<AdminProducts />}
+              ></Route>
+              <Route
+                exact
+                path="/admin/statistics"
+                element={<Statistics />}
+              ></Route>
+              <Route path="*" element={<Error404 />}></Route>
+            </Routes>
+          </AppProvider>
         </HashRouter>
       ) : (
         <HashRouter>
