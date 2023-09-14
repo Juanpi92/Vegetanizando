@@ -1,20 +1,22 @@
 .form-add-container {
   display: flex;
   flex-direction: column;
+  gap: 1rem;
 }
 
 .form-align-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #e11111;
 }
 
 .form-align-content:first-of-type {
   display: flex;
   flex-direction: column;
-  background: #e11111;
+  align-items: center;
+  justify-content: center;
   position: relative;
+  overflow: hidden;
 }
 
 .form-img-item {
@@ -26,16 +28,77 @@
 }
 
 .form-file-item {
-  background: #462222;
   width: 400px;
-  height: 400px;
+  height: 500px;
   position: absolute;
   z-index: 999;
   opacity: 0;
   cursor: pointer;
 }
 
-.form-name-item {
-  background: #d50f0f;
+.form-add-icon {
+  font-size: 42px;
+  position: absolute;
+  opacity: 0;
+}
+
+.form-file-item:hover {
+  background-color: #333;
+  transition: all 200ms ease-in-out;
+  opacity: 0.3;
+}
+
+.form-file-item:hover~.form-add-icon {
+  opacity: 1;
+  color: #fff;
+  transition: all 200ms ease-in-out;
+}
+
+.form-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 12px;
+}
+
+.form-label input,
+.form-label select {
   height: 30px;
+  font-size: 16px;
+}
+
+.form-label select {
+  width: 200px;
+  text-align: center;
+}
+
+.form-select-option {
+  text-align-last: center;
+}
+
+.form-btn {
+  padding: 0.8rem 1rem;
+  color: var(--primary-color);
+  background-color: red;
+  font-weight: 600;
+  font-size: 18px;
+  border-radius: 5px;
+  border: none;
+  opacity: 0.9;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px;
+  cursor: pointer;
+}
+
+.form-btn:hover {
+  opacity: 1;
+}
+
+.form-btn:last-of-type {
+  background-color: var(--third-color);
+  flex-grow: 4;
+}
+
+.form-align-content:last-of-type {
+  display: flex;
+  gap: 1rem;
 }

@@ -23,5 +23,6 @@
   background: #fff;
   position: relative;
   z-index: 1001;
+  border-radius: 5px;
   padding: 10px;
 }

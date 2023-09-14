@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./styles.css";
-
-const IMAGE_SRC =
-  "https://vegetanizando.s3.sa-east-1.amazonaws.com/tortadenozes.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAXQ5AT5RSNXDI3YN2%2F20230908%2Fsa-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230908T153536Z&X-Amz-Expires=518400&X-Amz-Signature=1e5498cda118825425ecef2fa6b3f858cb5061f9a85515f300bfefb8331b2756&X-Amz-SignedHeaders=host&x-id=GetObject";
+import { AddAPhotoSharp } from "@mui/icons-material";
+import { AppContext } from './../../../contexts/AppContext';
 
 export default function AddProduct() {
-  const [ imagePreview, setImagePreview ] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
+  const { setShowProductModal } = useContext(AppContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(e.target.name.value);
   };
-  
+
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -19,6 +19,10 @@ export default function AddProduct() {
       setImagePreview(imageUrl);
     }
   };
+
+  const handleCancel = () => {
+    setShowProductModal(false);
+  }
 
   return (
     <form onSubmit={(e) => handleSubmit(e)} className="form-add-container">
@@ -31,17 +35,34 @@ export default function AddProduct() {
           name="file"
           type="file"
         />
+        <AddAPhotoSharp style={{ fontSize: 42 }} className="form-add-icon" />
       </div>
-      <input className="form-name-item" type="text" name="name" />
-      <input className="form-portion-item" type="text" />
+      <label htmlFor="name" className="form-label">
+        Nome do Produto
+        <input className="form-name-item" type="text" name="name" />
+      </label>
+      <label htmlFor="portion" className="form-label">
+        Porção
+        <input className="form-portion-item" type="text" />
+      </label>
       <div className="form-align-content">
-        <input className="form-price-item" type="number" />
-        <select className="form-select-content" name="" id="">
-          <option value="food">Comida</option>
-          <option value="drink">Bebida</option>
-        </select>
+        <label htmlFor="price" className="form-label">
+          Preço
+          <input className="form-price-item" name="price" type="number" />
+        </label>
+        <label htmlFor="" className="form-label">
+          Tipo
+          <select className="form-select-content" name="" id="">
+            <option className="form-select-option" defaultValue="">Selecione</option>
+            <option className="form-select-option" value="food">Comida</option>
+            <option className="form-select-option" value="drink">Bebida</option>
+          </select>
+        </label>
       </div>
-      <input className="form-btn" type="submit" value="Enviar" />
+      <div className="form-align-content">
+        <input onClick={() => handleCancel()} className="form-btn" type="submit" value="Cancelar" />
+        <input className="form-btn" type="submit" value="Cadastrar" />
+      </div>
     </form>
   );
 }
