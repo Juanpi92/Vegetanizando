@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import '../style.css';
+import { AssignmentIndSharp, EmojiEventsSharp, LocalFireDepartmentSharp, LocalPhoneSharp, WorkspacePremiumSharp } from "@mui/icons-material";
 
 const BestClient = () => {
   const [data, setData] = useState(null);
@@ -17,7 +19,6 @@ const BestClient = () => {
       };
 
       let response = await axios.request(options);
-
       setData(response.data);
     })();
   }, []);
@@ -25,19 +26,13 @@ const BestClient = () => {
   return (
     <>
       {data && (
-        <div>
-          <div>
-            {data[0].user}--{data[0].celphone}
-            --{data[0].totalSpent}
-          </div>
-          <div>
-            {data[1].user}--{data[1].celphone}
-            --{data[1].totalSpent}
-          </div>
-          <div>
-            {data[2].user}--{data[2].celphone}
-            --{data[2].totalSpent}
-          </div>
+        <div className="best-client-container">
+          <h3><LocalFireDepartmentSharp style={{ fontSize: 36, color: "crimson" }} /> Ranking de Clientes mais frequentes: </h3>
+          {
+            data.map((item, key) =>
+              <BestClientCard key={key} data={item} index={key} animation={`${(key + 1) * 1500}ms`} />
+            )
+          }
         </div>
       )}
     </>
@@ -45,3 +40,25 @@ const BestClient = () => {
 };
 
 export default BestClient;
+
+const BestClientCard = ({ data, index, animation }) => {
+  return (
+    <div className="client-card-container" style={{ animation: `appears-card ${animation} ease-in-out normal` }}>
+      <span className="client-index">
+        {index + 1}º
+      </span>
+      <div className="client-align-info">
+        <p className="client-username">
+          <AssignmentIndSharp /> {data.user}
+        </p>
+        <p className="client-celphone">
+          <LocalPhoneSharp /> {data.celphone.replace('+55', '')}
+        </p>
+      </div>
+      <span className="client-total-spent">
+        R${data.totalSpent.toFixed(2)}
+        {index === 0 && <div><EmojiEventsSharp className="client-medal-icon"/></div>}
+      </span>
+    </div>
+  )
+}

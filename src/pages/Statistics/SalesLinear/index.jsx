@@ -20,70 +20,30 @@ const SalesLinear = () => {
       };
 
       let response = await axios.request(options);
-      let dataLine = [
-        ["Date", "Total de ingresos"],
-        [
-          `${response.data[0].month}/${response.data[0].year}`,
-          response.data[0].total,
-        ],
-        [
-          `${response.data[1].month}/${response.data[1].year}`,
-          response.data[1].total,
-        ],
-        [
-          `${response.data[2].month}/${response.data[2].year}`,
-          response.data[2].total,
-        ],
-        [
-          `${response.data[3].month}/${response.data[3].year}`,
-          response.data[3].total,
-        ],
-        [
-          `${response.data[4].month}/${response.data[4].year}`,
-          response.data[4].total,
-        ],
-        [
-          `${response.data[5].month}/${response.data[5].year}`,
-          response.data[5].total,
-        ],
-        [
-          `${response.data[6].month}/${response.data[6].year}`,
-          response.data[6].total,
-        ],
-        [
-          `${response.data[7].month}/${response.data[7].year}`,
-          response.data[7].total,
-        ],
-        [
-          `${response.data[8].month}/${response.data[8].year}`,
-          response.data[8].total,
-        ],
-        [
-          `${response.data[9].month}/${response.data[9].year}`,
-          response.data[9].total,
-        ],
-        [
-          `${response.data[10].month}/${response.data[10].year}`,
-          response.data[10].total,
-        ],
-        [
-          `${response.data[11].month}/${response.data[11].year}`,
-          response.data[11].total,
-        ],
-      ];
-      setData(dataLine);
+      if (response.data.length > 0) {
+        let dataLine = response.data.map((item) => [
+          `${item.month}/${item.year}`,
+          item.total,
+        ]);
+        dataLine = [["Linha do tempo", "Ciclo de Compras"], ...dataLine];
+        setData(dataLine);
+      } else {
+        setData(null);
+      }
     })();
   }, []);
+  
   let options = {
     chart: {
-      title: "Vendas dos ultimos 12 meses",
+      title: "Resumo de Vendas Gerais (últimos 12 mêses)",
     },
-    legend: { position: "bottom" },
+    fontSize: 16,
+    legend: { position: "left" },
   };
 
   return (
     <>
-      {data && (
+      {data ? (
         <Chart
           chartType="Line"
           width="100%"
@@ -91,7 +51,7 @@ const SalesLinear = () => {
           data={data}
           options={options}
         />
-      )}
+      ) : <h1>Sem resultados...</h1>}
     </>
   );
 };

@@ -19,10 +19,127 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  overflow: hidden;
 }
-.charts_row {
+
+.charts-nav-container ul {
   display: flex;
-  flex-direction: row;
+  gap: 3rem;
+}
+
+.charts-nav-container li {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.active {
+  color: var(--secondary-color);
+}
+
+.charts-content {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  width: 80vw;
+  text-align: center;
+  width: 90%;
+  height: 80%;
+  animation: appears 800ms ease-in-out normal;
+}
+
+@keyframes appears {
+  from {
+    transform: translateY(1900px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+
+.best-client-container {
+  display: flex;
+  flex-direction: column;
+  animation: appears 800ms ease-in-out normal;
+  gap: 2rem;
+}
+
+.best-client-container h3 {
+  display: flex;
+  align-items: flex-end;
+}
+
+.client-card-container {
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: rgba(14, 30, 37, 0.27) 0px 2px 4px 0px;
+  border: 5px;
+  padding: 1rem;
+  position: relative;
+}
+
+.client-card-container:hover {
+  box-shadow: rgba(14, 30, 37, 0.27) 0px 5px 2px 0px;
+}
+
+@keyframes appears-card {
+  0% {
+    transform: translateY(1900px);
+  }
+  90% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.client-index {
+  font-size: 34px;
+  font-weight: 700;
+}
+
+.client-align-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+.client-align-info p:first-of-type {
+  font-weight: 700;
+}
+
+.client-align-info p {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.client-total-spent {
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--secondary-color);
+  display: flex;
+}
+
+.client-total-spent div{
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: -15px -10px 0 0;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  background-color: #fff;
+  box-shadow: rgba(14, 30, 37, 0.51) 0px 1px 4px 0px;
+}
+
+.client-medal-icon {
+  color: goldenrod;
 }
