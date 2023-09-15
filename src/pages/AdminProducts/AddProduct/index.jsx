@@ -5,10 +5,15 @@ import { AppContext } from './../../../contexts/AppContext';
 
 export default function AddProduct() {
   const [imagePreview, setImagePreview] = useState(null);
-  const { setShowProductModal } = useContext(AppContext);
+  const { setShowProductModal, onRequestShowAlert } = useContext(AppContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // our alert component receive variant, time and message property inside a object. example below 
+    // onRequestShowAlert({ variant: "success", time: 3000, message: "Você cadastrou o produto com sucesso!"})
+    // onRequestShowAlert({ variant: "denied", message: "Houve um problema ao cadastrar o produto!"})
+    // onRequestShowAlert({ variant: "warning", message: "Atenção verifique o nome do produto!" })
+
     console.log(e.target.name.value);
   };
 

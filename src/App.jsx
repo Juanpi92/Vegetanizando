@@ -27,6 +27,7 @@ import CartComprasConfirm from "./components/CartPurchase/CartComprasConfirm";
 import ScrollToTop from "./components/ScrollToTop";
 import AsideAdmin from "./components/AsideAdmin";
 import Statistics from "./pages/Statistics";
+import Alert from "./components/Alert";
 
 function App() {
   const [plan, setPlan] = useState(null);
@@ -109,6 +110,7 @@ function App() {
         <HashRouter>
           <AppProvider>
             <AsideAdmin />
+            <Alert />
             <Routes>
               <Route
                 exact
