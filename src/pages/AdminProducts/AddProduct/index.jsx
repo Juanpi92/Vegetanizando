@@ -9,8 +9,8 @@ export default function AddProduct() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // our alert component receive variant, time and message property inside a object. example below 
-    // onRequestShowAlert({ variant: "success", time: 3000, message: "Você cadastrou o produto com sucesso!"})
+    // our alert component receive variant, duration and message property inside a object. example below 
+    onRequestShowAlert({ variant: "success", duration: 500, message: "Você cadastrou o produto com sucesso!"})
     // onRequestShowAlert({ variant: "denied", message: "Houve um problema ao cadastrar o produto!"})
     // onRequestShowAlert({ variant: "warning", message: "Atenção verifique o nome do produto!" })
 
