@@ -23,6 +23,8 @@
   color: #ffff;
   text-align: center;
   padding: 10px;
+  min-height: 65px;
+  font-size: 37px;
 }
 .input-container {
   height: 40px;

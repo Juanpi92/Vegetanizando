@@ -13,6 +13,7 @@
   height: 85vh;
   padding-top: 2vh;
   margin-top: 12vh;
+  overflow-y: scroll;
 }
 .table-compras-content {
   width: 98%; /* La tabla ocupa el 90% del ancho del elemento padre */

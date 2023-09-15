@@ -16,12 +16,10 @@ const AdminProducts = () => {
       navigate("/");
     }
   }, []);
-  useEffect(() => {
-    console.log(dataToEdit);
-  }, [dataToEdit]);
+
   return (
     <>
-      <Modal />
+      <Modal dataToEdit={dataToEdit} />
       <div className="container_admin_product">
         <AdminProductsList setDataToEdit={setDataToEdit} />
       </div>
