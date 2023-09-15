@@ -92,11 +92,13 @@ const ProductsActionBar = ({ product, setProductToShow }) => {
 };
 
 const ProductListItem = ({ product, setDataToEdit }) => {
-  const { setLoader } = useContext(AppContext);
+  const { setShowProductModal, setIsAddProduct, setLoader } =
+    useContext(AppContext);
   let { id, name, type, portion, price, src } = product;
   const state = useSelector((state) => state);
   const userAdmin = state.user;
   const dispatch = useDispatch();
+
   const handleDelete = async (id) => {
     try {
       const options = {
@@ -113,7 +115,7 @@ const ProductListItem = ({ product, setDataToEdit }) => {
       setLoader(false);
     } catch (error) {
       setLoader(false);
-      console.log(error);
+      alert("Ocurreu um error");
     }
   };
   return (
@@ -127,6 +129,8 @@ const ProductListItem = ({ product, setDataToEdit }) => {
           className="option_icon"
           onClick={() => {
             setDataToEdit(product);
+            setShowProductModal(true);
+            setIsAddProduct(false);
           }}
         />
         <ClearOutlined

@@ -1,16 +1,22 @@
 import React from "react";
 import "./styles.css";
 import { FacebookOutlined, Instagram, Twitter } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 function Footer() {
+  const navigate = useNavigate();
   return (
-    <footer className="footer" style={{ backgroundColor: '#046a38' }}>
+    <footer className="footer" style={{ backgroundColor: "#046a38" }}>
       <div className="container">
         <div className="footer-content">
           <div className="footer-about">
-            <h1 className='header-logo-title'>
+            <h1 className="header-logo-title">
               VEGETANIZAND
-              <img src={'./imagenes/new-logo.png'} alt="Vegetanizando logo" className="app-logo" />
+              <img
+                src={"./imagenes/new-logo.png"}
+                alt="Vegetanizando logo"
+                className="app-logo"
+              />
             </h1>
           </div>
           <div className="social-links">
@@ -30,20 +36,26 @@ function Footer() {
           <div className="contact-links">
             <p className="description">Contato</p>
             <ul>
-              <li><i className="fa-solid fa-house"></i> Coliseo 18. Maracanã. Rio de Janeiro. RJ. CEP: 105682-21</li>
-              <li><i className="fa-solid fa-phone"></i> 21 970657890</li>
-              <li><i className="fa-solid fa-envelope"></i> vegetanizando@gmail.com</li>
+              <li>
+                <i className="fa-solid fa-house"></i> Coliseo 18. Maracanã. Rio
+                de Janeiro. RJ. CEP: 105682-21
+              </li>
+              <li>
+                <i className="fa-solid fa-phone"></i> 21 970657890
+              </li>
+              <li>
+                <i className="fa-solid fa-envelope"></i> vegetanizando@gmail.com
+              </li>
             </ul>
           </div>
         </div>
-
       </div>
       <div className="footer-bar">
         <div className="container">
           <div className="copyright">
             Vegetanizando © 2023. All Rights Reserved.
           </div>
-          <div className="developed-by">
+          <div className="developed-by" onClick={() => navigate("/admin")}>
             Desenvolvido por Label Soluções em TI
           </div>
         </div>
