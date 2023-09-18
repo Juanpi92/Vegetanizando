@@ -13,7 +13,7 @@ const CartPurchase = ({ setCompraShow }) => {
   const state = useSelector((state) => state);
   const { cart } = state.shopping;
   const dispatch = useDispatch();
-  const { activeDesktopCart, setActiveDesktopCart } =
+  const { activeDesktopCart, setActiveDesktopCart, onRequestShowAlert } =
     useContext(AppContext);
   const navigate = useNavigate();
 
@@ -25,7 +25,8 @@ const CartPurchase = ({ setCompraShow }) => {
   };
 
   const handleClearCart = () => {
-    console.log('limpar carrinho')
+    dispatch(delCart());
+    onRequestShowAlert({ variant: 'success', message: 'Você limpou sua sacola' })
   }
 
   return (

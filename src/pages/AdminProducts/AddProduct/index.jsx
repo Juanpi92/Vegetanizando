@@ -11,7 +11,7 @@ export default function AddProduct() {
   const state = useSelector((state) => state);
   const { user } = state.user;
   const dispatch = useDispatch();
-  const { setShowProductModal, setIsAddProduct, setLoader } =
+  const { setShowProductModal, setIsAddProduct, setLoader, onRequestShowAlert } =
     useContext(AppContext);
 
   const handleSubmit = async (e) => {
@@ -70,7 +70,7 @@ export default function AddProduct() {
       setLoader(false);
     } catch (error) {
       setLoader(false);
-      alert("ocorreu um error");
+      onRequestShowAlert({ variant: 'warning', message: 'Ocorreu um erro', });
       console.log(error);
     }
   };

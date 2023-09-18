@@ -3,6 +3,9 @@ import React, { createContext, useEffect, useState } from "react";
 export const AppContext = createContext({});
 
 export const AppProvider = ({ children }) => {
+  const [showAlert, setShowAlert] = useState(false)
+  const [showAlertIcon, setShowAlertIcon] = useState("")
+  const [showAlertMessage, setShowAlertMessage] = useState("")
   const [showProductModal, setShowProductModal] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [isAddProduct, setIsAddProduct] = useState(false);
@@ -17,6 +20,18 @@ export const AppProvider = ({ children }) => {
       document.body.style.overflow = "auto";
     }
   }, [showModal]);
+
+  const onRequestShowAlert = ({ variant: variant, message: message, duration: time }) => {
+    setShowAlert(true);
+    setShowAlertIcon(variant);
+    setShowAlertMessage(message);
+
+    setTimeout(() => {
+      setShowAlert(false);
+      setShowAlertIcon("");
+      setShowAlertMessage("");
+    }, [time ? time : 3000])
+  }
 
   const handleWidthDimension = () => {
     const updateWindowDimensions = () => {
@@ -46,6 +61,10 @@ export const AppProvider = ({ children }) => {
         setLoader,
         isAddProduct,
         setIsAddProduct,
+        showAlert,
+        onRequestShowAlert,
+        showAlertMessage,
+        showAlertIcon
       }}
     >
       {children}

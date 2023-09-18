@@ -29,6 +29,7 @@ import AsideAdmin from "./components/AsideAdmin";
 import Statistics from "./pages/Statistics";
 import { setPlans } from "./reducer/plansReducer";
 import AdminPlans from "./pages/AdminPlans";
+import Alert from "./components/Alert";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,7 +41,7 @@ function App() {
     try {
       const admin = JSON.parse(localStorage.admin);
       dispatch(setUser(admin));
-    } catch (error) {}
+    } catch (error) { }
 
     (async () => {
       try {
@@ -97,7 +98,6 @@ function App() {
 
       try {
         const response = await axios.request(options);
-        console.log(response.data);
         dispatch(setPlans(response.data));
       } catch (error) {
         console.error("Error al realizar la solicitud:", error);
@@ -111,6 +111,7 @@ function App() {
         <HashRouter>
           <AppProvider>
             <AsideAdmin />
+            <Alert />
             <Routes>
               <Route
                 exact
@@ -137,6 +138,7 @@ function App() {
           <AppProvider>
             <Header />
             <NavigationMobile />
+            <Alert />
             <ScrollToTop />
             <PurchaseModal children={<CartComprasConfirm />} />
             <Routes>

@@ -1,0 +1,20 @@
+.success-animation,
+.denied-animation,
+.warning-animation,
+.addtocart-animation {
+    animation: appears-animation 800ms ease-in normal;
+}
+
+@keyframes appears-animation {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    70% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

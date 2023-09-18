@@ -4,13 +4,31 @@ import { ShoppingCartOutlined } from '@mui/icons-material'
 import { addToCart, calculateTotalCart } from '../../reducer/shoopingReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { useContext } from 'react';
+import { AppContext } from '../../contexts/AppContext';
 
 export default function MealCard({ data }) {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
   const state = useSelector((state) => state);
   const { cart } = state.shopping;
+  const { onRequestShowAlert } = useContext(AppContext);
   let { id, url, name, portion, price } = data;
+
+  const handleAddToCart = (id) => {
+    let action = dispatch(addToCart(id)).payload
+    let checkCart = cart.find((item) => item.id === action)
+    let produto = name;
+
+    if(checkCart){
+      onRequestShowAlert({ variant: 'warning', message: 'Você já adicionou este produto a sua sacola!'})
+      return
+    }else {
+      dispatch(addToCart(id));
+      dispatch(calculateTotalCart());
+      onRequestShowAlert({ variant: 'add-cart', message: `${produto} foi adicionado a sua sacola!`})
+    }
+  }
 
   return (
     <div className='meal-card-container'>
@@ -27,10 +45,7 @@ export default function MealCard({ data }) {
       </div>
       <button
         className="button_principal"
-        onClick={() => {
-          dispatch(addToCart(id));
-          dispatch(calculateTotalCart());
-        }}
+        onClick={() => handleAddToCart(id)}
       >
         Adicionar
         <ShoppingCartOutlined />
