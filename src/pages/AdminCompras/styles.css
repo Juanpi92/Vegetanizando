@@ -23,7 +23,7 @@
   overflow-x: scroll;
 }
 .table-compras-content th,
-td {
+.table-compras-content td {
   height: 40px;
   padding: 10px;
   border: 1px solid #ccc;

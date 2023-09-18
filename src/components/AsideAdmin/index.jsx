@@ -60,7 +60,7 @@ export default function AsideAdmin() {
             </li>
             <li>
               <NavLink
-                to="/admin/planes"
+                to="/admin/plans"
                 activeclassname="active"
                 className="dashboard-nav-link"
               >

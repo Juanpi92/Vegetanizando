@@ -8,18 +8,13 @@ import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import Carousel from "../../components/Carousel";
 
-const Home = ({ meal_plan }) => {
+const Home = () => {
   const state = useSelector((state) => state);
   const { products } = state.shopping;
-  const [plan, setPlan] = useState([]);
+  const { plans } = state.plans;
+
   const { windowSize, handleWidthDimension, setActiveDesktopCart } =
     useContext(AppContext);
-
-  useEffect(() => {
-    if (meal_plan) {
-      setPlan(meal_plan);
-    }
-  }, [meal_plan]);
 
   useEffect(() => {
     handleWidthDimension();
@@ -39,8 +34,8 @@ const Home = ({ meal_plan }) => {
       <div className="menu-container">
         {windowSize.width >= 768 ? (
           <Carousel dimension={windowSize.width}>
-            {plan.length > 0
-              ? plan.map((item, key) => (
+            {plans
+              ? plans.map((item, key) => (
                   <PlanCard
                     key={key}
                     src={item.url}
