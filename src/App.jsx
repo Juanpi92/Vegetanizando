@@ -27,9 +27,10 @@ import CartComprasConfirm from "./components/CartPurchase/CartComprasConfirm";
 import ScrollToTop from "./components/ScrollToTop";
 import AsideAdmin from "./components/AsideAdmin";
 import Statistics from "./pages/Statistics";
+import { setPlans } from "./reducer/plansReducer";
+import AdminPlans from "./pages/AdminPlans";
 
 function App() {
-  const [plan, setPlan] = useState(null);
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const { user } = state.user;
@@ -96,7 +97,7 @@ function App() {
 
       try {
         const response = await axios.request(options);
-        setPlan(response.data);
+        dispatch(setPlans(response.data));
       } catch (error) {
         console.error("Error al realizar la solicitud:", error);
       }
@@ -120,6 +121,7 @@ function App() {
                 path="/admin/products"
                 element={<AdminProducts />}
               ></Route>
+              <Route exact path="/admin/plans" element={<AdminPlans />}></Route>
               <Route
                 exact
                 path="/admin/statistics"
@@ -137,7 +139,7 @@ function App() {
             <ScrollToTop />
             <PurchaseModal children={<CartComprasConfirm />} />
             <Routes>
-              <Route exact path="/" element={<Home meal_plan={plan} />}></Route>
+              <Route exact path="/" element={<Home />}></Route>
               <Route exact path="/acerca" element={<About />}></Route>
               <Route exact path="/servicos" element={<Servicos />}></Route>
               <Route exact path="/cart" element={<Cart />}></Route>
