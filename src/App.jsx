@@ -97,6 +97,7 @@ function App() {
 
       try {
         const response = await axios.request(options);
+        console.log(response.data);
         dispatch(setPlans(response.data));
       } catch (error) {
         console.error("Error al realizar la solicitud:", error);

@@ -13,36 +13,31 @@ import axios from "axios";
 
 const AdminPlansList = ({ setDataToEdit }) => {
   const state = useSelector((state) => state);
-  const { products } = state.shopping;
-  const [productToShow, setProductToShow] = useState(null);
+  const { plans } = state.plans;
+  const [plansToShow, setPlansToShow] = useState(null);
 
   useEffect(() => {
-    setProductToShow(products);
-  }, [products]);
+    setPlansToShow(plans);
+  }, [plans]);
 
   return (
     <>
-      <ProductsActionBar
-        setProductToShow={setProductToShow}
-        product={products}
-      />
+      <PlansActionBar setPlansToShow={setPlansToShow} plans={plans} />
       <div className="admin-product-list-container">
         <table className="table-product-content">
           <thead>
             <tr>
               <th>Nome</th>
-              <th>Tipo</th>
-              <th>Porção</th>
-              <th>Valor</th>
+              <th colspan="3">descripção</th>
               <th>Ações</th>
             </tr>
           </thead>
           <tbody className="admin-compras-content">
-            {productToShow &&
-              productToShow.map((product) => (
-                <ProductListItem
-                  product={product}
-                  key={product.id}
+            {plansToShow &&
+              plansToShow.map((plans) => (
+                <PlansListItem
+                  plans={plans}
+                  key={plans._id}
                   setDataToEdit={setDataToEdit}
                 />
               ))}
@@ -55,14 +50,14 @@ const AdminPlansList = ({ setDataToEdit }) => {
 
 export default AdminPlansList;
 
-const ProductsActionBar = ({ product, setProductToShow }) => {
+const PlansActionBar = ({ plans, setPlansToShow }) => {
   const { setShowProductModal, setIsAddProduct } = useContext(AppContext);
   const search = useRef(null);
   const handelSearch = () => {
-    let filtered = product.filter((item) =>
+    let filtered = plans.filter((item) =>
       item.name.toLowerCase().includes(search.current.value.toLowerCase())
     );
-    setProductToShow(filtered);
+    setPlansToShow(filtered);
   };
 
   return (
@@ -84,22 +79,25 @@ const ProductsActionBar = ({ product, setProductToShow }) => {
         }}
         className="button_principal add-product-btn"
       >
-        Adicionar produto
+        Adicionar Plan
         <AddBusinessOutlined />
       </button>
     </div>
   );
 };
 
-const ProductListItem = ({ product, setDataToEdit }) => {
+const PlansListItem = ({ plans, setDataToEdit }) => {
   const { setShowProductModal, setIsAddProduct, setLoader } =
     useContext(AppContext);
-  let { id, name, type, portion, price, src } = product;
+  console.log(plans);
+  const { name, includes } = plans;
+
   const state = useSelector((state) => state);
   const userAdmin = state.user;
   const dispatch = useDispatch();
 
   const handleDelete = async (id) => {
+    /*
     try {
       const options = {
         method: "DELETE",
@@ -116,21 +114,22 @@ const ProductListItem = ({ product, setDataToEdit }) => {
     } catch (error) {
       setLoader(false);
       alert("Ocurreu um error");
-    }
+    }*/
   };
   return (
     <tr>
       <td>{name}</td>
-      <td>{type}</td>
-      <td>{portion}</td>
-      <td>R$ {price}</td>
+      <td>{includes[0]}</td>
+      <td>{includes[1]}</td>
+      <td>{includes[2]}</td>
       <td className="option">
         <EditNoteOutlined
           className="option_icon"
           onClick={() => {
+            /*
             setDataToEdit(product);
             setShowProductModal(true);
-            setIsAddProduct(false);
+            setIsAddProduct(false);*/
           }}
         />
         <ClearOutlined

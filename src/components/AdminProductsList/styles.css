@@ -62,8 +62,8 @@
   max-height: 65vh;
 }
 
-.table-product-content > th,
-.table-product-content > td {
+.table-product-content th,
+.table-product-content td {
   height: 40px;
   padding: 10px;
   border: 1px solid #ccc;
