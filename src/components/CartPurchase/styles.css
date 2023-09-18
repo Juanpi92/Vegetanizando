@@ -1,6 +1,5 @@
 .purchase-general-container {
-  width: 90%;
-  margin-top: 10vh;
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }
@@ -13,7 +12,10 @@
 .cart-purchase-container {
   display: flex;
   flex-direction: column;
-  width: 95%;
+  justify-content: space-between;
+  width: 96vw;
+  height: 60vh;
+  min-width: 300px;
   padding: 10px;
   margin: 0 auto;
   border-radius: 10px;
@@ -21,10 +23,24 @@
   background-color: var(--purchase-background);
 }
 
+.cart-purchase-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  white-space: nowrap;
+}
+
 .cart-purchase-title p {
   font-size: 18px;
   font-weight: 600;
   color: var(--font-color);
+}
+
+.cart-purchase-title span{
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+  color: var(--third-color);
 }
 
 .cart-table-align {
@@ -78,7 +94,7 @@
 
 @media only screen and (min-width: 480px) {
   .cart-purchase-container {
-    width: 96%;
+    width: 80vw;
     padding: 15px;
   }
 
@@ -92,7 +108,7 @@
 
 @media only screen and (min-width: 768px) {
   .cart-purchase-container {
-    width: 90%;
+    width: 70vw;
     height: 70vh;
     padding: 20px;
     justify-content: space-between;
@@ -129,6 +145,10 @@
 
   .purchase-info-container span:first-of-type {
     font-size: 18px;
+  }
+
+  .cart-purchase-title span{
+    font-size: 16px;
   }
 }
 
