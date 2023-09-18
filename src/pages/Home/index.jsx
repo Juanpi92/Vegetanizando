@@ -34,19 +34,19 @@ const Home = () => {
       <div className="menu-container">
         {windowSize.width >= 768 ? (
           <Carousel dimension={windowSize.width}>
-            {plans
-              ? plans.map((item, key) => (
-                  <PlanCard
-                    key={key}
-                    src={item.url}
-                    title={item.name}
-                    includes={item.includes}
-                  />
-                ))
-              : null}
+            {plans &&
+              plans.map((item, key) => (
+                <PlanCard
+                  key={key}
+                  src={item.url}
+                  title={item.name}
+                  includes={item.includes}
+                />
+              ))}
           </Carousel>
         ) : (
-          plan.map((item, key) => (
+          plans &&
+          plans.map((item, key) => (
             <PlanCard
               key={key}
               src={item.url}
