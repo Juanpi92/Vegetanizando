@@ -68,7 +68,7 @@ const CartPurchase = ({ setCompraShow }) => {
 
 export default CartPurchase;
 
-const PurchaseFooter = ({ onPress, onBack, active }) => {
+const PurchaseFooter = ({ onBack }) => {
   const state = useSelector((state) => state);
   const { totalCart } = state.shopping;
 
