@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./styles.css";
 import CustomSection from "./CustomSection";
 import { services } from "../../utils/services.json";
-import ServicoCard from "./CustomSection/ServicoCard";
+import ServicoCard from "./ServicoCard";
 import { motion } from 'framer-motion';
 
 export default function Servicos() {

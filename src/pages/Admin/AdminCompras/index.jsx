@@ -1,10 +1,10 @@
 import axios from "axios";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "./styles.css";
 import { PictureAsPdfOutlined, ClearOutlined } from "@mui/icons-material";
-import { actStatus, delFromCompras } from "../../reducer/comprasReducer";
+import { actStatus, delFromCompras } from "../../../reducer/comprasReducer";
 import jsPDF from "jspdf";
 import { htmlToText } from "html-to-text";
 

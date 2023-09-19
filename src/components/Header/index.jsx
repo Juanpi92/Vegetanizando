@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import "./styles.css";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { LocalMallOutlined } from "@mui/icons-material";
 import Loader from "../Loader";
 import { AppContext } from "../../contexts/AppContext";
+import logo from '../../assets/imagenes/new-logo.png'
 
 export default function Header() {
   const state = useSelector((state) => state);
@@ -17,7 +18,7 @@ export default function Header() {
         <h1 className="header-logo-title">
           VEGETANIZAND
           <img
-            src={"./imagenes/new-logo.png"}
+            src={logo}
             alt="Vegetanizando logo"
             className="app-logo"
           />
@@ -27,7 +28,7 @@ export default function Header() {
         <h1 className="header-logo-title">
           VEGETANIZAND
           <img
-            src={"./imagenes/new-logo.png"}
+            src={logo}
             alt="Vegetanizando logo"
             className="app-logo"
           />

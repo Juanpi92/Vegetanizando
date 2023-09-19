@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
-import imagen404 from "/imagenes/404.png";
+import imagen404 from "../../assets/imagenes/404.png";
 
 const Error404 = () => {
   const navigate = useNavigate();

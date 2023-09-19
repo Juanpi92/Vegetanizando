@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import "./styles.css";
-import AddProduct from "../../pages/AdminProducts/AddProduct";
-import EditProduct from "../../pages/AdminProducts/EditProduct";
+import AddProduct from "../../pages/Admin/AdminProducts/AddProduct";
+import EditProduct from "../../pages/Admin/AdminProducts/EditProduct";
 
 export default function Modal({ dataToEdit }) {
   const { showProductModal, setShowProductModal, isAddProduct } =

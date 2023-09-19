@@ -7,8 +7,8 @@ import {
   EditNoteOutlined,
   ClearOutlined,
 } from "@mui/icons-material";
-import { delProduct } from "../../../reducer/shoopingReducer";
-import { AppContext } from "../../../contexts/AppContext";
+import { delProduct } from "../../../../reducer/shoopingReducer";
+import { AppContext } from "../../../../contexts/AppContext";
 import axios from "axios";
 
 const AdminPlansList = ({ setDataToEdit }) => {
