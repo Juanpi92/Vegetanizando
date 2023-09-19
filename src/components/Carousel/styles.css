@@ -30,4 +30,5 @@
 
 .slick-slide div:nth-child(1) {
   margin: 0 1rem;
+  padding-bottom: 10px;
 }
