@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Servicos from "./pages/Servicos";
 import Cart from "./pages/Cart";
-import Error404 from "./pages/Error404";
+import Error404 from "./pages/Error";
 import AdminCompras from "./pages/AdminCompras";
 import AdminProducts from "./pages/AdminProducts";
 import { useDispatch, useSelector } from "react-redux";
@@ -30,6 +30,7 @@ import Statistics from "./pages/Statistics";
 import { setPlans } from "./reducer/plansReducer";
 import AdminPlans from "./pages/AdminPlans";
 import Alert from "./components/Alert";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
   const dispatch = useDispatch();
@@ -107,52 +108,54 @@ function App() {
 
   return (
     <>
-      {user ? (
-        <HashRouter>
-          <AppProvider>
-            <AsideAdmin />
-            <Alert />
-            <Routes>
-              <Route
-                exact
-                path="/admin/compras"
-                element={<AdminCompras />}
-              ></Route>
-              <Route
-                exact
-                path="/admin/products"
-                element={<AdminProducts />}
-              ></Route>
-              <Route exact path="/admin/plans" element={<AdminPlans />}></Route>
-              <Route
-                exact
-                path="/admin/statistics"
-                element={<Statistics />}
-              ></Route>
-              <Route path="*" element={<Error404 />}></Route>
-            </Routes>
-          </AppProvider>
-        </HashRouter>
-      ) : (
-        <HashRouter>
-          <AppProvider>
-            <Header />
-            <NavigationMobile />
-            <Alert />
-            <ScrollToTop />
-            <PurchaseModal children={<CartComprasConfirm />} />
-            <Routes>
-              <Route exact path="/" element={<Home />}></Route>
-              <Route exact path="/acerca" element={<About />}></Route>
-              <Route exact path="/servicos" element={<Servicos />}></Route>
-              <Route exact path="/cart" element={<Cart />}></Route>
-              <Route exact path="/admin" element={<LoginAdmin />}></Route>
-              <Route path="*" element={<Error404 />}></Route>
-            </Routes>
-            <Footer />
-          </AppProvider>
-        </HashRouter>
-      )}
+      <AnimatePresence>
+        {user ? (
+          <HashRouter>
+            <AppProvider>
+              <AsideAdmin />
+              <Alert />
+              <Routes>
+                <Route
+                  exact
+                  path="/admin/compras"
+                  element={<AdminCompras />}
+                ></Route>
+                <Route
+                  exact
+                  path="/admin/products"
+                  element={<AdminProducts />}
+                ></Route>
+                <Route exact path="/admin/plans" element={<AdminPlans />}></Route>
+                <Route
+                  exact
+                  path="/admin/statistics"
+                  element={<Statistics />}
+                ></Route>
+                <Route path="*" element={<Error404 />}></Route>
+              </Routes>
+            </AppProvider>
+          </HashRouter>
+        ) : (
+          <HashRouter>
+            <AppProvider>
+              <Header />
+              <NavigationMobile />
+              <Alert />
+              <ScrollToTop />
+              <PurchaseModal children={<CartComprasConfirm />} />
+              <Routes>
+                <Route exact path="/" element={<Home />}></Route>
+                <Route exact path="/acerca" element={<About />}></Route>
+                <Route exact path="/servicos" element={<Servicos />}></Route>
+                <Route exact path="/cart" element={<Cart />}></Route>
+                <Route exact path="/admin" element={<LoginAdmin />}></Route>
+                <Route path="*" element={<Error404 />}></Route>
+              </Routes>
+              <Footer />
+            </AppProvider>
+          </HashRouter>
+        )}
+      </AnimatePresence>
     </>
   );
 }

@@ -4,9 +4,10 @@ import MealCard from "../../components/MealCard";
 import { Link } from "react-router-dom";
 import PlanCard from "../../components/PlanCard";
 import SkeletonCard from "../../components/SkeletonCard";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import Carousel from "../../components/Carousel";
+import { motion } from 'framer-motion';
 
 const Home = () => {
   const state = useSelector((state) => state);
@@ -29,7 +30,11 @@ const Home = () => {
   }, [windowSize]);
 
   return (
-    <main className="home-container">
+    <motion.main
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ type: "spring", duration: 2 }}
+      className="home-container">
       <SectionNav title={"Planos Alimentares"} />
       <div className="menu-container">
         {windowSize.width >= 768 ? (
@@ -76,7 +81,7 @@ const Home = () => {
           <SkeletonFeedback variant={"products"} />
         )}
       </div>
-    </main>
+    </motion.main>
   );
 };
 

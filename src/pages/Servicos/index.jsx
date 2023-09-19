@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./styles.css";
-import CustomSection from "../../components/CustomSection";
+import CustomSection from "./CustomSection";
 import { services } from "../../utils/services.json";
-import ServicoCard from "../../components/ServicoCard";
-import { CheckCircleOutline } from "@mui/icons-material";
+import ServicoCard from "./CustomSection/ServicoCard";
+import { motion } from 'framer-motion';
 
 export default function Servicos() {
   const [data, setData] = useState(null);
@@ -13,15 +13,17 @@ export default function Servicos() {
   }, []);
 
   return (
-    <main className="servicos-container">
+    <motion.main
+      className="servicos-container">
       <h1 className="servicos-title">
         Por que escolher os serviços Vegetanizando?
       </h1>
       <section className="shotcuts-container">
-        {services.map((item, key) => (
+        {services.map((item) => (
           <ServicoCard
-            key={key}
-            onPress={() => setData(services[key])}
+            opacity={item.id * 0.5}
+            key={item.id}
+            onPress={() => setData(services[item.id])}
             title={item.name}
             description={item.desc}
             icon={item.icon}
@@ -29,6 +31,6 @@ export default function Servicos() {
         ))}
       </section>
       {data && <CustomSection data={data} />}
-    </main>
+    </motion.main>
   );
 }
