@@ -16,10 +16,9 @@ export const shoppingSlice = createSlice({
       let newItem = state.products.find(
         (product) => product.id === action.payload
       );
-
       let itemInCart = state.cart.find((item) => item.id === newItem.id);
       if (itemInCart) {
-        alert("Ya el producto esta no cart");
+        // se já houver este item no carrinho
       } else {
         state.cart = [...state.cart, { ...newItem, quantity: 1 }];
       }

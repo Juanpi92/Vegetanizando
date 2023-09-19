@@ -2,13 +2,19 @@ import React, { useState } from "react";
 import "./styles.css";
 import { WhatsApp } from "@mui/icons-material";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { motion } from 'framer-motion';
 
 export default function CustomSection({ data }) {
   const [loaded, setLoaded] = useState(false);
   let { id, title, text, image } = data;
 
   return (
-    <section className="custom-section-container" id={id}>
+    <motion.section
+      initial={{ translateX: 2000 }}
+      animate={{ translateX: 0 }}
+      exit={{ opacity: 0,  }}
+      transition={{ type: "spring", duration: 2.5 }}
+      className="custom-section-container" id={id}>
       <LazyLoadImage
         src={image}
         className={loaded ? 'custom-section-image' : 'custom-section-image skeleton'}
@@ -35,6 +41,6 @@ export default function CustomSection({ data }) {
           <WhatsApp />
         </button>
       </div>
-    </section>
+    </motion.section>
   );
 }

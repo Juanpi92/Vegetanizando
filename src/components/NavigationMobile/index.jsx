@@ -4,9 +4,7 @@ import {
   InfoOutlined,
   LocalDiningOutlined,
   LocalMallOutlined,
-  PersonOutlined,
   RoomServiceOutlined,
-  SearchOutlined,
 } from "@mui/icons-material";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";

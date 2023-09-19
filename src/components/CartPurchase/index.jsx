@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import "./styles.css";
 import CartItem from "./CartItem";
@@ -7,11 +7,13 @@ import { useNavigate } from "react-router";
 import { AppContext } from "../../contexts/AppContext";
 import CartComprasConfirm from "./CartComprasConfirm/index";
 import { RotateLeft } from "@mui/icons-material";
+import { delCart } from "../../reducer/shoopingReducer";
 
 const CartPurchase = ({ setCompraShow }) => {
   const state = useSelector((state) => state);
-  const { cart, totalCart } = state.shopping;
-  const { setShowModal, activeDesktopCart, setActiveDesktopCart } =
+  const { cart } = state.shopping;
+  const dispatch = useDispatch();
+  const { activeDesktopCart, setActiveDesktopCart, onRequestShowAlert } =
     useContext(AppContext);
   const navigate = useNavigate();
 
@@ -22,11 +24,17 @@ const CartPurchase = ({ setCompraShow }) => {
     setCompraShow(false);
   };
 
+  const handleClearCart = () => {
+    dispatch(delCart());
+    onRequestShowAlert({ variant: 'success', message: 'Você limpou sua sacola' })
+  }
+
   return (
     <article className="purchase-general-container">
       <section className="cart-purchase-container">
         <div className="cart-purchase-title">
           <p>Minha sacola</p>
+          <span onClick={() => handleClearCart()}>Limpar sacola</span>
         </div>
         <div className="cart-table-align">
           <table className="cart-table-container">
@@ -60,7 +68,7 @@ const CartPurchase = ({ setCompraShow }) => {
 
 export default CartPurchase;
 
-const PurchaseFooter = ({ onPress, onBack, active }) => {
+const PurchaseFooter = ({ onBack }) => {
   const state = useSelector((state) => state);
   const { totalCart } = state.shopping;
 

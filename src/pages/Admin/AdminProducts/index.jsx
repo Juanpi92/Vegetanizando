@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
-import AdminProductsList from "../../components/AdminProductsList";
-import Modal from "../../components/Modal";
+import AdminProductsList from "../../../components/AdminProductsList";
+import Modal from "../../../components/Modal";
+
 
 const AdminProducts = () => {
   const [dataToEdit, setDataToEdit] = useState(null);

@@ -2,12 +2,17 @@ import { CheckOutlined } from '@mui/icons-material'
 import React, { useState } from 'react'
 import './styles.css'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
+import { motion } from 'framer-motion';
 
 export default function PlanCard({ src, title, includes }) {
-  const [loaded, setLoaded] = useState(false);
+    const [loaded, setLoaded] = useState(false);
 
-  return (
-        <div className='plan-card-container'>
+    return (
+        <motion.div
+            initial={{ scale: 0.8 }}
+            animate={{ scale: 1 }}
+            transition={{ type: "ease", duration: 0.5 }}
+            className='plan-card-container'>
             <LazyLoadImage
                 className={loaded ? 'plan-card-overlay' : 'plan-card-overlay skeleton'}
                 src={src}
@@ -25,6 +30,6 @@ export default function PlanCard({ src, title, includes }) {
                     ))
                 }
             </div>
-        </div>
+        </motion.div>
     )
 }

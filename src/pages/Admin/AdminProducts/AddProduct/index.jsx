@@ -1,34 +1,31 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./styles.css";
 import { AddAPhotoSharp } from "@mui/icons-material";
-import { AppContext } from "../../../contexts/AppContext";
+import { AppContext } from "./../../../../contexts/AppContext";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { actualizarItemProduct } from "../../../reducer/shoopingReducer";
+import { addItemProduct } from "../../../../reducer/shoopingReducer";
 
-export default function EditProduct({ dataToEdit }) {
+export default function AddProduct() {
   const [imagePreview, setImagePreview] = useState(null);
   const state = useSelector((state) => state);
   const { user } = state.user;
   const dispatch = useDispatch();
-  const { setShowProductModal, setIsAddProduct, setLoader } =
+  const { setShowProductModal, setIsAddProduct, setLoader, onRequestShowAlert } =
     useContext(AppContext);
-  const productForm = useRef(null);
-  useEffect(() => {
-    setImagePreview(dataToEdit.url);
-    productForm.current.name.value = dataToEdit.name;
-    productForm.current.portion.value = dataToEdit.portion;
-    productForm.current.price.value = dataToEdit.price;
-    productForm.current.type.value = dataToEdit.type;
-  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // e.target.file.parentElement.firstElementChild.style.border = "none";
+    e.target.file.parentElement.firstElementChild.style.border = "none";
     e.target.name.style.borderColor = "#000000";
     e.target.portion.style.borderColor = "#000000";
     e.target.price.style.borderColor = "#000000";
     e.target.type.style.borderColor = "#000000";
+    if (e.target.file.files.length === 0) {
+      e.target.file.parentElement.firstElementChild.style.border =
+        "1px solid red";
+      return;
+    }
     if (e.target.name.value === "") {
       e.target.name.style.borderColor = "red";
       return;
@@ -47,53 +44,33 @@ export default function EditProduct({ dataToEdit }) {
       return;
     }
     //here we do the form data and send to the backend
+    const product = new FormData();
+    product.append("image", e.target.file.files[0]);
+    product.append("name", e.target.name.value);
+    product.append("portion", e.target.portion.value);
+    product.append("price", e.target.price.value);
+    product.append("type", e.target.type.value);
     try {
-      let options;
-      if (e.target.file.files.length === 0) {
-        options = {
-          method: "PATCH",
-          url: `https://vegetanizando-api.vercel.app/product/${dataToEdit.id}`,
-          headers: {
-            "Content-Type": "application/json",
-            "auth-token": user.token,
-          },
-          data: {
-            name: e.target.name.value,
-            portion: e.target.portion.value,
-            price: e.target.price.value,
-            type: e.target.type.value,
-          },
-        };
-      } else {
-        const product = new FormData();
-        product.append("image", e.target.file.files[0]);
-        product.append("name", e.target.name.value);
-        product.append("portion", e.target.portion.value);
-        product.append("price", e.target.price.value);
-        product.append("type", e.target.type.value);
-        options = {
-          method: "PUT",
-          url: `https://vegetanizando-api.vercel.app/product/${dataToEdit.id}`,
-          headers: {
-            "Content-Type":
-              "multipart/form-data; boundary=---011000010111000001101001",
-            "auth-token": user.token,
-          },
-          data: product,
-        };
-      }
+      const options = {
+        method: "POST",
+        url: "https://vegetanizando-api.vercel.app/product",
+        headers: {
+          "Content-Type":
+            "multipart/form-data; boundary=---011000010111000001101001",
+          "auth-token": user.token,
+        },
+        data: product,
+      };
       setShowProductModal(false);
       setIsAddProduct(false);
       setLoader(true);
       let newProduct = await axios.request(options);
-      dispatch(
-        actualizarItemProduct({ id: dataToEdit.id, ...newProduct.data })
-      );
-      setLoader(true);
+      dispatch(addItemProduct(newProduct.data));
+
       setLoader(false);
     } catch (error) {
       setLoader(false);
-      alert("ocorreu um error");
+      onRequestShowAlert({ variant: 'warning', message: 'Ocorreu um erro', });
       console.log(error);
     }
   };
@@ -111,11 +88,7 @@ export default function EditProduct({ dataToEdit }) {
   };
 
   return (
-    <form
-      onSubmit={(e) => handleSubmit(e)}
-      className="form-add-container"
-      ref={productForm}
-    >
+    <form onSubmit={(e) => handleSubmit(e)} className="form-add-container">
       <div className="form-align-content">
         <img className="form-img-item" src={imagePreview} alt="" />
         <input
@@ -167,7 +140,7 @@ export default function EditProduct({ dataToEdit }) {
           type="button"
           value="Cancelar"
         />
-        <input className="form-btn" type="submit" value="Atualizar" />
+        <input className="form-btn" type="submit" value="Cadastrar" />
       </div>
     </form>
   );

@@ -2,13 +2,13 @@ import axios from "axios";
 import React, { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setUser } from "../../reducer/userReducer";
+import { setUser } from "../../../reducer/userReducer";
 import "./styles.css";
-import LoaderLogin from "../../assets/loader_oval.svg";
+import LoaderLogin from "../../../assets/loader_oval.svg";
 import AssignmentIndOutlinedIcon from "@mui/icons-material/AssignmentIndOutlined";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 
-export const LoginAdmin = () => {
+export default function LoginAdmin () {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const $form_login = useRef();

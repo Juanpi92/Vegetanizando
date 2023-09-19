@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
-import Modal from "../../components/Modal";
+import Modal from "../../../components/Modal";
 import AdminPlansList from "./AdminPlansList";
 
 const AdminPlans = () => {

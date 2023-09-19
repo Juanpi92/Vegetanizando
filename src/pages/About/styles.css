@@ -71,7 +71,7 @@
         margin: 0 2%;
     }
 
-    .about-content:nth-child(2){
+    .about-content:nth-child(3){
         flex-direction: row-reverse;
     }
 
