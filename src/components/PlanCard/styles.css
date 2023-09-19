@@ -72,11 +72,15 @@
 
 @media screen and (min-width: 600px) {
     .plan-card-container {
-        min-width: 110%;
+        min-width: 40%;
     }
 }
 
 @media screen and (min-width: 768px) {
+    .plan-card-container {
+        min-width: 100%;
+    }
+    
     .plan-card-title,
     .card-info-item {
         font-size: 16px;
