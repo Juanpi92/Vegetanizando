@@ -10,6 +10,7 @@ import { calculateTotalCart, delCart } from "../../../reducer/shoopingReducer";
 import { CheckCircle } from "@mui/icons-material";
 import { AppContext } from "../../../contexts/AppContext";
 import { purchase } from "./purchase";
+import SearchIcon from "@mui/icons-material/Search";
 
 const CartComprasConfirm = () => {
   const [userData, setUserData] = useState({
@@ -304,7 +305,7 @@ const CartComprasConfirm = () => {
                     onChange={HandleUserInfoChange}
                   />
                   <div id="search-cep" onClick={BuscarCep}>
-                    <i className="fa-solid fa-magnifying-glass"></i>
+                    <SearchIcon />
                   </div>
                   <p className="search-cep-status" ref={$error}></p>
                 </div>
